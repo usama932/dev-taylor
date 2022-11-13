@@ -1,0 +1,129 @@
+@extends('layouts.frontend')
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            @can('menuitem_create')
+                <div style="margin-bottom: 10px;" class="row">
+                    <div class="col-lg-12">
+                        <a class="btn btn-success" href="{{ route('frontend.menuitems.create') }}">
+                            {{ trans('global.add') }} {{ trans('cruds.menuitem.title_singular') }}
+                        </a>
+                    </div>
+                </div>
+            @endcan
+            <div class="card">
+                <div class="card-header">
+                    {{ trans('cruds.menuitem.title_singular') }} {{ trans('global.list') }}
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class=" table table-bordered table-striped table-hover datatable datatable-Menuitem">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.menuitem.fields.name') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.menuitem.fields.menu') }}
+                                    </th>
+                                    <th>
+                                        &nbsp;
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($menuitems as $key => $menuitem)
+                                    <tr data-entry-id="{{ $menuitem->id }}">
+                                        <td>
+                                            {{ $menuitem->name ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $menuitem->menu->name ?? '' }}
+                                        </td>
+                                        <td>
+                                            @can('menuitem_show')
+                                                <a class="btn btn-xs btn-primary" href="{{ route('frontend.menuitems.show', $menuitem->id) }}">
+                                                    {{ trans('global.view') }}
+                                                </a>
+                                            @endcan
+
+                                            @can('menuitem_edit')
+                                                <a class="btn btn-xs btn-info" href="{{ route('frontend.menuitems.edit', $menuitem->id) }}">
+                                                    {{ trans('global.edit') }}
+                                                </a>
+                                            @endcan
+
+                                            @can('menuitem_delete')
+                                                <form action="{{ route('frontend.menuitems.destroy', $menuitem->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                    <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                                </form>
+                                            @endcan
+
+                                        </td>
+
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@endsection
+@section('scripts')
+@parent
+<script>
+    $(function () {
+  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+@can('menuitem_delete')
+  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
+  let deleteButton = {
+    text: deleteButtonTrans,
+    url: "{{ route('frontend.menuitems.massDestroy') }}",
+    className: 'btn-danger',
+    action: function (e, dt, node, config) {
+      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
+          return $(entry).data('entry-id')
+      });
+
+      if (ids.length === 0) {
+        alert('{{ trans('global.datatables.zero_selected') }}')
+
+        return
+      }
+
+      if (confirm('{{ trans('global.areYouSure') }}')) {
+        $.ajax({
+          headers: {'x-csrf-token': _token},
+          method: 'POST',
+          url: config.url,
+          data: { ids: ids, _method: 'DELETE' }})
+          .done(function () { location.reload() })
+      }
+    }
+  }
+  dtButtons.push(deleteButton)
+@endcan
+
+  $.extend(true, $.fn.dataTable.defaults, {
+    orderCellsTop: true,
+    order: [[ 1, 'desc' ]],
+    pageLength: 100,
+  });
+  let table = $('.datatable-Menuitem:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
+      $($.fn.dataTable.tables(true)).DataTable()
+          .columns.adjust();
+  });
+  
+})
+
+</script>
+@endsection

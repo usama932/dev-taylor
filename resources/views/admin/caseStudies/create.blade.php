@@ -1,0 +1,330 @@
+@extends('layouts.admin')
+@section('content')
+
+<div class="card">
+    <div class="card-header">
+        {{ trans('global.create') }} {{ trans('cruds.caseStudy.title_singular') }}
+    </div>
+
+    <div class="card-body">
+        <form method="POST" action="{{ route("admin.case-studies.store") }}" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group">
+                <label class="required" for="title">{{ trans('cruds.caseStudy.fields.title') }}</label>
+                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
+                @if($errors->has('title'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('title') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.caseStudy.fields.title_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="subtitle">{{ trans('cruds.caseStudy.fields.subtitle') }}</label>
+                <input class="form-control {{ $errors->has('subtitle') ? 'is-invalid' : '' }}" type="text" name="subtitle" id="subtitle" value="{{ old('subtitle', '') }}">
+                @if($errors->has('subtitle'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('subtitle') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.caseStudy.fields.subtitle_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="content">{{ trans('cruds.caseStudy.fields.content') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('content') ? 'is-invalid' : '' }}" name="content" id="content">{!! old('content') !!}</textarea>
+                @if($errors->has('content'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('content') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.caseStudy.fields.content_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="logo">{{ trans('cruds.caseStudy.fields.logo') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="logo-dropzone">
+                </div>
+                @if($errors->has('logo'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('logo') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.caseStudy.fields.logo_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="featuredtitle">{{ trans('cruds.caseStudy.fields.featuredtitle') }}</label>
+                <input class="form-control {{ $errors->has('featuredtitle') ? 'is-invalid' : '' }}" type="text" name="featuredtitle" id="featuredtitle" value="{{ old('featuredtitle', '') }}">
+                @if($errors->has('featuredtitle'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('featuredtitle') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.caseStudy.fields.featuredtitle_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="featuredimage">{{ trans('cruds.caseStudy.fields.featuredimage') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('featuredimage') ? 'is-invalid' : '' }}" id="featuredimage-dropzone">
+                </div>
+                @if($errors->has('featuredimage'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('featuredimage') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.caseStudy.fields.featuredimage_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="cta_button">{{ trans('cruds.caseStudy.fields.cta_button') }}</label>
+                <input class="form-control {{ $errors->has('cta_button') ? 'is-invalid' : '' }}" type="text" name="cta_button" id="cta_button" value="{{ old('cta_button', '') }}">
+                @if($errors->has('cta_button'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('cta_button') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.caseStudy.fields.cta_button_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="cst_link">{{ trans('cruds.caseStudy.fields.cst_link') }}</label>
+                <input class="form-control {{ $errors->has('cst_link') ? 'is-invalid' : '' }}" type="text" name="cst_link" id="cst_link" value="{{ old('cst_link', '') }}">
+                @if($errors->has('cst_link'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('cst_link') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.caseStudy.fields.cst_link_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <div class="form-check {{ $errors->has('featured') ? 'is-invalid' : '' }}">
+                    <input type="hidden" name="featured" value="0">
+                    <input class="form-check-input" type="checkbox" name="featured" id="featured" value="1" {{ old('featured', 0) == 1 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="featured">{{ trans('cruds.caseStudy.fields.featured') }}</label>
+                </div>
+                @if($errors->has('featured'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('featured') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.caseStudy.fields.featured_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label>{{ trans('cruds.caseStudy.fields.status') }}</label>
+                <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
+                    <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\CaseStudy::STATUS_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('status', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('status'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('status') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.caseStudy.fields.status_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="slug">{{ trans('cruds.caseStudy.fields.slug') }}</label>
+                <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', '') }}">
+                @if($errors->has('slug'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('slug') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.caseStudy.fields.slug_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="orderby">{{ trans('cruds.caseStudy.fields.orderby') }}</label>
+                <input class="form-control {{ $errors->has('orderby') ? 'is-invalid' : '' }}" type="number" name="orderby" id="orderby" value="{{ old('orderby', '0') }}" step="1">
+                @if($errors->has('orderby'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('orderby') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.caseStudy.fields.orderby_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-danger" type="submit">
+                    {{ trans('global.save') }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function () {
+  function SimpleUploadAdapter(editor) {
+    editor.plugins.get('FileRepository').createUploadAdapter = function(loader) {
+      return {
+        upload: function() {
+          return loader.file
+            .then(function (file) {
+              return new Promise(function(resolve, reject) {
+                // Init request
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '{{ route('admin.case-studies.storeCKEditorImages') }}', true);
+                xhr.setRequestHeader('x-csrf-token', window._token);
+                xhr.setRequestHeader('Accept', 'application/json');
+                xhr.responseType = 'json';
+
+                // Init listeners
+                var genericErrorText = `Couldn't upload file: ${ file.name }.`;
+                xhr.addEventListener('error', function() { reject(genericErrorText) });
+                xhr.addEventListener('abort', function() { reject() });
+                xhr.addEventListener('load', function() {
+                  var response = xhr.response;
+
+                  if (!response || xhr.status !== 201) {
+                    return reject(response && response.message ? `${genericErrorText}\n${xhr.status} ${response.message}` : `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`);
+                  }
+
+                  $('form').append('<input type="hidden" name="ck-media[]" value="' + response.id + '">');
+
+                  resolve({ default: response.url });
+                });
+
+                if (xhr.upload) {
+                  xhr.upload.addEventListener('progress', function(e) {
+                    if (e.lengthComputable) {
+                      loader.uploadTotal = e.total;
+                      loader.uploaded = e.loaded;
+                    }
+                  });
+                }
+
+                // Send request
+                var data = new FormData();
+                data.append('upload', file);
+                data.append('crud_id', '{{ $caseStudy->id ?? 0 }}');
+                xhr.send(data);
+              });
+            })
+        }
+      };
+    }
+  }
+
+  var allEditors = document.querySelectorAll('.ckeditor');
+  for (var i = 0; i < allEditors.length; ++i) {
+    ClassicEditor.create(
+      allEditors[i], {
+        extraPlugins: [SimpleUploadAdapter]
+      }
+    );
+  }
+});
+</script>
+
+<script>
+    Dropzone.options.logoDropzone = {
+    url: '{{ route('admin.case-studies.storeMedia') }}',
+    maxFilesize: 4, // MB
+    acceptedFiles: '.jpeg,.jpg,.png,.gif',
+    maxFiles: 1,
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 4,
+      width: 4096,
+      height: 4096
+    },
+    success: function (file, response) {
+      $('form').find('input[name="logo"]').remove()
+      $('form').append('<input type="hidden" name="logo" value="' + response.name + '">')
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      if (file.status !== 'error') {
+        $('form').find('input[name="logo"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
+      }
+    },
+    init: function () {
+@if(isset($caseStudy) && $caseStudy->logo)
+      var file = {!! json_encode($caseStudy->logo) !!}
+          this.options.addedfile.call(this, file)
+      this.options.thumbnail.call(this, file, file.preview ?? file.preview_url)
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="logo" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
+@endif
+    },
+    error: function (file, response) {
+        if ($.type(response) === 'string') {
+            var message = response //dropzone sends it's own error messages in string
+        } else {
+            var message = response.errors.file
+        }
+        file.previewElement.classList.add('dz-error')
+        _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+        _results = []
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            node = _ref[_i]
+            _results.push(node.textContent = message)
+        }
+
+        return _results
+    }
+}
+
+</script>
+<script>
+    Dropzone.options.featuredimageDropzone = {
+    url: '{{ route('admin.case-studies.storeMedia') }}',
+    maxFilesize: 2, // MB
+    acceptedFiles: '.jpeg,.jpg,.png,.gif',
+    maxFiles: 1,
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 2,
+      width: 4096,
+      height: 4096
+    },
+    success: function (file, response) {
+      $('form').find('input[name="featuredimage"]').remove()
+      $('form').append('<input type="hidden" name="featuredimage" value="' + response.name + '">')
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      if (file.status !== 'error') {
+        $('form').find('input[name="featuredimage"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
+      }
+    },
+    init: function () {
+@if(isset($caseStudy) && $caseStudy->featuredimage)
+      var file = {!! json_encode($caseStudy->featuredimage) !!}
+          this.options.addedfile.call(this, file)
+      this.options.thumbnail.call(this, file, file.preview ?? file.preview_url)
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="featuredimage" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
+@endif
+    },
+    error: function (file, response) {
+        if ($.type(response) === 'string') {
+            var message = response //dropzone sends it's own error messages in string
+        } else {
+            var message = response.errors.file
+        }
+        file.previewElement.classList.add('dz-error')
+        _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+        _results = []
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            node = _ref[_i]
+            _results.push(node.textContent = message)
+        }
+
+        return _results
+    }
+}
+
+</script>
+@endsection
