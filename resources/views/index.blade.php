@@ -73,7 +73,7 @@
 <section class="recruitment-section">
     <div class="recruitment-wrapper">
         <div class="recruitment-content">
-            <h4>@if($)</h4>
+            <h4></h4>
             <p>As a leading accounting and finance recruitment consultancy, we don’t try to put round pegs in square holes. Our reputation is based on our market knowledge and understanding of what makes a company and a person a good match for each other
                 – and we achieve that through our data-driven mindset.</p>
             <p> In practice, this means we work hard to continually raise the bar in the financial recruitment sector through:</p>

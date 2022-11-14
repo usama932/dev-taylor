@@ -18,7 +18,7 @@
                                 <div class="carousal-image">
                                     @if($page->featured_image)
                                     <a href="#abouttextsection" target="_blank" style="display: inline-block">
-                                        <img src="{{ $page->featured_image->getUrl('thumb') }}">
+                                        <img src="{{ $page->featured_image->getUrl() }}">
                                     </a>
                                     @endif
                                 </div>
