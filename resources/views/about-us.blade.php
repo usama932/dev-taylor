@@ -24,7 +24,7 @@
                             <div class="carousal-image">
                                 @if($page->featured_image)
 
-                                    <img src="{{ $page->featured_image->getUrl('preview') }}">
+                                    <img src="{{ $page->featured_image->getUrl('preview') }}" class="carousal-image" alt="Chania" style="z-index: 0 !important">
 
                                 @endif
                             </div>
