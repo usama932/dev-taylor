@@ -20,7 +20,7 @@
                     </div>
                     <div class="address-wrapper">
                         <div class="address-content">
-                            <label>{{ $page->contactInfoLocations[0]->location_country ?? '' }}</label> <a href="tel:09212676757011">{{ $page->contactInfoLocations[0]->location_phone ?? '' }}</a>
+                            <label>@if( $page->contactInfoLocations[0]->location_country == 'UK' ) United Kingdom @else '' @endif </label> <a href="tel:09212676757011">{{ $page->contactInfoLocations[0]->location_phone ?? '' }}</a>
                             <p>
                                 {!! $page->contactInfoLocations[0]->location_address ?? '' !!}
                             </p>
@@ -54,7 +54,7 @@
                     </div>
                     <div class="address-wrapper">
                         <div class="address-content">
-                            <label>{{ $page->contactInfoLocations[1]->location_country ?? '' }}</label> <a href="tel:092442038871110">{{ $page->contactInfoLocations[1]->location_phone ?? '' }}</a>
+                            <label>@if( $page->contactInfoLocations[0]->location_country = 'US' ) United State @else '' @endif</label> <a href="tel:092442038871110">{{ $page->contactInfoLocations[1]->location_phone ?? '' }}</a>
                             <p>
                                 {!! $page->contactInfoLocations[1]->location_address ?? '' !!}
                             </p>
