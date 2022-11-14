@@ -31,10 +31,12 @@ class IndexController extends Controller
 
         $pageSlug = request()->segment(1);
         $page  = ContentPage::where('slug', $pageSlug)->with('categories', 'parent', 'tags','contactInfoLocations','slidesidSlides','pagePageCustomFields')->first();
+        $recruitment_slider = Slider::where('name','Recruitement')->with('sliderSlides')->first();
+        $specialist_slider = Slider::where('name','Specialist')->with('sliderSlides')->first();
 
         if(!$pageSlug) {
             $page  = ContentPage::where('slug', 'home')->with('categories', 'parent', 'tags','contactInfoLocations','slidesidSlides','pagePageCustomFields')->first();
-            return view('index',compact('page'));
+            return view('index',compact('page','recruitment_slider','specialist_slider'));
         }
 
         $page  = ContentPage::where('slug', $pageSlug)->with('categories', 'parent', 'tags','contactInfoLocations','slidesidSlides','pagePageCustomFields')->first();
@@ -42,7 +44,7 @@ class IndexController extends Controller
         $pageTemplate = \View::exists($pageSlug) ? $pageSlug : 'index';
         $knowledge = Knowledge::with('category')->latest()->limit(6)->get();
 
-        return view($pageTemplate , compact('page','slider','knowledge'));
+        return view($pageTemplate ,compact('page','knowledge','recruitment_slider'));
     }
     public function knowledge_single($slug){
        $knowledge = Knowledge::where('slug',$slug)->first();

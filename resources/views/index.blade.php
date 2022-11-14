@@ -25,7 +25,7 @@
                                     <div class="carousel-caption">
                                         <h5>{{ $slide->title }}</h5>
                                         @if (!empty($slide->cta_button))
-                                        <div class="button-wrapper"> <a href="{{ $slide->url }}" class="btn-blue btn-h51">{{ $slide->cta_button }}</a> </div>
+                                        <div class="button-wrapper"> <a href="{{ $slide->imagetitle }}" class="btn-blue btn-h51">{{ $slide->cta_button }}</a> </div>
                                         @endif
 
                                     </div>
@@ -53,7 +53,7 @@
             <div class="image-wrapper"> <img src="{{ asset('dist/accounting-image.10c416a6.png') }}" alt="image"> </div>
             <div class="slider-wrapper">
             <div id="testimonials" class="owl-carousel owl-theme">
-                <div class="item">
+                {{-- <div class="item">
                     <p>Taylor Hawkes is a specialist accounting and finance recruitment agency, connecting people and businesses throughout the accountancy, tax and audit sectors, as well as in-house financial roles in a range of other industries.</p>
                  </div>
                  <div class="item">
@@ -64,8 +64,12 @@
                  </div>
                  <div class="item">
                     <p>Our experienced team understand that there’s more to recruitment than just finding a new job, a new contact or a new team member – it’s about the right role, for the right person, in the right company, at the right time.</p>
+                 </div> --}}
+                 @foreach($specialist_slider as $key => $slider)
+                 <div class="item">
+                    <p>Our experienced team understand that there’s more to recruitment than just finding a new job, a new contact or a new team member – it’s about the right role, for the right person, in the right company, at the right time.</p>
                  </div>
-
+                 @endforeach
             </div>
         </div>
     </div>
@@ -73,7 +77,7 @@
 <section class="recruitment-section">
     <div class="recruitment-wrapper">
         <div class="recruitment-content">
-            <h4></h4>
+            <h4>Recruitment data & insights</h4>
             <p>As a leading accounting and finance recruitment consultancy, we don’t try to put round pegs in square holes. Our reputation is based on our market knowledge and understanding of what makes a company and a person a good match for each other
                 – and we achieve that through our data-driven mindset.</p>
             <p> In practice, this means we work hard to continually raise the bar in the financial recruitment sector through:</p>
@@ -89,27 +93,27 @@
                     <div class="five item"></div>
                     <div class="item six"></div>
                     <div class="desc one">
-                        <p>A more in-depth knowledge of a candidate’s skills and experience</p>
+                        <p>{{ $recruitment_slider->sliderSlides[0]->title ?? '' }}</p>
                         <a href="JavaScript:Void(0)">Next</a>
                     </div>
                     <div class="desc two">
-                        <p>As a leading accounting and finance recruitment</p>
+                        <p>{{ $recruitment_slider->sliderSlides[1]->title  ?? ''}}</p>
                         <a href="JavaScript:Void(0)">Next</a>
                     </div>
                     <div class="desc three">
-                        <p>A more in-depth knowledge of a candidate’s skills and experience</p>
+                        <p>{{ $recruitment_slider->sliderSlides[2]->title  ?? '' }}</p>
                         <a href="JavaScript:Void(0)">Next</a>
                     </div>
                     <div class="desc four">
-                        <p>A more in-depth knowledge of a candidate’s skills and experience, rather than simply their headline qualifications;</p>
+                        <p>{{ $recruitment_slider->sliderSlides[3]->title  ?? '' }}</p>
                         <a href="JavaScript:Void(0)">Next</a>
                     </div>
                     <div class="desc five">
-                        <p>Taylor Hawkes is a specialist accounting and finance recruitment agency, connecting people</p>
+                        <p>{{ $recruitment_slider->sliderSlides[4]->title   ?? ''}}</p>
                         <a href="JavaScript:Void(0)">Next</a>
                     </div>
                     <div class="desc six">
-                        <p>A more in-depth knowledge of a candidate’s skills and experience, rather than simply their headline qualifications;</p>
+                        <p>{{ $recruitment_slider->sliderSlides[5]->title  ?? '' }}</p>
                         <a href="JavaScript:Void(0)">Next</a>
                     </div>
                 </div>
