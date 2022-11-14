@@ -21,11 +21,11 @@
                    <div id="carouselSlider" class="carousel slide" data-bs-ride="carousel">
                       <div class="carousel-inner">
                          <div class="active carousel-item">
-                            <div class="carousal-image ">
+                            <div class="carousal-image">
                                 @if($page->featured_image)
-                                <a href="#abouttextsection" target="_blank" style="display: inline-block">
-                                    <img src="{{ $page->featured_image->getUrl() }}">
-                                </a>
+
+                                    <img src="{{ $page->featured_image->getUrl('preview') }}">
+
                                 @endif
                             </div>
                          </div>
