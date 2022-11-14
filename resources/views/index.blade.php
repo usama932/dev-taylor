@@ -16,15 +16,18 @@
                 <div class="slider-inner">
                    <div id="carouselSlider" class="carousel slide" data-bs-ride="carousel">
                       <div class="carousel-inner">
-                        @foreach ($top_slides->slidesidSlides as $key => $slide)
-                         <div class=" carousel-item {{$key == 0 ? 'active' : '' }}">
+                        @foreach($top_slides as $slider)
+                        @foreach ($slider->sliderSlides  as $key => $slides)
+                        <div class=" carousel-item {{$key == 0 ? 'active' : '' }}">
                             <div class="carousal-image ">
                                 <img src="{{ asset('dist/services-image1.543a7c77.jpg') }}" class="carousal-image" alt="Chania">
                                <div class="carousel-caption">
-                                  <h5>{{ $slide->imagetitle }}</h5>
+                                  <h5>{{ $slides->imagetitle }}</h5>
                                </div>
                             </div>
                          </div>
+                        @endforeach
+
                         @endforeach
                       </div>
                    </div>

@@ -30,7 +30,7 @@ class IndexController extends Controller
 
 
         $pageSlug = request()->segment(1);
-        $top_slides =  Slider::where('name','Hero Slider')->with('sliderSlides')->first();
+        $top_slides =  Slider::where('name','Hero Slider')->with('sliderSlides')->get();
         $page  = ContentPage::where('slug', $pageSlug)->with('categories', 'parent', 'tags','contactInfoLocations','slidesidSlides','pagePageCustomFields')->first();
         $recruitment_slider = Slider::where('name','Recruitement')->with('sliderSlides')->first();
         $specialist_slider = Slider::where('name','Specialist')->with('sliderSlides')->first();
