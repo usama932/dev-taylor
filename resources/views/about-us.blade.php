@@ -21,10 +21,20 @@
                    <div id="carouselSlider" class="carousel slide" data-bs-ride="carousel">
                       <div class="carousel-inner">
                          <div class="active carousel-item">
-                            <div class="carousal-image">
+                            <style>
+                                .anf{
+                                    width: 100%;
+                                    height: 100%;
+                                    background-color: #0009;
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0";
+                                }
+                                </style>
+                            <div class="anf">
                                 @if($page->featured_image)
 
-                                    <img src="{{ $page->featured_image->getUrl('preview') }}" class="carousal-image" alt="Chania" style="z-index: 0 !important">
+                                    <img src="{{ $page->featured_image->getUrl('preview') }}" alt="Chania" >
 
                                 @endif
                             </div>

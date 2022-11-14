@@ -102,12 +102,12 @@
       @endforeach
         @if($contentPage->slidesidSlides->count() > 0)
             <label for="slug">
-                <h5>Slides:</h5>
+                <h5>Top Banner:</h5>
             </label>
             <br>
-            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+            {{-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
             Add New Slide
-            </button>
+            </button> --}}
             <hr>
             <table class="table table-striped">
                 <tr>
@@ -123,11 +123,6 @@
                     <th>
                     Action
                     </th>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                        <h6>Hero Slider</h6>
-                    </td>
                 </tr>
                 @foreach($contentPage->slidesidSlides as $key => $slide)
                     @if($slide->slider->type == 'topslider')
@@ -147,10 +142,63 @@
                         </tr>
                     @endif
                 @endforeach
+            </table>
+            <table>
+                <label for="slug">
+                    <h5>Specialist Section:</h5>
+                </label>
+                <br>
+                {{-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                Add New Slide
+                </button> --}}
+                <hr>
+                <table class="table table-striped">
+                    @if(!empty($contentPage->pagePageCustomFields ))
+                        <tr>
+                            <th>
+                            Title
+                            </th>
+                            <th>
+                                Value
+                            </th>
+                            <th></th>
+                            <th>
+                            Action
+                            </th>
+                        </tr>
+                        @endif
+                        @foreach ($contentPage->pagePageCustomFields as $key => $fields)
+                        @if($fields->field_lable == "specialist")
+                            <tr>
+                                <td>
+                                {{ $fields->field_lable}}
+                                </td>
+                                <td colspan ="2">
+                                    {{ $fields->field_value }}
+                                </td>
+
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editfields{{ $fields->id }}">
+                                        Edit
+                                    </button>
+                                </td>
+                            </tr>
+                        @endif
+
+                        @endforeach
                 <tr>
-                    <td colspan="4">
-                            <h6>Specialist slider</h6>
-                    </td>
+                    <th>
+                    Title
+                    </th>
+                    <th>
+                    Status
+                    </th>
+                    <th>
+                    Slider
+                    </th>
+                    <th>
+                    Action
+                    </th>
                 </tr>
                 @foreach($contentPage->slidesidSlides as $key => $slide)
                     @if($slide->slider->name == 'Specialist')
@@ -169,13 +217,65 @@
                         </tr>
                     @endif
                 @endforeach
-                <tr>
-                    <td colspan="4">
-                    <h6>Recruitment</h>
-                    </td>
-                </tr>
+                </table>
+                <label for="slug">
+                    <h5>Recruitment:</h5>
+                </label>
+                <br>
+                {{-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                Add New Slide
+                </button> --}}
+                <hr>
+                <table class="table table-striped">
+                    @if(!empty($contentPage->pagePageCustomFields ))
+                    <tr>
+                        <th>
+                        Title
+                        </th>
+                        <th>
+                            Value
+                        </th>
+                        <th></th>
+                        <th>
+                        Action
+                        </th>
+                    </tr>
+                    @endif
+                    @foreach ($contentPage->pagePageCustomFields as $key => $fields)
+                    @if($fields->field_lable == "Recruitment data & insights")
+                        <tr>
+                            <td>
+                            {{ $fields->field_lable}}
+                            </td>
+                            <td colspan ="2">
+                                {{ $fields->field_value }}
+                            </td>
+
+                            <td>
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editfields{{ $fields->id }}">
+                                    Edit
+                                </button>
+                            </td>
+                        </tr>
+                    @endif
+
+                    @endforeach
+                    <tr>
+                        <th>
+                        Title
+                        </th>
+                        <th>
+                        Status
+                        </th>
+                        <th>
+                        Slider
+                        </th>
+                        <th>
+                        Action
+                        </th>
+                    </tr>
                 @foreach($contentPage->slidesidSlides as $key => $slide)
-                    @if($slide->slider->name == 'Recruitment')
+                    @if($slide->slider->type == 'recruitement')
                         <tr>
                             <td>{{ $slide->title}}
                             </td>
@@ -190,45 +290,6 @@
                             </td>
                         </tr>
                     @endif
-                @endforeach
-            </table>
-        @endif
-        @if($contentPage->pagePageCustomFields->count() > 0)
-            <label for="slug">
-                <h5>Custom Section:</h5>
-            </label>
-            <table class="table table-striped">
-                <tr>
-                    <th>
-                    Field Label
-                    </th>
-                    <th>
-                        Field Value
-                    </th>
-                    <th>
-                    Field Type
-                    </th>
-                    <th>
-                    Action
-                    </th>
-                </tr>
-                @foreach ($contentPage->pagePageCustomFields as $key => $fields)
-                <tr>
-                    <td>
-                    {{ $fields->field_lable}}
-                    </td>
-                    <td>
-                        {{ $fields->field_value }}
-                    </td>
-                    <td>
-                    {{ $fields->type }}
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editfields{{ $fields->id }}">
-                            Edit
-                        </button>
-                    </td>
-                </tr>
                 @endforeach
             </table>
         @endif
@@ -570,7 +631,7 @@
                         @csrf
                         <div class="form-group">
                             <label class="required" for="field_lable">{{ trans('cruds.pageCustomField.fields.field_lable') }}</label>
-                            <input class="form-control {{ $errors->has('field_lable') ? 'is-invalid' : '' }}" type="text" name="field_lable" id="field_lable" value="{{ old('field_lable', $pageCustomField->field_lable) }}" required>
+                            <input class="form-control {{ $errors->has('field_lable') ? 'is-invalid' : '' }}" type="text" name="field_lable" id="field_lable" value="{{ old('field_lable', $pageCustomField->field_lable) }}" readonly>
                             @if($errors->has('field_lable'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('field_lable') }}
@@ -588,7 +649,7 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.pageCustomField.fields.field_value_helper') }}</span>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label>{{ trans('cruds.pageCustomField.fields.type') }}</label>
                             <select class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" id="type">
                                 <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
@@ -616,7 +677,7 @@
                                 </div>
                             @endif
                             <span class="help-block">{{ trans('cruds.pageCustomField.fields.page_helper') }}</span>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <button class="btn btn-danger" type="submit">
                                 {{ trans('global.save') }}
