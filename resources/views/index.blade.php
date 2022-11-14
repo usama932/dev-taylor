@@ -14,30 +14,22 @@
             </div>
             <div class="banner-slider">
                 <div class="slider-inner">
-                    <div id="carouselSlider" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-
-                            @foreach ($page->slidesidSlides as $key => $slide)
-                            @if($slide->slider->type = "topslider")
-
-                            <div class=" carousel-item {{$key == 0 ? 'active' : '' }}">
+                   <div id="carouselSlider" class="carousel slide" data-bs-ride="carousel">
+                      <div class="carousel-inner">
+                        @foreach ($page->slidesidSlides as $key => $slide)
+                         <div class=" carousel-item {{$key == 0 ? 'active' : '' }}">
+                            <div class="carousal-image ">
                                 <img src="{{ asset('dist/services-image1.543a7c77.jpg') }}" class="carousal-image" alt="Chania">
-                                    <div class="carousel-caption">
-                                        <h5>{{ $slide->title }}</h5>
-                                        @if (!empty($slide->cta_button))
-                                        <div class="button-wrapper"> <a href="{{ $slide->imagetitle }}" class="btn-blue btn-h51">{{ $slide->cta_button }}</a> </div>
-                                        @endif
-
-                                    </div>
-
+                               <div class="carousel-caption">
+                                  <h5>{{ $slide->imagetitle }}</h5>
+                               </div>
                             </div>
-                            @endif
-                            @endforeach
-
-                        </div>
-                    </div>
+                         </div>
+                        @endforeach
+                      </div>
+                   </div>
                 </div>
-            </div>
+             </div>
         </div>
         <div class="scroll-down">
             <a href="#accountingSection"> <img src="{{ asset('dist/icon-scroll-white.f42c481e.svg') }}"> <span>Scroll</span> </a>

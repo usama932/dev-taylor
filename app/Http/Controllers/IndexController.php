@@ -30,13 +30,14 @@ class IndexController extends Controller
 
 
         $pageSlug = request()->segment(1);
+        $top_slides =  Slider::where('name','Hero Slider')->with('sliderSlides')->first();
         $page  = ContentPage::where('slug', $pageSlug)->with('categories', 'parent', 'tags','contactInfoLocations','slidesidSlides','pagePageCustomFields')->first();
         $recruitment_slider = Slider::where('name','Recruitement')->with('sliderSlides')->first();
         $specialist_slider = Slider::where('name','Specialist')->with('sliderSlides')->first();
 
         if(!$pageSlug) {
             $page  = ContentPage::where('slug', 'home')->with('categories', 'parent', 'tags','contactInfoLocations','slidesidSlides','pagePageCustomFields')->first();
-            return view('index',compact('page','recruitment_slider','specialist_slider'));
+            return view('index',compact('page','recruitment_slider','specialist_slider','top_slides'));
         }
 
         $page  = ContentPage::where('slug', $pageSlug)->with('categories', 'parent', 'tags','contactInfoLocations','slidesidSlides','pagePageCustomFields')->first();
