@@ -1,6 +1,12 @@
 @extends('layouts.frontend-main')
 
 @section('content')
+<div class="loader-section" id="loader">
+    <div class="loader-image">
+        <img src="{{ asset('dist/taylor-hawkes-logo-black.c9014c2b.svg') }}">
+    </div>
+</div>
+
 @include('layouts.header')
 <section class="main-banner-section">
     <div class="container">

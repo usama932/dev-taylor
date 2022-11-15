@@ -29,11 +29,6 @@
 </head>
 
 <body class="overflow-hidden">
-    <div class="loader-section" id="loader">
-        <div class="loader-image">
-            <img src="{{ asset('dist/taylor-hawkes-logo-black.c9014c2b.svg') }}">
-        </div>
-    </div>
 
     @yield('content')
     <footer class="footer-section">

@@ -7,6 +7,7 @@ use App\Models\ContentPage;
 use App\Models\Slide;
 use App\Models\Slider;
 use App\Models\Knowledge;
+use App\Models\TeamMember;
 use App\Models\KnowledgeCategory;
 class IndexController extends Controller
 {
@@ -27,8 +28,6 @@ class IndexController extends Controller
      */
     public function index()
     {
-
-
         $pageSlug = request()->segment(1);
         $top_slides =  Slider::where('name','Hero Slider')->with('sliderSlides')->get();
         $page  = ContentPage::where('slug', $pageSlug)->with('categories', 'parent', 'tags','contactInfoLocations','slidesidSlides','pagePageCustomFields')->first();
@@ -39,13 +38,13 @@ class IndexController extends Controller
             $page  = ContentPage::where('slug', 'home')->with('categories', 'parent', 'tags','contactInfoLocations','slidesidSlides','pagePageCustomFields')->first();
             return view('index',compact('page','recruitment_slider','specialist_slider','top_slides'));
         }
-
-        $page  = ContentPage::where('slug', $pageSlug)->with('categories', 'parent', 'tags','contactInfoLocations','slidesidSlides','pagePageCustomFields')->first();
-
+        $teams = TeamMember::latest()->limit(4)->get();
+        $teams1 = TeamMember::latest()->skip(4)->limit(4)->get();
+        $teams2 = TeamMember::latest()->skip(8)->limit(4)->get();
         $pageTemplate = \View::exists($pageSlug) ? $pageSlug : 'index';
         $knowledge = Knowledge::with('category')->latest()->limit(6)->get();
 
-        return view($pageTemplate ,compact('page','knowledge','recruitment_slider'));
+        return view($pageTemplate ,compact('page','knowledge','recruitment_slider','teams'));
     }
     public function knowledge_single($slug){
        $knowledge = Knowledge::where('slug',$slug)->first();

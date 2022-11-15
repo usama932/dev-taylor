@@ -9,7 +9,7 @@
              <div class="banner-content">
                 <div class="text-wrapper">
                     @if($page->slidesidSlides)
-                   <h4>{{$page->slidesidSlides[0]->title  }}</h4>
+                    <h4>{{$page->excerpt  }}</h4>
                    @endif
                 </div>
                 @if($page->slidesidSlides[0]->cta_button )
@@ -21,21 +21,10 @@
                    <div id="carouselSlider" class="carousel slide" data-bs-ride="carousel">
                       <div class="carousel-inner">
                          <div class="active carousel-item">
-                            <style>
-                                .ana{
-                                    width: 100%;
-                                    height: 100%;
-                                    background-color: #0009;
-                                    position: absolute;
-                                    top: 0;
-                                    left: 0";
-                                }
-                                </style>
+
                             <div class="carousal-image">
                                 @if($page->featured_image)
-
-                                    <img src="{{ $page->featured_image->getUrl() }}" alt="Chania" class="ana" >
-
+                                    <img src="{{ $page->featured_image->getUrl()}}" alt="Chania" >
                                 @endif
 
                             </div>
@@ -53,7 +42,7 @@
 <section id="abouttextsection" class="about-text-section">
     <div class="about-text-wrapper">
         <div class="about-content-left">
-            {{ $page->content }}
+            {!! $page->page_text !!}
         </div>
         <div class="about-content-right">
             <p> Most importantly, throughout everything we do, you’ll see the core Taylor Hawkes values – where our experience, connections and deep-sector knowledge support our data to make the recruitment process more effective for everyone involved.</p>
