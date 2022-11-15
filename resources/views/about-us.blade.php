@@ -39,16 +39,26 @@
        </div>
     </section>
  </div>
+    @php
+            $dom = new domDocument;
+            @$dom->loadHTML($page->page_text);
+            $figures = $dom->getElementsByTagName('p');
+            $element = $dom->saveHtml($figures[0]);
+            $element1 = $dom->saveHtml($figures[1]);
+            $element2 = $dom->saveHtml($figures[2]);
+            $element3 = $dom->saveHtml($figures[3]);
+    @endphp
 <section id="abouttextsection" class="about-text-section">
     <div class="about-text-wrapper">
         <div class="about-content-left">
-            {!! $page->page_text !!}
+           @php echo $element ;@endphp
+           @php echo $element1 ;@endphp
+
         </div>
         <div class="about-content-right">
-            <p> Most importantly, throughout everything we do, you’ll see the core Taylor Hawkes values – where our experience, connections and deep-sector knowledge support our data to make the recruitment process more effective for everyone involved.</p>
-            <p>In only a short space of time, we are proud to have already become a respected adviser in the sector and are committed to changing the face of accounting recruitment as we continue to grow – forging long-term and trusted relationships
-                with clients and candidates alike.</p>
-            <p>Most importantly, throughout everything we do, you’ll see the core Taylor Hawkes values – where our experience, connections and deep-sector knowledge support our data to make the recruitment process more effective for everyone involved.</p>
+            @php echo $element2 ;@endphp
+            @php echo $element3 ;@endphp
+
         </div>
     </div>
 </section>
