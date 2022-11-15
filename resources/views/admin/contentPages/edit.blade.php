@@ -102,6 +102,18 @@
         </div>
         @endforeach
       @endif
+      @if($contentPage->title == 'About us')
+      <h5>Future Section:</h5>
+        @if($contentPage->slidesidSlides->count() > 0)
+            @foreach($contentPage->slidesidSlides as $key => $slide)
+                @if($slide->slider->name == 'Future')
+                    <label>{{$slide->title}}</label>
+                    <input type="hidden" name="addMoreInputs[{{  $slide->id}}][slide_id]" value="{{ $slide->id}}">
+                    <textarea class="form-control"  name="addMoreInputs[{{$slide->id}}][slide_description]"  >{{ $slide->description }}</textarea>
+                @endif
+            @endforeach
+        @endif
+      @endif
       @if($contentPage->title == 'Home')
         @if($contentPage->slidesidSlides->count() > 0)
 
@@ -168,9 +180,9 @@
         @foreach($contentPage->slidesidSlides as $key => $slide)
         @if($slide->slider->name == 'Specialist')
         <div class="mb-3">
-        <label>{{$slide->title}}</label>
-        <input type="hidden" name="addMoreInputs[{{  $slide->id}}][slide_id]" value="{{ $slide->id}}">
-        <textarea class="form-control"  name="addMoreInputs[{{  $slide->id}}][slide_description]"  >{{ $slide->description }}</textarea>
+            <label>{{$slide->title}}</label>
+            <input type="hidden" name="addMoreInputs[{{  $slide->id}}][slide_id]" value="{{ $slide->id}}">
+            <textarea class="form-control"  name="addMoreInputs[{{  $slide->id}}][slide_description]"  >{{ $slide->description }}</textarea>
         </div>
         @endif
         @endforeach
@@ -187,9 +199,9 @@
             <input class="form-control"  name="addMoreFields[{{$field->id}}][field_value]" value="{{ $field->field_value }}" >
             </div>
         @endif
-        @if($field->field_lable == 'description')
+        @if($field->field_lable == 'Description')
         <div class="mb-3">
-        <label>Title</label>
+        <label>Description</label>
         <input type="hidden" name="addMoreFields[{{  $field->id }}][field_id]" value="{{ $field->id}}">
         <input class="form-control"  name="addMoreFields[{{$field->id}}][field_value]" value="{{ $field->field_value }}" >
         </div>
@@ -197,7 +209,7 @@
         @endforeach
         @endif
         @foreach($contentPage->slidesidSlides as $key => $slide)
-        @if($slide->slider->name == 'Recruitement')
+        @if($slide->slider->name == 'Recruitment')
         <div class="mb-3">
         <label>{{$slide->title}}</label>
         <input type="hidden" name="addMoreInputs[{{$slide->id}}][slide_id]" value="{{$slide->id}}">
@@ -672,7 +684,7 @@
 <script>
    Dropzone.options.featuredImageDropzone = {
    url: '{{ route('admin.content-pages.storeMedia') }}',
-   maxFilesize: 2, // MB
+   maxFilesize: 10, // MB
    acceptedFiles: '.jpeg,.jpg,.png,.gif',
    maxFiles: 1,
    addRemoveLinks: true,
@@ -680,7 +692,7 @@
      'X-CSRF-TOKEN': "{{ csrf_token() }}"
    },
    params: {
-     size: 2,
+     size: 10,
      width: 4096,
      height: 4096
    },

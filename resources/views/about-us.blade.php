@@ -8,9 +8,9 @@
           <div class="banner-wrapper">
              <div class="banner-content">
                 <div class="text-wrapper">
-                    @if($page->slidesidSlides)
+
                     <h4>{{$page->excerpt  }}</h4>
-                   @endif
+
                 </div>
                 @if($page->slidesidSlides[0]->cta_button )
                 <div class="button-wrapper"> <a href="{{$page->slidesidSlides[0]->url}} ? '' "><button class="btn-blue btn-h51">{{ $page->slidesidSlides[0]->cta_button  }}</button></a> </div>
@@ -59,18 +59,17 @@
     </div>
     <div class="team-wrapper">
         <ul class="team-list two-col">
+            @foreach ($teams as $team)
             <li class="team-item">
                 <div class="team-inner">
                     <a href="JavaScript:Void(0)" class="team-image">
                         <div class="team-info">
-                            <h5>Peter Watson</h5>
-                            <p>Accountancy Practices Expert</p>
+                            <h5></h5>
+                            <p></p>
                         </div>
                     </a>
                     <div class="team-content">
-                        <p>Liam leads Taylor Hawkes' recruiting team of audit, outsourcing and financial reporting specialists. His portfolio of clients typically consists of Taylor Hawkes’ larger corporate firms, with fantastic connections with a range
-                            of global top-10 and top-20 firms. With a degree in accountancy and finance and eight years' recruitment experience in the sector, he has built a vast client portfolio who all believe in the quality of candidates Liam brings
-                            to the table. He also works with a wide range of firms internationally, including in the Cayman Islands, Bermuda, the Channel Islands, and other international finance hubs. </p>
+                        <p></p>
                     </div>
                 </div>
             </li>
@@ -78,47 +77,20 @@
                 <div class="team-inner">
                     <a href="JavaScript:Void(0)" class="team-image">
                         <div class="team-info">
-                            <h5>Peter Watson</h5>
-                            <p>Accountancy Practices Expert</p>
+                            <h5>{{ $team->name }}</h5>
+                            <p>{{ $team->subheading }}</p>
                         </div>
                     </a>
                     <div class="team-content">
-                        <p>Liam leads Taylor Hawkes' recruiting team of audit, outsourcing and financial reporting specialists. His portfolio of clients typically consists of Taylor Hawkes’ larger corporate firms, with fantastic connections with a range
-                            of global top-10 and top-20 firms. With a degree in accountancy and finance and eight years' recruitment experience in the sector, he has built a vast client portfolio who all believe in the quality of candidates Liam brings
-                            to the table. He also works with a wide range of firms internationally, including in the Cayman Islands, Bermuda, the Channel Islands, and other international finance hubs. </p>
+                        <p>{{ $team->content }}</p>
                     </div>
                 </div>
             </li>
-            <li class="team-item">
-                <div class="team-inner">
-                    <a href="JavaScript:Void(0)" class="team-image">
-                        <div class="team-info">
-                            <h5>Peter Watson</h5>
-                            <p>Accountancy Practices Expert</p>
-                        </div>
-                    </a>
-                    <div class="team-content">
-                        <p>Liam leads Taylor Hawkes' recruiting team of audit, outsourcing and financial reporting specialists. His portfolio of clients typically consists of Taylor Hawkes’ larger corporate firms, with fantastic connections with a range
-                            of global top-10 and top-20 firms. With a degree in accountancy and finance and eight years' recruitment experience in the sector, he has built a vast client portfolio who all believe in the quality of candidates Liam brings
-                            to the table. He also works with a wide range of firms internationally, including in the Cayman Islands, Bermuda, the Channel Islands, and other international finance hubs. </p>
-                    </div>
-                </div>
-            </li>
-            <li class="team-item">
-                <div class="team-inner">
-                    <a href="JavaScript:Void(0)" class="team-image">
-                        <div class="team-info">
-                            <h5>Peter Watson</h5>
-                            <p>Accountancy Practices Expert</p>
-                        </div>
-                    </a>
-                    <div class="team-content">
-                        <p>Liam leads Taylor Hawkes' recruiting team of audit, outsourcing and financial reporting specialists. His portfolio of clients typically consists of Taylor Hawkes’ larger corporate firms, with fantastic connections with a range
-                            of global top-10 and top-20 firms. With a degree in accountancy and finance and eight years' recruitment experience in the sector, he has built a vast client portfolio who all believe in the quality of candidates Liam brings
-                            to the table. He also works with a wide range of firms internationally, including in the Cayman Islands, Bermuda, the Channel Islands, and other international finance hubs. </p>
-                    </div>
-                </div>
-            </li>
+
+            @endforeach
+
+
+
         </ul>
         <ul class="four-col team-list">
             <li class="team-item">
@@ -130,65 +102,36 @@
                     </div>
                 </div>
             </li>
+            @foreach($teams1 as $team)
+
             <li class="team-item">
                 <div class="team-inner">
                     <a href="JavaScript:Void(0)" class="team-image">
                         <div class="team-info">
-                            <h5>Peter Watson</h5>
-                            <p>Accountancy Practices Expert</p>
+                            <h5>{{  $team->name }}</h5>
+                            <p>{{ $team->subheading }}</p>
                         </div>
                     </a>
                     <div class="team-content">
-                        <p>Liam leads Taylor Hawkes' recruiting team of audit, outsourcing and financial reporting specialists. His portfolio of clients typically consists of Taylor Hawkes’ larger corporate firms, with fantastic connections with a range
-                            of global top-10 and top-20 firms. With a degree in accountancy and finance and eight years' recruitment experience in the sector, he has built a vast client portfolio who all believe in the quality of candidates Liam brings
-                            to the table. He also works with a wide range of firms internationally, including in the Cayman Islands, Bermuda, the Channel Islands, and other international finance hubs. </p>
+                        <p>{{ $team->content }} </p>
                     </div>
                 </div>
             </li>
-            <li class="team-item">
-                <div class="team-inner">
-                    <a href="JavaScript:Void(0)" class="team-image">
-                        <div class="team-info">
-                            <h5>Peter Watson</h5>
-                            <p>Accountancy Practices Expert</p>
-                        </div>
-                    </a>
-                    <div class="team-content">
-                        <p>Liam leads Taylor Hawkes' recruiting team of audit, outsourcing and financial reporting specialists. His portfolio of clients typically consists of Taylor Hawkes’ larger corporate firms, with fantastic connections with a range
-                            of global top-10 and top-20 firms. With a degree in accountancy and finance and eight years' recruitment experience in the sector, he has built a vast client portfolio who all believe in the quality of candidates Liam brings
-                            to the table. He also works with a wide range of firms internationally, including in the Cayman Islands, Bermuda, the Channel Islands, and other international finance hubs. </p>
-                    </div>
-                </div>
-            </li>
-            <li class="team-item">
-                <div class="team-inner">
-                    <a href="JavaScript:Void(0)" class="team-image">
-                        <div class="team-info">
-                            <h5>Peter Watson</h5>
-                            <p>Accountancy Practices Expert</p>
-                        </div>
-                    </a>
-                    <div class="team-content">
-                        <p>Liam leads Taylor Hawkes' recruiting team of audit, outsourcing and financial reporting specialists. His portfolio of clients typically consists of Taylor Hawkes’ larger corporate firms, with fantastic connections with a range
-                            of global top-10 and top-20 firms. With a degree in accountancy and finance and eight years' recruitment experience in the sector, he has built a vast client portfolio who all believe in the quality of candidates Liam brings
-                            to the table. He also works with a wide range of firms internationally, including in the Cayman Islands, Bermuda, the Channel Islands, and other international finance hubs. </p>
-                    </div>
-                </div>
-            </li>
+
+            @endforeach
         </ul>
         <ul class="team-list two-col">
+            @foreach($teams2 as $team)
             <li class="team-item">
                 <div class="team-inner">
                     <a href="JavaScript:Void(0)" class="team-image">
                         <div class="team-info">
-                            <h5>Peter Watson</h5>
-                            <p>Accountancy Practices Expert</p>
+                            <h5></h5>
+                            <p></p>
                         </div>
                     </a>
                     <div class="team-content">
-                        <p>Liam leads Taylor Hawkes' recruiting team of audit, outsourcing and financial reporting specialists. His portfolio of clients typically consists of Taylor Hawkes’ larger corporate firms, with fantastic connections with a range
-                            of global top-10 and top-20 firms. With a degree in accountancy and finance and eight years' recruitment experience in the sector, he has built a vast client portfolio who all believe in the quality of candidates Liam brings
-                            to the table. He also works with a wide range of firms internationally, including in the Cayman Islands, Bermuda, the Channel Islands, and other international finance hubs. </p>
+                        <p></p>
                     </div>
                 </div>
             </li>
@@ -196,48 +139,16 @@
                 <div class="team-inner">
                     <a href="JavaScript:Void(0)" class="team-image">
                         <div class="team-info">
-                            <h5>Peter Watson</h5>
-                            <p>Accountancy Practices Expert</p>
+                            <h5>{{ $team->name }}</h5>
+                            <p>{{  $team->subheading}}</p>
                         </div>
                     </a>
                     <div class="team-content">
-                        <p>Liam leads Taylor Hawkes' recruiting team of audit, outsourcing and financial reporting specialists. His portfolio of clients typically consists of Taylor Hawkes’ larger corporate firms, with fantastic connections with a range
-                            of global top-10 and top-20 firms. With a degree in accountancy and finance and eight years' recruitment experience in the sector, he has built a vast client portfolio who all believe in the quality of candidates Liam brings
-                            to the table. He also works with a wide range of firms internationally, including in the Cayman Islands, Bermuda, the Channel Islands, and other international finance hubs. </p>
+                        <p>{{  $team->content }}</p>
                     </div>
                 </div>
             </li>
-            <li class="team-item">
-                <div class="team-inner">
-                    <a href="JavaScript:Void(0)" class="team-image">
-                        <div class="team-info">
-                            <h5>Peter Watson</h5>
-                            <p>Accountancy Practices Expert</p>
-                        </div>
-                    </a>
-                    <div class="team-content">
-                        <p>Liam leads Taylor Hawkes' recruiting team of audit, outsourcing and financial reporting specialists. His portfolio of clients typically consists of Taylor Hawkes’ larger corporate firms, with fantastic connections with a range
-                            of global top-10 and top-20 firms. With a degree in accountancy and finance and eight years' recruitment experience in the sector, he has built a vast client portfolio who all believe in the quality of candidates Liam brings
-                            to the table. He also works with a wide range of firms internationally, including in the Cayman Islands, Bermuda, the Channel Islands, and other international finance hubs. </p>
-                    </div>
-                </div>
-            </li>
-            <li class="team-item">
-                <div class="team-inner">
-                    <a href="JavaScript:Void(0)" class="team-image">
-                        <div class="team-info">
-                            <h5>Peter Watson</h5>
-                            <p>Accountancy Practices Expert</p>
-                        </div>
-                    </a>
-                    <div class="team-content">
-                        <p>Liam leads Taylor Hawkes' recruiting team of audit, outsourcing and financial reporting specialists. His portfolio of clients typically consists of Taylor Hawkes’ larger corporate firms, with fantastic connections with a range
-                            of global top-10 and top-20 firms. With a degree in accountancy and finance and eight years' recruitment experience in the sector, he has built a vast client portfolio who all believe in the quality of candidates Liam brings
-                            to the table. He also works with a wide range of firms internationally, including in the Cayman Islands, Bermuda, the Channel Islands, and other international finance hubs. </p>
-                    </div>
-                </div>
-            </li>
-        </ul>
+            @endforeach
     </div>
 </section>
 <section class="about-imagetext-section knowledge-mail-section">
@@ -245,15 +156,13 @@
         <div class="content-wrapper">
             <div class="image-wrapper">
                 <div class="image">
-                    <p>Join the future of recruiting</p>
+                    <p>{{ $page->slidesidSlides[1]->imagetitle ?? 'Enter future slide image title'}}</p>
                 </div>
                 <div class="mail-wrapper">
-                    <p> Taylor Hawkes is a trusted name across practice and industry, one that stands for quality and insight. We thrive on the experience and expertise of our team, who are a key part of what makes us different from others.</p>
-                    <p>We challenge our people to continually raise the bar in the recruitment space by building an unrivalled knowledge of the sector and network of skilled candidates. If you think you have the right expertise to join our team, or you
-                        feel we’d be a good fit for your skills and experience, we’d be happy to hear from you.</p>
+                    <p>{{ $page->slidesidSlides[1]->description ?? 'Enter future slide description'}}</p>
                     <div class="blue-button-wrapper">
                         <div class="image-container"><img src="{{ asset('dist/team-member.f5256e24.jpg') }}"></div>
-                        <div class="find-more"><a href="JavaScript:Void(0)"> Talk to Sarah about joining our UK or US teams <img src="{{ asset('dist/icon-arrow-right-white.53b92526.svg') }}"> </a></div>
+                        <div class="find-more"><a href="{{ $page->slidesidSlides[1]->url ?? '#' }}"> {{ $page->slidesidSlides[1]->cta_button ?? 'Enter future slide CTA button text'}} <img src="{{ asset('dist/icon-arrow-right-white.53b92526.svg') }}"> </a></div>
                     </div>
                 </div>
             </div>

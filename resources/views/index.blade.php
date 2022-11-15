@@ -45,36 +45,26 @@
         </div>
     </div>
 </section>
-<section class="accounting-section" id="accountingSection">
-    <div class="accounting-wrapper">
-        <div class="title-wrapper">
-            <h4>Specialist Accounting & Finance Recruitment</h4>
-        </div>
-        <div class="accounting-content">
-            <div class="image-wrapper"> <img src="{{ asset('dist/accounting-image.10c416a6.png') }}" alt="image"> </div>
-            <div class="slider-wrapper">
-            <div id="testimonials" class="owl-carousel owl-theme">
-                {{-- <div class="item">
-                    <p>Taylor Hawkes is a specialist accounting and finance recruitment agency, connecting people and businesses throughout the accountancy, tax and audit sectors, as well as in-house financial roles in a range of other industries.</p>
-                 </div>
-                 <div class="item">
-                    <p>Our experienced team understand that there’s more to recruitment than just finding a new job, a new contact or a new team member – it’s about the right role, for the right person, in the right company, at the right time.</p>
-                 </div>
-                 <div class="item">
-                    <p>Taylor Hawkes is a specialist accounting and finance recruitment agency, connecting people and businesses throughout the accountancy, tax and audit sectors, as well as in-house financial roles in a range of other industries.</p>
-                 </div>
-                 <div class="item">
-                    <p>Our experienced team understand that there’s more to recruitment than just finding a new job, a new contact or a new team member – it’s about the right role, for the right person, in the right company, at the right time.</p>
-                 </div> --}}
-                 @foreach($specialist_slider as $key => $slider)
-                 <div class="item">
-                    <p>Our experienced team understand that there’s more to recruitment than just finding a new job, a new contact or a new team member – it’s about the right role, for the right person, in the right company, at the right time.</p>
-                 </div>
-                 @endforeach
-            </div>
-        </div>
-    </div>
-</section>
+                 <section class="accounting-section" id="accountingSection">
+                    <div class="accounting-wrapper">
+                        <div class="title-wrapper">
+                            <h4>Specialist Accounting & Finance Recruitment</h4>
+                        </div>
+                        <div class="accounting-content">
+                            <div class="image-wrapper"> <img src="{{ asset('dist/accounting-image.10c416a6.png') }}" alt="image"> </div>
+                            <div class="slider-wrapper">
+                                <div id="testimonials" class="owl-carousel">
+                                    @foreach ($specialist_slider->sliderSlides as $key => $slide)
+                                        <div class="item">
+                                            <p>{{ $slide->description }}</p>
+                                        </div>
+                                    @endforeach
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>>
 <section class="recruitment-section">
     <div class="recruitment-wrapper">
         <div class="recruitment-content">
@@ -133,40 +123,25 @@
     </div>
     <div class="tabs-wrapper">
         <ul class="nav nav-pills" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation"> <button class="active nav-link" id="tab-1" data-bs-toggle="pill" data-bs-target="#tab-content-1" type="button" role="tab" aria-controls="tab-content-1" aria-selected="true">Accounting practice</button> </li>
-            <li class="nav-item" role="presentation"> <button class="nav-link" id="tab-2" data-bs-toggle="pill" data-bs-target="#tab-content-2" type="button" role="tab" aria-controls="tab-content-2" aria-selected="false">Industry</button> </li>
-            <li class="nav-item" role="presentation"> <button class="nav-link" id="tab-3" data-bs-toggle="pill" data-bs-target="#tab-content-3" type="button" role="tab" aria-controls="tab-content-3" aria-selected="false">CPA</button> </li>
-            <li class="nav-item" role="presentation"> <button class="nav-link" id="tab-4" data-bs-toggle="pill" data-bs-target="#tab-content-4" type="button" role="tab" aria-controls="tab-content-4" aria-selected="false">Global</button> </li>
+            @foreach ($whatwedos as $key => $whatwedo)
+            <li class="nav-item" role="presentation"> <button class="nav-link {{$key == 0 ? 'active' : '' }}" id="tab-1" data-bs-toggle="pill" data-bs-target="#tab-content{{ $whatwedo->id }}" type="button" role="tab" aria-controls="tab-content-1" aria-selected="true">{{ $whatwedo->title }}</button> </li>
+            @endforeach
+
+
         </ul>
         <div class="tab-content" id="pills-tabContent">
-            <div class="active fade show tab-pane" id="tab-content-1" role="tabpanel" aria-labelledby="tab-1" tabindex="0">
+            @foreach ($whatwedos as $key => $whatwedo)
+            <div class="{{$key == 0 ? 'active' : '' }} fade show tab-pane" id="tab-content{{ $whatwedo->id }}" role="tabpanel" aria-labelledby="tab-1" tabindex="0">
                 <div class="tab-text">
-                    <p>We work with companies across the entire sector, which include global names within the top-10 leading mid-tier firms, independent practices, and exciting niche boutiques, all looking to grow their teams. Our work to place the highest-quality
-                        candidates extends from junior trainees through to experienced partners and directors.</p>
+                    <p>{!! $whatwedo->page_text !!}</p>
                 </div>
-                <div class="find-more"> <a href="JavaScript:Void(0)"> Find out more about our work with accountancy practices <img src="{{ asset('dist/icon-arrow-right-white.53b92526.svg') }}"> </a> </div>
+                @if($whatwedo->cta_button_text)
+                <div class="find-more"> <a href="{!! $whatwedo->cta_url !!}">{!! $whatwedo->cta_button_text !!} <img src="{{ asset('dist/icon-arrow-right-white.53b92526.svg') }}"> </a> </div>
+                @endif
             </div>
-            <div class="fade tab-pane" id="tab-content-2" role="tabpanel" aria-labelledby="tab-2" tabindex="0">
-                <div class="tab-text">
-                    <p>We work with companies across the entire sector, which include global names within the top-10 leading mid-tier firms, independent practices, and exciting niche boutiques, all looking to grow their teams. Our work to place the highest-quality
-                        candidates extends from junior trainees through to experienced partners and directors.</p>
-                </div>
-                <div class="find-more"> <a href="JavaScript:Void(0)"> Find out more about our work with accountancy practices <img src="{{ asset('dist/icon-arrow-right-white.53b92526.svg') }}"> </a> </div>
-            </div>
-            <div class="fade tab-pane" id="tab-content-3" role="tabpanel" aria-labelledby="tab-3" tabindex="0">
-                <div class="tab-text">
-                    <p>We work with companies across the entire sector, which include global names within the top-10 leading mid-tier firms, independent practices, and exciting niche boutiques, all looking to grow their teams. Our work to place the highest-quality
-                        candidates extends from junior trainees through to experienced partners and directors.</p>
-                </div>
-                <div class="find-more"> <a href="JavaScript:Void(0)"> Find out more about our work with accountancy practices <img src="{{ asset('dist/icon-arrow-right-white.53b92526.svg') }}"> </a> </div>
-            </div>
-            <div class="fade tab-pane" id="tab-content-4" role="tabpanel" aria-labelledby="tab-4" tabindex="0">
-                <div class="tab-text">
-                    <p>We work with companies across the entire sector, which include global names within the top-10 leading mid-tier firms, independent practices, and exciting niche boutiques, all looking to grow their teams. Our work to place the highest-quality
-                        candidates extends from junior trainees through to experienced partners and directors.</p>
-                </div>
-                <div class="find-more"> <a href="JavaScript:Void(0)"> Find out more about our work with accountancy practices <img src="{{ asset('dist/icon-arrow-right-white.53b92526.svg') }}"> </a> </div>
-            </div>
+
+            @endforeach
+
         </div>
     </div>
 </section>
