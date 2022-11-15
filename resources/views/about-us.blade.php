@@ -22,7 +22,7 @@
                       <div class="carousel-inner">
                          <div class="active carousel-item">
                             <style>
-                                .anf{
+                                .ana{
                                     width: 100%;
                                     height: 100%;
                                     background-color: #0009;
@@ -31,12 +31,13 @@
                                     left: 0";
                                 }
                                 </style>
-                            <div class="anf">
+                            <div class="carousal-image">
                                 @if($page->featured_image)
 
-                                    <img src="{{ $page->featured_image->getUrl('preview') }}" alt="Chania" >
+                                    <img src="{{ $page->featured_image->getUrl() }}" alt="Chania" class="ana" >
 
                                 @endif
+
                             </div>
                          </div>
                       </div>

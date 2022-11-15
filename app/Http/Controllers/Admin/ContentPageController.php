@@ -8,6 +8,7 @@ use App\Http\Requests\MassDestroyContentPageRequest;
 use App\Http\Requests\StoreContentPageRequest;
 use App\Http\Requests\UpdateContentPageRequest;
 use App\Models\ContentPage;
+use App\Models\PageCustomField;
 use Gate;
 use App\Models\Location;
 use Illuminate\Http\Request;
@@ -96,7 +97,7 @@ class ContentPageController extends Controller
         $parents = Slide::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $contentPage->load('categories', 'parent', 'tags','contactInfoLocations','slidesidSlides','pagePageCustomFields');
-
+        // dd($contentPage->slidesidSlides);
         return view('admin.contentPages.edit', compact('contentPage', 'parents','sliders','parents1','slide_parents','pages'));
     }
 
@@ -126,6 +127,25 @@ class ContentPageController extends Controller
                     'location_address' => $value['location_address'],
                     'location_addlink' => $value['location_addlink'],
                 ]);
+
+            }
+
+        }
+        if($request->has('addMoreFields')){
+            foreach ($request->addMoreFields as $key => $value) {
+
+                $custom_field = PageCustomField::where('id',$value['field_id'])->update([
+                        'field_value' => $value['field_value'],
+                ]);
+
+            }
+        }
+        if($request->has('addMoreInputs')){
+            foreach ($request->addMoreInputs as $key => $value) {
+
+                $slide = Slide::where('id',$value['slide_id'])->update([
+                    'description' => $value['slide_description'],
+            ]);
 
             }
         }

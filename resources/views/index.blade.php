@@ -88,27 +88,27 @@
                     <div class="five item"></div>
                     <div class="item six"></div>
                     <div class="desc one">
-                        <p>{{ $recruitment_slider->sliderSlides[0]->title ?? '' }}</p>
+                        <p>{{ $recruitment_slider->sliderSlides[0]->description ?? '' }}</p>
                         <a href="JavaScript:Void(0)">Next</a>
                     </div>
                     <div class="desc two">
-                        <p>{{ $recruitment_slider->sliderSlides[1]->title  ?? ''}}</p>
+                        <p>{{ $recruitment_slider->sliderSlides[1]->description  ?? ''}}</p>
                         <a href="JavaScript:Void(0)">Next</a>
                     </div>
                     <div class="desc three">
-                        <p>{{ $recruitment_slider->sliderSlides[2]->title  ?? '' }}</p>
+                        <p>{{ $recruitment_slider->sliderSlides[2]->description  ?? '' }}</p>
                         <a href="JavaScript:Void(0)">Next</a>
                     </div>
                     <div class="desc four">
-                        <p>{{ $recruitment_slider->sliderSlides[3]->title  ?? '' }}</p>
+                        <p>{{ $recruitment_slider->sliderSlides[3]->description  ?? '' }}</p>
                         <a href="JavaScript:Void(0)">Next</a>
                     </div>
                     <div class="desc five">
-                        <p>{{ $recruitment_slider->sliderSlides[4]->title   ?? ''}}</p>
+                        <p>{{ $recruitment_slider->sliderSlides[4]->description   ?? ''}}</p>
                         <a href="JavaScript:Void(0)">Next</a>
                     </div>
                     <div class="desc six">
-                        <p>{{ $recruitment_slider->sliderSlides[5]->title  ?? '' }}</p>
+                        <p>{{ $recruitment_slider->sliderSlides[5]->description  ?? '' }}</p>
                         <a href="JavaScript:Void(0)">Next</a>
                     </div>
                 </div>

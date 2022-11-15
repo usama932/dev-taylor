@@ -78,223 +78,136 @@
          @endif
          <span class="help-block">{{ trans('cruds.contentPage.fields.parent_helper') }}</span>
       </div>
-      @foreach($contentPage->contactInfoLocations as $key => $custom)
-      <label for="slug">
-         <h6>Office {{ $custom->id }}</h6>
-      </label>
-      <input type="hidden" name="addMoreInputFields[{{  $custom->id}}][location_id]" value="{{  $custom->id}}">
-      <div class="form-group">
-         <label for="slug">Location Country</label>
-         <input class="form-control" type="text" name="addMoreInputFields[{{  $custom->id}}][location_country]"  value="{{  $custom->location_country}}">
-      </div>
-      <div class="form-group">
-         <label for="slug">Location Phone</label>
-         <input class="form-control" type="text" name="addMoreInputFields[{{  $custom->id}}][location_phone]"  value="{{  $custom->location_phone }}">
-      </div>
-      <div class="form-group">
-         <label for="slug">Location Address</label>
-         <input class="form-control" type="text" name="addMoreInputFields[{{  $custom->id}}][location_address]"  value="{{ $custom->location_country }}">
-      </div>
-      <div class="form-group">
-         <label for="slug">Location Address_Link</label>
-         <input class="form-control" type="text" name="addMoreInputFields[{{  $custom->id}}][location_addlink]"  value="{{  $custom->location_addlink }}">
-      </div>
-      @endforeach
+      @if($contentPage->title == 'Contact Us')
+        @foreach($contentPage->contactInfoLocations as $key => $custom)
+        <label for="slug">
+            <h6>Office {{ $custom->id }}</h6>
+        </label>
+        <input type="hidden" name="addMoreInputFields[{{  $custom->id}}][location_id]" value="{{  $custom->id}}">
+        <div class="form-group">
+            <label for="slug">Location Country</label>
+            <input class="form-control" type="text" name="addMoreInputFields[{{  $custom->id}}][location_country]"  value="{{  $custom->location_country}}">
+        </div>
+        <div class="form-group">
+            <label for="slug">Location Phone</label>
+            <input class="form-control" type="text" name="addMoreInputFields[{{  $custom->id}}][location_phone]"  value="{{  $custom->location_phone }}">
+        </div>
+        <div class="form-group">
+            <label for="slug">Location Address</label>
+            <input class="form-control" type="text" name="addMoreInputFields[{{  $custom->id}}][location_address]"  value="{{ $custom->location_country }}">
+        </div>
+        <div class="form-group">
+            <label for="slug">Location Address_Link</label>
+            <input class="form-control" type="text" name="addMoreInputFields[{{  $custom->id}}][location_addlink]"  value="{{  $custom->location_addlink }}">
+        </div>
+        @endforeach
+      @endif
+      @if($contentPage->title == 'Home')
         @if($contentPage->slidesidSlides->count() > 0)
-            <label for="slug">
-                <h5>Top Banner:</h5>
-            </label>
-            <br>
-            {{-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+
+            <h5>Top Banner:</h5>
+
+        <br>
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
             Add New Slide
-            </button> --}}
-            <hr>
-            <table class="table table-striped">
-                <tr>
-                    <th>
-                    Title
-                    </th>
-                    <th>
-                    Status
-                    </th>
-                    <th>
-                    Slider
-                    </th>
-                    <th>
-                    Action
-                    </th>
-                </tr>
-                @foreach($contentPage->slidesidSlides as $key => $slide)
-                    @if($slide->slider->type == 'topslider')
-                        <tr>
+        </button>
+        <hr>
+        <table class=" table table-bordered table-striped table-hover">
+            <tr>
+            <th>
+                Title
+            </th>
+            {{-- <th>
+                Description
+            </th> --}}
+            <th>
+                Status
+            </th>
+            <th>
+                Action
+            </th>
+            </tr>
+            @foreach($contentPage->slidesidSlides as $key => $slide)
+            @if($slide->slider->type == 'topslider')
+            <tr>
+            <td>
+                {{  $slide->title  }}
+            </td>
+            {{-- <td>
+                {{  $slide->deescription  }}
+            </td> --}}
+            <td>
+                {{ App\Models\Slide::STATUS_SELECT[$slide->status] ?? '' }}
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editslide{{ $slide->id }}">
+                    Edit
+                </button>
+            </td>
+            </tr>
+            @endif
+            @endforeach
 
-                            <td>{{ $slide->title}}
-                            </td>
-                            <td>{{ App\Models\Slide::STATUS_SELECT[$slide->status] ?? '' }}
-                            </td>
-                            <td>    {{ $slide->slider->name}}
-                            </td>
-                            <td>
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editslide{{ $slide->id }}">
-                            Edit
-                            </button>
-                            </td>
-                        </tr>
-                    @endif
-                @endforeach
-            </table>
-            <table>
-                <label for="slug">
-                    <h5>Specialist Section:</h5>
-                </label>
-                <br>
-                {{-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-                Add New Slide
-                </button> --}}
-                <hr>
-                <table class="table table-striped">
-                    @if(!empty($contentPage->pagePageCustomFields ))
-                        <tr>
-                            <th>
-                            Title
-                            </th>
-                            <th>
-                                Value
-                            </th>
-                            <th></th>
-                            <th>
-                            Action
-                            </th>
-                        </tr>
-                        @endif
-                        @foreach ($contentPage->pagePageCustomFields as $key => $fields)
-                        @if($fields->field_lable == "specialist")
-                            <tr>
-                                <td>
-                                {{ $fields->field_lable}}
-                                </td>
-                                <td colspan ="2">
-                                    {{ $fields->field_value }}
-                                </td>
-
-                                <td>
-                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editfields{{ $fields->id }}">
-                                        Edit
-                                    </button>
-                                </td>
-                            </tr>
-                        @endif
-
-                        @endforeach
-                <tr>
-                    <th>
-                    Title
-                    </th>
-                    <th>
-                    Status
-                    </th>
-                    <th>
-                    Slider
-                    </th>
-                    <th>
-                    Action
-                    </th>
-                </tr>
-                @foreach($contentPage->slidesidSlides as $key => $slide)
-                    @if($slide->slider->name == 'Specialist')
-                        <tr>
-                            <td>{{ $slide->title}}
-                            </td>
-                            <td>{{ App\Models\Slide::STATUS_SELECT[$slide->status] ?? '' }}
-                            </td>
-                            <td>    {{ $slide->slider->name}}
-                            </td>
-                            <td>
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editslide{{ $slide->id }}">
-                            Edit
-                            </button>
-                            </td>
-                        </tr>
-                    @endif
-                @endforeach
-                </table>
-                <label for="slug">
-                    <h5>Recruitment:</h5>
-                </label>
-                <br>
-                {{-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-                Add New Slide
-                </button> --}}
-                <hr>
-                <table class="table table-striped">
-                    @if(!empty($contentPage->pagePageCustomFields ))
-                    <tr>
-                        <th>
-                        Title
-                        </th>
-                        <th>
-                            Value
-                        </th>
-                        <th></th>
-                        <th>
-                        Action
-                        </th>
-                    </tr>
-                    @endif
-                    @foreach ($contentPage->pagePageCustomFields as $key => $fields)
-                    @if($fields->field_lable == "Recruitment data & insights")
-                        <tr>
-                            <td>
-                            {{ $fields->field_lable}}
-                            </td>
-                            <td colspan ="2">
-                                {{ $fields->field_value }}
-                            </td>
-
-                            <td>
-                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editfields{{ $fields->id }}">
-                                    Edit
-                                </button>
-                            </td>
-                        </tr>
-                    @endif
-
-                    @endforeach
-                    <tr>
-                        <th>
-                        Title
-                        </th>
-                        <th>
-                        Status
-                        </th>
-                        <th>
-                        Slider
-                        </th>
-                        <th>
-                        Action
-                        </th>
-                    </tr>
-                @foreach($contentPage->slidesidSlides as $key => $slide)
-                    @if($slide->slider->type == 'recruitement')
-                        <tr>
-                            <td>{{ $slide->title}}
-                            </td>
-                            <td>{{ App\Models\Slide::STATUS_SELECT[$slide->status] ?? '' }}
-                            </td>
-                            <td>    {{ $slide->slider->name}}
-                            </td>
-                            <td>
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editslide{{ $slide->id }}">
-                            Edit
-                            </button>
-                            </td>
-                        </tr>
-                    @endif
-                @endforeach
-            </table>
+        </table>
         @endif
 
-        <div class="form-group">
+
+            <h5>Specialist Section:</h5>
+
+        @if($contentPage->pagePageCustomFields->count() > 0)
+        @foreach ($contentPage->pagePageCustomFields as $key => $field )
+        @if($field->field_lable == 'specialist')
+            <div class="mb-3">
+                <input type="hidden" name="addMoreFields[{{  $field->id}}][field_id]" value="{{ $field->id}}">
+            <label>Title</label>
+            <input class="form-control"  name="addMoreFields[{{  $field->id}}][field_value]" value="{{ $field->field_value }}" >
+            </div>
+        @endif
+        @endforeach
+        @endif
+        @foreach($contentPage->slidesidSlides as $key => $slide)
+        @if($slide->slider->name == 'Specialist')
+        <div class="mb-3">
+        <label>{{$slide->title}}</label>
+        <input type="hidden" name="addMoreInputs[{{  $slide->id}}][slide_id]" value="{{ $slide->id}}">
+        <textarea class="form-control"  name="addMoreInputs[{{  $slide->id}}][slide_description]"  >{{ $slide->description }}</textarea>
+        </div>
+        @endif
+        @endforeach
+        <label for="slug">
+        <h5>Recruitement Section:</h5>
+        </label>
+        @if($contentPage->pagePageCustomFields->count() > 0)
+        @foreach ($contentPage->pagePageCustomFields as $key => $field )
+        @if($field->field_lable == 'Recruitment')
+            <div class="mb-3">
+            <label>Title</label>
+            <input type="hidden" name="addMoreFields[{{  $field->id}}][field_id]" value="{{ $field->id}}">
+
+            <input class="form-control"  name="addMoreFields[{{$field->id}}][field_value]" value="{{ $field->field_value }}" >
+            </div>
+        @endif
+        @if($field->field_lable == 'description')
+        <div class="mb-3">
+        <label>Title</label>
+        <input type="hidden" name="addMoreFields[{{  $field->id }}][field_id]" value="{{ $field->id}}">
+        <input class="form-control"  name="addMoreFields[{{$field->id}}][field_value]" value="{{ $field->field_value }}" >
+        </div>
+        @endif
+        @endforeach
+        @endif
+        @foreach($contentPage->slidesidSlides as $key => $slide)
+        @if($slide->slider->name == 'Recruitement')
+        <div class="mb-3">
+        <label>{{$slide->title}}</label>
+        <input type="hidden" name="addMoreInputs[{{$slide->id}}][slide_id]" value="{{$slide->id}}">
+        <textarea class="form-control"  name="addMoreInputs[{{$slide->id}}][slide_description]">{{ $slide->description }}</textarea>
+        </div>
+        @endif
+        @endforeach
+
+        @endif
+      <div class="form-group">
          <label for="slug">{{ trans('cruds.contentPage.fields.slug') }}</label>
          <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', $contentPage->slug) }}">
          @if($errors->has('slug'))
@@ -303,16 +216,15 @@
          </div>
          @endif
          <span class="help-block">{{ trans('cruds.contentPage.fields.slug_helper') }}</span>
-        </div>
-        <div class="form-group">
-            <button class="btn btn-danger" type="submit">
-            {{ trans('global.save') }}
-            </button>
-        </div>
-    </form>
+      </div>
+      <div class="form-group">
+         <button class="btn btn-danger" type="submit">
+         {{ trans('global.save') }}
+         </button>
+      </div>
+      </form>
    </div>
 </div>
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
    <div class="modal-dialog" role="document">
@@ -420,7 +332,8 @@
                   @endif
                   <span class="help-block">{{ trans('cruds.slide.fields.slider_helper') }}</span>
                </div>
-               {{-- <div class="form-group">
+               {{--
+               <div class="form-group">
                   <label for="parent_id">{{ trans('cruds.slide.fields.parent') }}</label>
                   <select class="form-control select2 {{ $errors->has('parent') ? 'is-invalid' : '' }}" name="parent_id" id="parent_id">
                   @foreach($slide_parents as $id => $entry)
@@ -433,7 +346,8 @@
                   </div>
                   @endif
                   <span class="help-block">{{ trans('cruds.slide.fields.parent_helper') }}</span>
-               </div> --}}
+               </div>
+               --}}
                <div class="form-group">
                   <label for="slidesid_id">Page</label>
                   <select class="form-control select2 {{ $errors->has('slidesid') ? 'is-invalid' : '' }}" name="slidesid_id" id="slidesid_id">
@@ -488,7 +402,6 @@
                   </div>
                   <div class="form-group">
                      <label for="image">{{ trans('cruds.slide.fields.image') }}</label>
-
                      <div class="needsclick dropzone {{ $errors->has('image') ? 'is-invalid' : '' }}" id="image-dropzone">
                      </div>
                      <small class="text-danger">Max file size is 10MB</small>
@@ -569,7 +482,8 @@
                      @endif
                      <span class="help-block">{{ trans('cruds.slide.fields.slider_helper') }}</span>
                   </div>
-                  {{-- <div class="form-group">
+                  {{--
+                  <div class="form-group">
                      <label for="parent_id">{{ trans('cruds.slide.fields.parent') }}</label>
                      <select class="form-control select2 {{ $errors->has('parent') ? 'is-invalid' : '' }}" name="parent_id" id="parent_id">
                      @foreach($parents as $id => $entry)
@@ -582,7 +496,8 @@
                      </div>
                      @endif
                      <span class="help-block">{{ trans('cruds.slide.fields.parent_helper') }}</span>
-                  </div> --}}
+                  </div>
+                  --}}
                   <div class="form-group">
                      <label for="slidesid_id">Page</label>
                      <select class="form-control select2 {{ $errors->has('slidesid') ? 'is-invalid' : '' }}" name="slidesid_id" id="slidesid_id">
@@ -609,8 +524,6 @@
       </div>
    </div>
 </div>
-
-
 @endforeach
 {{-- End Slide Modals --}}
 @foreach($contentPage->pagePageCustomFields as $key => $pageCustomField)
@@ -625,73 +538,71 @@
          </div>
          <div class="modal-body">
             <div class="card-body">
-
-                    <form method="POST" action="{{ route("admin.page-custom-fields.update", [$pageCustomField->id]) }}" enctype="multipart/form-data">
-                        @method('PUT')
-                        @csrf
-                        <div class="form-group">
-                            <label class="required" for="field_lable">{{ trans('cruds.pageCustomField.fields.field_lable') }}</label>
-                            <input class="form-control {{ $errors->has('field_lable') ? 'is-invalid' : '' }}" type="text" name="field_lable" id="field_lable" value="{{ old('field_lable', $pageCustomField->field_lable) }}" readonly>
-                            @if($errors->has('field_lable'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('field_lable') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.pageCustomField.fields.field_lable_helper') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label class="required" for="field_value">{{ trans('cruds.pageCustomField.fields.field_value') }}</label>
-                            <input class="form-control {{ $errors->has('field_value') ? 'is-invalid' : '' }}" type="text" name="field_value" id="field_value" value="{{ old('field_value', $pageCustomField->field_value) }}" required>
-                            @if($errors->has('field_value'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('field_value') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.pageCustomField.fields.field_value_helper') }}</span>
-                        </div>
-                        {{-- <div class="form-group">
-                            <label>{{ trans('cruds.pageCustomField.fields.type') }}</label>
-                            <select class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" id="type">
-                                <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                                @foreach(App\Models\PageCustomField::TYPE_SELECT as $key => $label)
-                                    <option value="{{ $key }}" {{ old('type', $pageCustomField->type) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                                @endforeach
-                            </select>
-                            @if($errors->has('type'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('type') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.pageCustomField.fields.type_helper') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="page_id">{{ trans('cruds.pageCustomField.fields.page') }}</label>
-                            <select class="form-control select2 {{ $errors->has('page') ? 'is-invalid' : '' }}" name="page_id" id="page_id">
-                                @foreach($pages as $id => $entry)
-                                    <option value="{{ $id }}" {{ (old('page_id') ? old('page_id') : $pageCustomField->page->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                                @endforeach
-                            </select>
-                            @if($errors->has('page'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('page') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.pageCustomField.fields.page_helper') }}</span>
-                        </div> --}}
-                        <div class="form-group">
-                            <button class="btn btn-danger" type="submit">
-                                {{ trans('global.save') }}
-                            </button>
-                        </div>
-                    </form>
-
+               <form method="POST" action="{{ route("admin.page-custom-fields.update", [$pageCustomField->id]) }}" enctype="multipart/form-data">
+               @method('PUT')
+               @csrf
+               <div class="form-group">
+                  <label class="required" for="field_lable">{{ trans('cruds.pageCustomField.fields.field_lable') }}</label>
+                  <input class="form-control {{ $errors->has('field_lable') ? 'is-invalid' : '' }}" type="text" name="field_lable" id="field_lable" value="{{ old('field_lable', $pageCustomField->field_lable) }}" readonly>
+                  @if($errors->has('field_lable'))
+                  <div class="invalid-feedback">
+                     {{ $errors->first('field_lable') }}
+                  </div>
+                  @endif
+                  <span class="help-block">{{ trans('cruds.pageCustomField.fields.field_lable_helper') }}</span>
+               </div>
+               <div class="form-group">
+                  <label class="required" for="field_value">{{ trans('cruds.pageCustomField.fields.field_value') }}</label>
+                  <input class="form-control {{ $errors->has('field_value') ? 'is-invalid' : '' }}" type="text" name="field_value" id="field_value" value="{{ old('field_value', $pageCustomField->field_value) }}" required>
+                  @if($errors->has('field_value'))
+                  <div class="invalid-feedback">
+                     {{ $errors->first('field_value') }}
+                  </div>
+                  @endif
+                  <span class="help-block">{{ trans('cruds.pageCustomField.fields.field_value_helper') }}</span>
+               </div>
+               {{--
+               <div class="form-group">
+                  <label>{{ trans('cruds.pageCustomField.fields.type') }}</label>
+                  <select class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" id="type">
+                  <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                  @foreach(App\Models\PageCustomField::TYPE_SELECT as $key => $label)
+                  <option value="{{ $key }}" {{ old('type', $pageCustomField->type) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                  @endforeach
+                  </select>
+                  @if($errors->has('type'))
+                  <div class="invalid-feedback">
+                     {{ $errors->first('type') }}
+                  </div>
+                  @endif
+                  <span class="help-block">{{ trans('cruds.pageCustomField.fields.type_helper') }}</span>
+               </div>
+               <div class="form-group">
+                  <label for="page_id">{{ trans('cruds.pageCustomField.fields.page') }}</label>
+                  <select class="form-control select2 {{ $errors->has('page') ? 'is-invalid' : '' }}" name="page_id" id="page_id">
+                  @foreach($pages as $id => $entry)
+                  <option value="{{ $id }}" {{ (old('page_id') ? old('page_id') : $pageCustomField->page->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                  @endforeach
+                  </select>
+                  @if($errors->has('page'))
+                  <div class="invalid-feedback">
+                     {{ $errors->first('page') }}
+                  </div>
+                  @endif
+                  <span class="help-block">{{ trans('cruds.pageCustomField.fields.page_helper') }}</span>
+               </div>
+               --}}
+               <div class="form-group">
+                  <button class="btn btn-danger" type="submit">
+                  {{ trans('global.save') }}
+                  </button>
+               </div>
+               </form>
             </div>
          </div>
       </div>
    </div>
 </div>
-
-
 @endforeach
 @endsection
 @section('scripts')
@@ -814,59 +725,58 @@
 
 </script>
 <script>
-    Dropzone.options.imageDropzone = {
-    url: '{{ route('admin.slides.storeMedia') }}',
-    maxFilesize: 10, // MB
-    acceptedFiles: '.jpeg,.jpg,.png,.gif',
-    maxFiles: 1,
-    addRemoveLinks: true,
-    headers: {
-      'X-CSRF-TOKEN': "{{ csrf_token() }}"
-    },
-    params: {
-      size: 10,
-      width: 4096,
-      height: 4096
-    },
-    success: function (file, response) {
-      $('form').find('input[name="image"]').remove()
-      $('form').append('<input type="hidden" name="image" value="' + response.name + '">')
-    },
-    removedfile: function (file) {
-      file.previewElement.remove()
-      if (file.status !== 'error') {
-        $('form').find('input[name="image"]').remove()
-        this.options.maxFiles = this.options.maxFiles + 1
-      }
-    },
-    init: function () {
-@if(isset($slide) && $slide->image)
-      var file = {!! json_encode($slide->image) !!}
-          this.options.addedfile.call(this, file)
-      this.options.thumbnail.call(this, file, file.preview ?? file.preview_url)
-      file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="image" value="' + file.file_name + '">')
-      this.options.maxFiles = this.options.maxFiles - 1
-@endif
-    },
-    error: function (file, response) {
-        if ($.type(response) === 'string') {
-            var message = response //dropzone sends it's own error messages in string
-        } else {
-            var message = response.errors.file
-        }
-        file.previewElement.classList.add('dz-error')
-        _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
-        _results = []
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            node = _ref[_i]
-            _results.push(node.textContent = message)
-        }
+   Dropzone.options.imageDropzone = {
+   url: '{{ route('admin.slides.storeMedia') }}',
+   maxFilesize: 10, // MB
+   acceptedFiles: '.jpeg,.jpg,.png,.gif',
+   maxFiles: 1,
+   addRemoveLinks: true,
+   headers: {
+     'X-CSRF-TOKEN': "{{ csrf_token() }}"
+   },
+   params: {
+     size: 10,
+     width: 4096,
+     height: 4096
+   },
+   success: function (file, response) {
+     $('form').find('input[name="image"]').remove()
+     $('form').append('<input type="hidden" name="image" value="' + response.name + '">')
+   },
+   removedfile: function (file) {
+     file.previewElement.remove()
+     if (file.status !== 'error') {
+       $('form').find('input[name="image"]').remove()
+       this.options.maxFiles = this.options.maxFiles + 1
+     }
+   },
+   init: function () {
+   @if(isset($slide) && $slide->image)
+     var file = {!! json_encode($slide->image) !!}
+         this.options.addedfile.call(this, file)
+     this.options.thumbnail.call(this, file, file.preview ?? file.preview_url)
+     file.previewElement.classList.add('dz-complete')
+     $('form').append('<input type="hidden" name="image" value="' + file.file_name + '">')
+     this.options.maxFiles = this.options.maxFiles - 1
+   @endif
+   },
+   error: function (file, response) {
+       if ($.type(response) === 'string') {
+           var message = response //dropzone sends it's own error messages in string
+       } else {
+           var message = response.errors.file
+       }
+       file.previewElement.classList.add('dz-error')
+       _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+       _results = []
+       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+           node = _ref[_i]
+           _results.push(node.textContent = message)
+       }
 
-        return _results
-    }
-}
+       return _results
+   }
+   }
 
 </script>
 @endsection
-
