@@ -133,7 +133,7 @@
             @foreach ($whatwedos as $key => $whatwedo)
             <div class="{{$key == 0 ? 'active' : '' }} fade show tab-pane" id="tab-content{{ $whatwedo->id }}" role="tabpanel" aria-labelledby="tab-1" tabindex="0">
                 <div class="tab-text">
-                    <p>{!! $whatwedo->page_text !!}</p>
+                    <p>{!! $whatwedo->excerpt !!}</p>
                 </div>
                 @if($whatwedo->cta_button_text)
                 <div class="find-more"> <a href="{!! $whatwedo->cta_url !!}">{!! $whatwedo->cta_button_text !!} <img src="{{ asset('dist/icon-arrow-right-white.53b92526.svg') }}"> </a> </div>

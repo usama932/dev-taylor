@@ -104,10 +104,27 @@
       @endif
       @if($contentPage->title == 'About us')
       <h5>Future Section:</h5>
+        @foreach ($contentPage->pagePageCustomFields as $key => $field )
+        @if($field->field_lable == 'cta text')
+            <div class="mb-3">
+            <label>{{Str::upper( $field->field_lable )}}</label>
+            <input type="hidden" name="addMoreFields[{{  $field->id}}][field_id]" value="{{ $field->id}}">
+
+            <input class="form-control"  name="addMoreFields[{{$field->id}}][field_value]" value="{{ $field->field_value }}" >
+            </div>
+        @endif
+        @if($field->field_lable == 'cta url')
+        <div class="mb-3">
+        <label>{{Str::upper( $field->field_lable )}}</label>
+        <input type="hidden" name="addMoreFields[{{  $field->id }}][field_id]" value="{{ $field->id}}">
+        <input class="form-control"  name="addMoreFields[{{$field->id}}][field_value]" value="{{ $field->field_value }}" >
+        </div>
+        @endif
+        @endforeach
         @if($contentPage->slidesidSlides->count() > 0)
             @foreach($contentPage->slidesidSlides as $key => $slide)
                 @if($slide->slider->name == 'Future')
-                    <label>{{$slide->title}}</label>
+                    <label>{{Str::upper($slide->title) }}</label>
                     <input type="hidden" name="addMoreInputs[{{  $slide->id}}][slide_id]" value="{{ $slide->id}}">
                     <textarea class="form-control"  name="addMoreInputs[{{$slide->id}}][slide_description]"  >{{ $slide->description }}</textarea>
                 @endif

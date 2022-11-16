@@ -47,10 +47,10 @@ class IndexController extends Controller
 
         $pageTemplate = \View::exists($pageSlug) ? $pageSlug : 'index';
 
-        $whatwedos = WhatWeDo::latest()->take(4)->get();
+        $whatwedos = WhatWeDo::where('featured',1)->latest()->take(4)->get();
 
         $knowledge = Knowledge::with('category')->latest()->limit(6)->get();
-
+        //dd($page->pagePageCustomFields);
         if(!$pageSlug) {
             $page  = ContentPage::where('slug', 'home')->with('categories', 'parent', 'tags','contactInfoLocations','slidesidSlides','pagePageCustomFields')->first();
             return view('index',compact('page','recruitment_slider','specialist_slider','top_slides','whatwedos'));

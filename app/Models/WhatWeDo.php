@@ -40,6 +40,7 @@ class WhatWeDo extends Model implements HasMedia
         'cta_button_text',
         'cta_url',
         'case_study_id',
+        'featured',
         'status',
         'slug',
         'parent_id',

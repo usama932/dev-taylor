@@ -62,6 +62,19 @@
                 <span class="help-block">{{ trans('cruds.whatWeDo.fields.cta_button_text_helper') }}</span>
             </div>
             <div class="form-group">
+                <div class="form-check {{ $errors->has('featured') ? 'is-invalid' : '' }}">
+                    <input type="hidden" name="featured" value="0">
+                    <input class="form-check-input" type="checkbox" name="featured" id="featured" value="1" {{ $whatWeDo->featured || old('featured', 0) === 1 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="featured">{{ trans('cruds.caseStudy.fields.featured') }}</label>
+                </div>
+                @if($errors->has('featured'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('featured') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.caseStudy.fields.featured_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="cta_url">{{ trans('cruds.whatWeDo.fields.cta_url') }}</label>
                 <input class="form-control {{ $errors->has('cta_url') ? 'is-invalid' : '' }}" type="text" name="cta_url" id="cta_url" value="{{ old('cta_url', $whatWeDo->cta_url) }}">
                 @if($errors->has('cta_url'))

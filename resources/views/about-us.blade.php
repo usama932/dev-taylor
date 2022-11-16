@@ -12,8 +12,8 @@
                     <h4>{{$page->excerpt  }}</h4>
 
                 </div>
-                @if($page->slidesidSlides[0]->cta_button )
-                <div class="button-wrapper"> <a href="{{$page->slidesidSlides[0]->url}} ? '' "><button class="btn-blue btn-h51">{{ $page->slidesidSlides[0]->cta_button  }}</button></a> </div>
+                @if($page->pagePageCustomFields )
+                <div class="button-wrapper"> <a href="{{$page->pagePageCustomFields[1]->field_value ?? ''}}"><button class="btn-blue btn-h51">{{$page->pagePageCustomFields[0]->field_value ?? ''}}</button></a> </div>
                 @endif
              </div>
              <div class="banner-slider">
