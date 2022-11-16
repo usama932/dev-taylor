@@ -68,8 +68,11 @@
         <img src="{{ asset('dist/icon-arrow-right-white.53b92526.svg') }}" alt="image">
     </div>
     <div class="team-wrapper">
+        @php
+           $teams =  $WidgetsService->teams();
+        @endphp
         <ul class="team-list two-col">
-            @foreach ($teams as $team)
+            @foreach ($teams->take(2) as $team)
             <li class="team-item">
                 <div class="team-inner">
                     <a href="JavaScript:Void(0)" class="team-image">
@@ -96,11 +99,7 @@
                     </div>
                 </div>
             </li>
-
             @endforeach
-
-
-
         </ul>
         <ul class="four-col team-list">
             <li class="team-item">
@@ -112,7 +111,7 @@
                     </div>
                 </div>
             </li>
-            @foreach($teams1 as $team)
+            @foreach($teams->skip(2)->take(3) as $team)
 
             <li class="team-item">
                 <div class="team-inner">
@@ -131,7 +130,7 @@
             @endforeach
         </ul>
         <ul class="team-list two-col">
-            @foreach($teams2 as $team)
+            @foreach($teams->skip(5)->take(2) as $team)
             <li class="team-item">
                 <div class="team-inner">
                     <a href="JavaScript:Void(0)" class="team-image">
@@ -159,6 +158,7 @@
                 </div>
             </li>
             @endforeach
+        </ul>
     </div>
 </section>
 <section class="about-imagetext-section knowledge-mail-section">

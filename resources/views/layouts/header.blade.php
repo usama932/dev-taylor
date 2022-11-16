@@ -18,7 +18,7 @@
                         @foreach($TopMenu as $menuItem)
 
                         <li class="nav-item {{ request()->is(ltrim( $menuItem->page_link->slug , "/")."*") ? "active" : "" }} ">
-                            <a class="nav-link" href="    @if(!empty($menuItem->link_to)) {{$menuItem->link_to}} @else {{ $menuItem->page_link->slug }} @endif">{{$menuItem->name}}</a>
+                            <a class="nav-link" href=" @if(!empty($menuItem->link_to)) {{url($menuItem->link_to)}} @else {{ url($menuItem->page_link->slug) }} @endif">{{$menuItem->name}}</a>
 
                         </li>
                         @endforeach

@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\Menuitem;
 use App\Models\Company;
 use App\Models\Location;
+use App\Services\WidgetsService;
+use App\Services\KnowledgeService;
 use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
@@ -52,5 +54,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('FooterMenu', $footerMenu);
         View::share('LeftMenu', $leftMenu);
         View::share('SiteSettings', $setting);
+        View::share('WidgetsService', new WidgetsService);
+        View::share('KnowledgeService', new KnowledgeService);
     }
 }

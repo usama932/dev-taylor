@@ -34,6 +34,9 @@
         </div>
     </div>
 </section>
+@php
+$knowledge =  $KnowledgeService->knowledge();
+@endphp
 <section class="knowledge-section" id="knowledgeSection">
     <div class="container">
         <div class="items-wrapper">
