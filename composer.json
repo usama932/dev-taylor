@@ -16,7 +16,6 @@
         "laraveldaily/laravel-charts": "^0.1.29",
         "nuovo/spreadsheet-reader": "^0.5.11",
         "spatie/laravel-medialibrary": "^10.0.7",
-        "spatie/laravel-responsecache": "^7.4",
         "yajra/laravel-datatables-oracle": "^9.19"
     },
     "require-dev": {

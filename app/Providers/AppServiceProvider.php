@@ -9,6 +9,7 @@ use App\Models\Location;
 use App\Services\WidgetsService;
 use App\Services\KnowledgeService;
 use Illuminate\Support\Facades\View;
+use App\Services\WhatwedoService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -56,5 +57,6 @@ class AppServiceProvider extends ServiceProvider
         View::share('SiteSettings', $setting);
         View::share('WidgetsService', new WidgetsService);
         View::share('KnowledgeService', new KnowledgeService);
+        View::share('WhatwedoService', new WhatwedoService);
     }
 }

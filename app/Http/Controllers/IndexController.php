@@ -31,18 +31,17 @@ class IndexController extends Controller
     {
         $pageSlug = request()->segment(1);
 
-        $top_slides =  Slider::where('name','Hero Slider')->with('sliderSlides')->get();
-
-        $whatwedos = WhatWeDo::where('featured',1)->latest()->take(4)->get();
-
         $page  = ContentPage::where('slug', $pageSlug)->with('categories', 'parent', 'tags','contactInfoLocations','slidesidSlides','pagePageCustomFields')->first();
 
-        $recruitment_slider = Slider::where('name','Recruitement')->with('sliderSlides')->first();
-
-        $specialist_slider = Slider::where('name','Specialist')->with('sliderSlides')->first();
-
         if(!$pageSlug) {
-            return view('index',compact('page','recruitment_slider','specialist_slider','top_slides','whatwedos'));
+
+            $recruitment_slider = Slider::where('name','Recruitement')->with('sliderSlides')->first();
+
+            $specialist_slider = Slider::where('name','Specialist')->with('sliderSlides')->first();
+
+            $top_slides =  Slider::where('name','Hero Slider')->with('sliderSlides')->get();
+
+            return view('index',compact('page','recruitment_slider','specialist_slider','top_slides'));
         }
         $pageTemplate = \View::exists($pageSlug) ? $pageSlug : 'index';
 

@@ -121,6 +121,9 @@
             <p>we also find the culture and personality to be a success.</p>
         </div>
     </div>
+    @php
+        $whatwedos =  $WhatwedoService->whatwedo();
+    @endphp
     <div class="tabs-wrapper">
         <ul class="nav nav-pills" id="pills-tab" role="tablist">
             @foreach ($whatwedos as $key => $whatwedo)
