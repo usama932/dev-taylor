@@ -10,6 +10,7 @@ use App\Services\WidgetsService;
 use App\Services\KnowledgeService;
 use Illuminate\Support\Facades\View;
 use App\Services\WhatwedoService;
+use App\Services\CasestudyService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -58,5 +59,6 @@ class AppServiceProvider extends ServiceProvider
         View::share('WidgetsService', new WidgetsService);
         View::share('KnowledgeService', new KnowledgeService);
         View::share('WhatwedoService', new WhatwedoService);
+        View::share('CasestudyService', new CasestudyService);
     }
 }

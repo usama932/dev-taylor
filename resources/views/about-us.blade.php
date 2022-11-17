@@ -106,7 +106,7 @@
                 <div class="team-inner">
                     <div class="info-wrapper">
                         <div class="info-content">
-                            <p>Our senior team come from a range of backgrounds, bringing their experience and ideas together to ensure Taylor Hawkes continues to evolve for its clients and candidates.</p>
+                            <p>{{$page->pagePageCustomFields[2]->field_value ?? ''}}</p>
                         </div>
                     </div>
                 </div>

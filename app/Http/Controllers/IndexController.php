@@ -35,7 +35,7 @@ class IndexController extends Controller
 
         if(!$pageSlug) {
 
-            $recruitment_slider = Slider::where('name','Recruitement')->with('sliderSlides')->first();
+            $recruitment_slider = Slider::where('name','Recruitment')->with('sliderSlides')->first();
 
             $specialist_slider = Slider::where('name','Specialist')->with('sliderSlides')->first();
 
@@ -45,7 +45,7 @@ class IndexController extends Controller
         }
         $pageTemplate = \View::exists($pageSlug) ? $pageSlug : 'index';
 
-        return view($pageTemplate ,compact('page','recruitment_slider'));
+        return view($pageTemplate ,compact('page'));
     }
     public function knowledge_single($slug){
        $knowledge = Knowledge::where('slug',$slug)->first();
