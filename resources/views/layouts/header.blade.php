@@ -4,8 +4,19 @@
             <div class="logo-wrapper">
                 @if($SiteSettings['company'] && $SiteSettings['company']->companylogo )
                 <a href="/">
-                    <img class="logo-img" src="{{ $SiteSettings['company']->companylogo->getUrl() }}" alt=" {{$SiteSettings['company']->company_name}} Logo">
+                        <div id="logocontainer"></div>
                 </a>
+                <script>
+				   var animation = bodymovin.loadAnimation({
+					  // animationData: { / ... / },
+					  container: document.getElementById('logocontainer'), // required
+					  path: '{{ $SiteSettings['company']->companylogo->getUrl() }}', // required
+					  renderer: 'svg', // required
+					  loop: true, // optional
+					  autoplay: true, // optional
+
+				   });
+				</script>
                 @endif
 
             </div>
