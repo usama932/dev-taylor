@@ -38,9 +38,34 @@ class CompanyController extends Controller
 
     public function store(StoreCompanyRequest $request)
     {
-        $company = Company::create($request->all());
+    $logo ="unset";
+    if ($file = $request->file('companylogo')) {
+
+        $destinationPath = 'file/';
+
+        $logo = date('YmdHis') . "." . $file->getClientOriginalExtension();
+
+        $file->move($destinationPath, $logo);
+
+    }
+
+
+        $company = Company::create([
+        'company_name'=>$request->company_name,
+        'company_email'=>$request->company_email,
+        'linkedin'=>$request->company_email,
+        'facebook'=>$request->company_email,
+        'twitter'=>$request->twitter,
+        'other'=>$request->other,
+        'company_info_id'=>$request->company_info_id,
+        'companies_logo'=>$logo
+                ]);
 
         if ($request->input('companylogo', false)) {
+            $fileName = time().'.'.$request->file->extension();
+
+            $request->file->move(public_path('uploads'), $fileName);
+
             $company->addMedia(storage_path('tmp/uploads/' . basename($request->input('companylogo'))))->toMediaCollection('companylogo');
         }
 

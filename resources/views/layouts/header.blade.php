@@ -1,23 +1,28 @@
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+
 <header class="header-section">
     <div class="container">
         <nav class="navbar navbar-expand-lg">
             <div class="logo-wrapper">
-                @if($SiteSettings['company'] && $SiteSettings['company']->companylogo )
+
                 <a href="/">
                         <div id="logocontainer"></div>
                 </a>
-                <script>
-				   var animation = bodymovin.loadAnimation({
-					  // animationData: { / ... / },
-					  container: document.getElementById('logocontainer'), // required
-					  path: '{{ $SiteSettings['company']->companylogo->getUrl() }}', // required
-					  renderer: 'svg', // required
-					  loop: true, // optional
-					  autoplay: true, // optional
 
-				   });
-				</script>
-                @endif
+                <script>
+
+                        var animation = bodymovin.loadAnimation({
+                    // animationData: { / ... / },
+                    container: document.getElementById('logocontainer'), // required
+                    path:"  public/file/{{ $SiteSettings['company']->companies_logo }}", // required
+                    renderer: 'svg', // required
+                    loop: true, // optional
+                    autoplay: true, // optional
+
+                    });
+
+                </script>
 
             </div>
             <div class="menu-wrapper">
@@ -39,3 +44,4 @@
         </nav>
     </div>
 </header>
+

@@ -31,8 +31,9 @@
             </div>
             <div class="form-group">
                 <label for="companylogo">{{ trans('cruds.company.fields.companylogo') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('companylogo') ? 'is-invalid' : '' }}" id="companylogo-dropzone">
-                </div>
+                <input type="file" class="form-control" name="companylogo">
+                {{-- <div class="needsclick dropzone {{ $errors->has('companylogo') ? 'is-invalid' : '' }}" id="companylogo-dropzone">
+                </div> --}}
                 @if($errors->has('companylogo'))
                     <div class="invalid-feedback">
                         {{ $errors->first('companylogo') }}
@@ -111,7 +112,7 @@
 <script>
     Dropzone.options.companylogoDropzone = {
     url: '{{ route('admin.companies.storeMedia') }}',
-    maxFilesize: 2, // MB
+    maxFilesize: 10, // MB
     acceptedFiles: '.jpeg,.jpg,.png,.gif,.svg,.json',
     maxFiles: 1,
     addRemoveLinks: true,
