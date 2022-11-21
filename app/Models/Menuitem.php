@@ -45,7 +45,10 @@ class Menuitem extends Model
     {
         return $this->belongsTo(Menuitem::class, 'parent_id');
     }
-
+    public function child()
+    {
+        return $this->hasMany(Menuitem::class, 'parent_id');
+    }
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
