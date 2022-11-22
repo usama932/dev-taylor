@@ -51,13 +51,13 @@
 <section id="abouttextsection" class="about-text-section">
     <div class="about-text-wrapper">
         <div class="about-content-left">
-           @php echo $element ;@endphp
-           @php echo $element1 ;@endphp
+           @php echo htmlspecialchars_decode($element) ;@endphp
+           @php echo htmlspecialchars_decode($element1) ;@endphp
 
         </div>
         <div class="about-content-right">
-            @php echo $element2 ;@endphp
-            @php echo $element3 ;@endphp
+            @php echo htmlspecialchars_decode($element2) ;@endphp
+            @php echo htmlspecialchars_decode($element3) ;@endphp
 
         </div>
     </div>

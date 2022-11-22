@@ -11,7 +11,6 @@
                 </a>
 
                 <script>
-
                         var animation = bodymovin.loadAnimation({
                     // animationData: { / ... / },
                     container: document.getElementById('logocontainer'), // required
@@ -19,10 +18,7 @@
                     renderer: 'svg', // required
                     loop: true, // optional
                     autoplay: true, // optional
-
-
                     });
-
                 </script>
 
             </div>

@@ -138,6 +138,25 @@
 @section('scripts')
 <script>
     $(document).ready(function () {
+function coloumns(editor){
+    editor.ui.componentFactory.add( 'timestamp', () => {
+        //...
+
+        // Execute a callback function when the button is clicked.
+        button.on( 'execute', () => {
+            const now = new Date();
+
+            // Change the model using the model writer.
+            editor.model.change( writer => {
+
+                // Insert the text at the user's current position.
+                editor.model.insertContent( writer.createText( now.toString() ) );
+            } );
+        } );
+
+        return button;
+    } );
+}
   function SimpleUploadAdapter(editor) {
     editor.plugins.get('FileRepository').createUploadAdapter = function(loader) {
       return {
@@ -193,9 +212,14 @@
   for (var i = 0; i < allEditors.length; ++i) {
     ClassicEditor.create(
       allEditors[i], {
-        extraPlugins: [SimpleUploadAdapter]
+        extraPlugins: [SimpleUploadAdapter,coloumns],
+        toolbar: [
+            'coloumns'
+        ]
       }
+      
     );
+    
   }
 });
 </script>
@@ -203,15 +227,15 @@
 <script>
     Dropzone.options.featuredImageDropzone = {
     url: '{{ route('admin.what-we-dos.storeMedia') }}',
-    maxFilesize: 2, // MB
-    acceptedFiles: '.jpeg,.jpg,.png,.gif',
+    maxFilesize: 10, // MB
+    acceptedFiles: '.jpeg,.jpg,.png,.gif,.json',
     maxFiles: 1,
     addRemoveLinks: true,
     headers: {
       'X-CSRF-TOKEN': "{{ csrf_token() }}"
     },
     params: {
-      size: 2,
+      size: 10,
       width: 4096,
       height: 4096
     },

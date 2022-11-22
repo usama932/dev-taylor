@@ -28,14 +28,10 @@ $element3 = $dom->saveHtml($figures[3]);
 <section class="media-creative-section">
     <div class="media-creative-wrapper">
         <div class="media-creative-content-left">
-            @php echo $element ;@endphp
-           @php echo $element1 ;@endphp
-
+         {!! $whatwedo->page_text !!}
         </div>
         <div class="media-creative-content-right">
-            @php echo $element2 ;@endphp
-            @php echo $element3 ;@endphp
-
+           
         </div>
         <div class="find-more">
             <a href=" {{ $whatwedo->cta_url }}"> {{ $whatwedo->cta_button_text }}<img src="
@@ -54,7 +50,7 @@ $b2 = $dom->saveHtml($figures[2]);
 $b3 = $dom->saveHtml($figures[3]);
 @endphp
 @endif
- @if(!empty($whatwedo->case_study[0]->content))
+@if(!empty($whatwedo->case_study[0]->content))
 <section class="recruiting-tax-section">
     <div class="container">
         <div class="title-wrapper"><h4>{{ $whatwedo->case_study[0]->title ?? '' }}</h4></div>
@@ -73,6 +69,7 @@ $b3 = $dom->saveHtml($figures[3]);
                     @php echo htmlspecialchars_decode($b2);@endphp
                     @php echo htmlspecialchars_decode($b3);@endphp
                 </div>
+            </div>
         
     </div>
     <div class="image-next next-bg">
@@ -82,7 +79,6 @@ $b3 = $dom->saveHtml($figures[3]);
         </div>
     </div>
 </section>
-    </div>
 @endif
 @endsection
 @section('scripts')

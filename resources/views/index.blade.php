@@ -1,3 +1,4 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
 @extends('layouts.frontend-main')
 
 @section('content')
@@ -77,7 +78,18 @@
         </div>
         <div class="recruitment-image">
             <div class="image-wrapper">
-                <img src="{{ asset('dist/recruitment-image.4e34f13c.png') }}" alt="image">
+                <div id="logo2" class="logo-img"  style="width:auto; height: 55px;"></div>
+                <script>
+                    var animation = bodymovin.loadAnimation({
+                    // animationData: { / ... / },
+                    container: document.getElementById('logo2'), // required
+                    path:'{{ asset('dist/Test.json') }}', // required
+                    renderer: 'svg', // required
+                    loop: true, // optional
+                    autoplay: true, // optional
+                    });
+                </script>
+                
                 <div class="overview-items">
                     <div class="item one"></div>
                     <div class="item two"></div>
