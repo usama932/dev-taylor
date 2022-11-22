@@ -29,6 +29,7 @@ class IndexController extends Controller
      */
     public function index()
     {
+
         $pageSlug = request()->segment(1);
 
         $page  = ContentPage::where('slug', $pageSlug)->with('categories', 'parent', 'tags','contactInfoLocations','slidesidSlides','pagePageCustomFields')->first();
@@ -55,4 +56,8 @@ class IndexController extends Controller
        return view('knowledge-single',compact('knowledge','knowledge_related'));
 
     }
+public function whatwedo_single($link_to){
+    $whatwedo = WhatWeDo::where('slug',$link_to)->with('case_study')->first();
+    return view('what-we-do-single',compact('whatwedo'));
+}
 }

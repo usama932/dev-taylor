@@ -41,10 +41,10 @@
                                 <ul class="dropdown-menu">
 
                                 @foreach($menuItem->child as $sub_menu)
-
-                                        <li><a class="dropdown-item" href=" @if(!empty( $sub_menu->link_to)) {{url( $sub_menu->link_to)}} @else {{ url( $sub_menu->page_link->slug ?? '') }} @endif">{{ $sub_menu->name}}</a>
-                                            </li>
-
+                                        @if($menuItem->name == 'What we do')
+                                        <li><a class="dropdown-item" href="{{ route('whatwedo.show',$sub_menu->link_to ?? '#') }}">{{ $sub_menu->name}}</a>
+                                        </li>
+                                        @endif
                                 @endforeach
                                 </ul>
                                 @endif

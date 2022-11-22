@@ -8,7 +8,7 @@ ContentPage::get()->map(function($page) {
     Route::get('/'.$page->slug, 'IndexController@index');
 });
 Route::get('knowledge/{slug}','IndexController@knowledge_single')->name('knowledge.show');
-
+Route::get('what-we-do/{link_to}','IndexController@whatwedo_single')->name('whatwedo.show');
 Route::get('userVerification/{token}', 'UserVerificationController@approve')->name('userVerification');
 Auth::routes();
 
