@@ -7,19 +7,20 @@
             <div class="logo-wrapper">
 
                 <a href="/">
-                        <div id="logocontainer"></div>
+                        <div id="logocontainer" class="logo-img"  style="width:auto; height: 55px;"></div>
                 </a>
 
                 <script>
-                    $( document ).ready(function() {
+
                         var animation = bodymovin.loadAnimation({
                     // animationData: { / ... / },
                     container: document.getElementById('logocontainer'), // required
-                    path:"  /public/file/{{ $SiteSettings['company']->companies_logo }}", // required
+                    path:'{{ asset('Test2.json') }}', // required
                     renderer: 'svg', // required
                     loop: true, // optional
                     autoplay: true, // optional
-                    });
+
+
                     });
 
                 </script>
@@ -43,6 +44,10 @@
                                 @foreach($menuItem->child as $sub_menu)
                                         @if($menuItem->name == 'What we do')
                                         <li><a class="dropdown-item" href="{{ route('whatwedo.show',$sub_menu->link_to ?? '#') }}">{{ $sub_menu->name}}</a>
+                                        </li>
+                                        @endif
+                                        @if($menuItem->name == 'About us')
+                                        <li><a class="dropdown-item" href="{{ $sub_menu->link_to ?? ''}}">{{ $sub_menu->name}}</a>
                                         </li>
                                         @endif
                                 @endforeach

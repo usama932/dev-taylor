@@ -54,6 +54,7 @@ $b2 = $dom->saveHtml($figures[2]);
 $b3 = $dom->saveHtml($figures[3]);
 @endphp
 @endif
+ @if(!empty($whatwedo->case_study[0]->content))
 <section class="recruiting-tax-section">
     <div class="container">
         <div class="title-wrapper"><h4>{{ $whatwedo->case_study[0]->title ?? '' }}</h4></div>
@@ -62,18 +63,17 @@ $b3 = $dom->saveHtml($figures[3]);
         <div class="logo-wrapper">
             <div class="logo-image"><img src="{{ asset('dist/ecovis-logo.ea199e33.jpg') }}" /></div>
         </div>
-        @if(!empty($whatwedo->case_study[0]->content))
+       
             <div class="recruiting-tax-wrapper">
                 <div class="recruiting-tax-content">
-                    @php echo $b ;@endphp
-                    @php echo $b1 ;@endphp
+                    @php echo htmlspecialchars_decode($b) ;@endphp
+                    @php echo htmlspecialchars_decode($b1);@endphp
                 </div>
                 <div class="recruiting-tax-content">
-                    @php echo $b2 ;@endphp
-                    @php echo $b3 ;@endphp
+                    @php echo htmlspecialchars_decode($b2);@endphp
+                    @php echo htmlspecialchars_decode($b3);@endphp
                 </div>
-            </div>
-        @endif
+        
     </div>
     <div class="image-next next-bg">
         <div class="button-text-wrapper">
@@ -82,6 +82,8 @@ $b3 = $dom->saveHtml($figures[3]);
         </div>
     </div>
 </section>
+    </div>
+@endif
 @endsection
 @section('scripts')
 

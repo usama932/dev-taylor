@@ -57,7 +57,7 @@ class IndexController extends Controller
 
     }
 public function whatwedo_single($link_to){
-    $whatwedo = WhatWeDo::where('slug',$link_to)->with('case_study')->first();
+    $whatwedo = WhatWeDo::where('slug',$link_to)->first();
     return view('what-we-do-single',compact('whatwedo'));
 }
 }

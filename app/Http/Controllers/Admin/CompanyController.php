@@ -40,11 +40,12 @@ class CompanyController extends Controller
     {
     $logo ="unset";
     if ($file = $request->file('companylogo')) {
-        $file = $request->file('companylogo');
-        $file_name = $file->getClientOriginalName();
-        $file->move(public_path('/file'),$file_name);
 
-        $logo = "/file/" . $file_name;
+        $destinationPath = 'file/';
+
+        $logo = date('YmdHis') . "." . $file->getClientOriginalExtension();
+
+        $file->move($destinationPath, $logo);
 
     }
 

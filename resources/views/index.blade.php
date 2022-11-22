@@ -51,7 +51,9 @@
                             <h4>Specialist Accounting & Finance Recruitment</h4>
                         </div>
                         <div class="accounting-content">
-                            <div class="image-wrapper"> <img src="{{ asset('dist/accounting-image.10c416a6.png') }}" alt="image"> </div>
+                            <div class="image-wrapper">
+                                    <div id="logocontainer" class="logo-img"  style="width:auto; height: 80px;"></div>
+                            </div>
                             <div class="slider-wrapper">
                                 <div id="testimonials" class="owl-carousel">
                                     @foreach ($specialist_slider->sliderSlides as $key => $slide)

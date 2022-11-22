@@ -10,7 +10,9 @@ class ApprovalMiddleware
 {
     public function handle($request, Closure $next)
     {
+
         if (auth()->check()) {
+
             if (!auth()->user()->approved) {
                 auth()->logout();
 

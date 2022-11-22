@@ -62,7 +62,7 @@
         </div>
     </div>
 </section>
-<section class="team-section">
+<section class="team-section" id="our-team">
     <div class="section-title">
         <h2>Meet our expert team</h2>
         <img src="{{ asset('dist/icon-arrow-right-white.53b92526.svg') }}" alt="image">
@@ -161,7 +161,7 @@
         </ul>
     </div>
 </section>
-<section class="about-imagetext-section knowledge-mail-section">
+<section class="about-imagetext-section knowledge-mail-section" id="join-us">
     <div class="container">
         <div class="content-wrapper">
             <div class="image-wrapper">

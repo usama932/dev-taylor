@@ -1,16 +1,23 @@
 <?php
 
 use App\Models\ContentPage;
+use Illuminate\Support\Facades\Auth;
 
+
+Auth::routes();
 Route::get('/', 'IndexController@index');
+
+Route::get('/testing',function(){
+    return view('auth.login');
+});
 
 ContentPage::get()->map(function($page) {
     Route::get('/'.$page->slug, 'IndexController@index');
 });
 Route::get('knowledge/{slug}','IndexController@knowledge_single')->name('knowledge.show');
-Route::get('what-we-do/{link_to}','IndexController@whatwedo_single')->name('whatwedo.show');
+
 Route::get('userVerification/{token}', 'UserVerificationController@approve')->name('userVerification');
-Auth::routes();
+
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/', 'HomeController@index')->name('home');
@@ -220,3 +227,4 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     Route::post('frontend/profile/destroy', 'ProfileController@destroy')->name('profile.destroy');
     Route::post('frontend/profile/password', 'ProfileController@password')->name('profile.password');
 });
+Route::get('/{link_to}','IndexController@whatwedo_single')->name('whatwedo.show');
