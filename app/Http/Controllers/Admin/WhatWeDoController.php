@@ -72,11 +72,11 @@ class WhatWeDoController extends Controller
     public function store(StoreWhatWeDoRequest $request)
     {
         $whatWeDo = WhatWeDo::create($request->all());
-        if ($request->input('image', false)) {
-           
-            $whatWeDo->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('title_image');
+        if ($request->input('title_image', false)) {
+         
+            $whatWeDo->addMedia(storage_path('tmp/uploads/' . basename($request->input('title_image'))))->toMediaCollection('title_image');
         }
-       
+      
         if ($request->input('featured_image', false)) {
             $whatWeDo->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
         }
