@@ -569,8 +569,17 @@ $(document).ready(function() {
     $("#hideRightMap").click(function() {
         $(this).parent().parent().parent().find(".rightMap").removeClass("show");
     });
+    $("#showRightMap").hover(function() {
+        $(this).parent().parent().find("#hideLeftMap").toggleClass("bounceNow");
+    });
+    $("#showLeftMap").hover(function() {
+        $(this).parent().parent().find("#hideRightMap").toggleClass("bounceNow");
+    });
     $(".team-image").hover(function() {
         $(this).parent().parent().find(".team-inner").toggleClass("show");
+    });
+    $(".nav-item").hover(function() {
+        $("body").toggleClass("nav-hover");
     });
     $(".team-image").hover(function() {
         $(this).parent().parent().parent().parent().find(".team-list").toggleClass("offAll");
@@ -600,7 +609,53 @@ $(document).ready(function() {
             }
         }
     });
-// AOS.init();
+    $(".abouttextsection").click(function() {
+        $("html, body").animate({
+            scrollTop: $("#abouttextsection").offset().top - 60
+        }, 500);
+    });
+    $(".teamSection").click(function() {
+        $("html, body").animate({
+            scrollTop: $("#teamSection").offset().top - 60
+        }, 500);
+    });
+    $(".knowledgeMailSection").click(function() {
+        $("html, body").animate({
+            scrollTop: $("#knowledgeMailSection").offset().top - 60
+        }, 500);
+    });
+    // var animation = bodymovin.loadAnimation({
+    //     name: "Logo Animation",
+    //     container: document.getElementById('logocontainer2'),
+    //     path: 'http://stgnew.sanepress.com/wp-content/themes/sane-able-2-1/js/sane-able-design-logo.json',
+    //     renderer: 'svg',
+    //     loop: true,
+    //     autoplay: true,
+    // });
+    var animation = bodymovin.loadAnimation({
+        name: "Logo Animation",
+        container: document.getElementById("logoContainerHeader"),
+        path: "https://development.sanepress.com/Test2.json",
+        renderer: "svg",
+        loop: true,
+        autoplay: true
+    });
+    var animation = bodymovin.loadAnimation({
+        name: "Logo Animation",
+        container: document.getElementById("logoContainerFooter"),
+        // path: 'https://labs.nearpod.com/bodymovin/demo/markus/isometric/markus2.json',
+        path: "https://development.sanepress.com/Test2.json",
+        renderer: "svg",
+        loop: true,
+        autoplay: true
+    });
+});
+$(window).on("scroll", function() {
+    AOS.init();
+    if ($(this).scrollTop() > 30) $("#nextBG").toggleClass("fade-out");
+});
+$(function() {
+    AOS.init();
 });
 
 },{}]},["jQVXF","1SICI"], "1SICI", "parcelRequire75e3")

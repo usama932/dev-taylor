@@ -1,19 +1,19 @@
 @extends('layouts.frontend-main')
 
 @section('content')
-<div class="topbanner-bg-image">
+<div class="topbanner-bg-image" style="background-image:url(media-banner-image.b75715dd.jpg) !important;">
     @include('layouts.header')
     <section class="media-banner-section">
         <div class="container">
             <div class="media-banner-wrapper">
                 <div class="media-banner-content">
                     <div class="mediabanner-logo"><img src="{{ asset('dist/taylor-hawkes-logo-yellow.9d4d837d.svg') }}" /></div>
-                    <h3>{{ $whatwedo->title }}</h3>
+                    <h3>@if($whatwedo->title_image)<img src="{{$whatwedo->title_image->getUrl()}}" /> @else {{ $whatwedo->title }}@endif</h3>
                 </div>
             </div>
         </div>
     </section>
-</div>
+</div>yy
 
 @php
 $dom = new domDocument;

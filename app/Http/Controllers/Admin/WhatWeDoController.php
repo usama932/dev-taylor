@@ -102,7 +102,17 @@ class WhatWeDoController extends Controller
     public function update(UpdateWhatWeDoRequest $request, WhatWeDo $whatWeDo)
     {
         $whatWeDo->update($request->all());
-
+        
+        if ($request->input('title_image', false)) {
+            if (!$whatWeDo->title_image || $request->input('title_image') !== $whatWeDo->title_image->file_name) {
+                if ($whatWeDo->title_image) {
+                    $whatWeDo->title_image->delete();
+                }
+                $whatWeDo->addMedia(storage_path('tmp/uploads/' . basename($request->input('title_image'))))->toMediaCollection('title_image');
+            }
+        } elseif ($whatWeDo->featured_image) {
+            $whatWeDo->featured_image->delete();
+        }
         if ($request->input('featured_image', false)) {
             if (!$whatWeDo->featured_image || $request->input('featured_image') !== $whatWeDo->featured_image->file_name) {
                 if ($whatWeDo->featured_image) {

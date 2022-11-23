@@ -21,44 +21,6 @@
         </div>
     </div>
 </section>
-<section class="logo-tabs">
-    <div class="container">
-        <div class="wrap">
-            <ul class="logo-tb">
-                <li>
-                    <a>
-                        <span class="tool" data-tip="Recruiting tax professionals for top-100 accountancy firms" tabindex="1"><img src="{{ asset('dist/1.f8559a19.jpg') }}" /></span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <span class="tool" data-tip="Use this data-tip attribute to store your tool tip message." tabindex="2"><img src="{{ asset('dist/2.5850941a.jpg') }}" /></span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <span class="tool" data-tip="By adding this class you can provide almost any element with a tool tip." tabindex="3"><img src="{{ asset('dist/3.f5e5ba6c.jpg') }}" /></span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <span class="tool" data-tip="By adding this class you can provide almost any element with a tool tip." tabindex="1"><img src="{{ asset('dist/4.a9b89cfb.jpg') }}" /></span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <span class="tool" data-tip="By adding this class you can provide almost any element with a tool tip." tabindex="1"><img src="{{ asset('dist/5.8f074c09.jpg') }}" /></span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <span class="tool" data-tip="By adding this class you can provide almost any element with a tool tip." tabindex="1"><img src="{{ asset('dist/6.f77d8f69.jpg') }}" /></span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</section>
 
 <section class="service-wrapper casestuday-tabs">
 
@@ -279,7 +241,6 @@
                 </div>
 
             </div>
-
             <div class="tab-pane fade" id="tab-content-6" role="tabpanel" aria-labelledby="tab-6" tabindex="0">
                 <div class="tab-text">
                     <section class="recruiting-tax-section casestudy-yellow-bg">

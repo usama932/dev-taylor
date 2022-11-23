@@ -14,69 +14,216 @@
         </div>
     </section>
 </div>
-<section class="media-creative-section">
-    <div class="media-creative-wrapper">
-        <div class="media-creative-content-left">
-            <p>We’re currently working with a number of businesses across the media and entertainment sector, providing introductions to some highly-skilled candidates for internal financial and accounting roles.</p>
-            <p>
-                These are often not typical jobs, which is where our experience makes a real difference. An accountancy role in the media and entertainment industry can mean handling everything from income and payments, to taxes and
-                contracts, entirely differently to the corporate world – and often with a time-sensitivity around production schedules too.
-            </p>
-        </div>
-        <div class="media-creative-content-right">
-            <p>
-                Our ability to find the right person with the right expertise to hit the spot in these positions comes from our understanding of the nuances of the media sector – and which skills and knowledge a prospective
-                accounting hire needs to have for different types of roles. It’s often essential that the person can hit the ground running too, which is an important consideration.
-            </p>
-            <p>
-                Whether candidates need to know how to manage longer ‘work in progress’ projects, bid and tender work, or the complicated issues of royalties, multi-currency payments and delayed income, our expertise in the media
-                industry means we can introduce experienced people that we know can truly do the job for our client.
-            </p>
-        </div>
-        <div class="find-more">
-            <a href="JavaScript:Void(0)"> Looking to build you team or find a new job? <img src="
-                {{ asset('dist/icon-arrow-right-black.5aba9cbd.svg') }}" /> </a>
-        </div>
-    </div>
-</section>
-<section class="recruiting-tax-section">
-    <div class="container">
-        <div class="title-wrapper"><h4>Recruiting tax professionals for top-100 accountancy firms</h4></div>
-    </div>
-    <div class="outer-wrapper">
-        <div class="logo-wrapper">
-            <div class="logo-image"><img src="{{ asset('dist/ecovis-logo.ea199e33.jpg') }}" /></div>
-        </div>
-        <div class="recruiting-tax-wrapper">
-            <div class="recruiting-tax-content">
-                <p>
-                    Taylor Hawkes has supported chartered accountants ECOVIS Wingrave Yeats with a series of hires for their tax division. By understanding their specific needs as an innovative top-100 firm, as well as their
-                    sociable work culture, we ensured we were putting forward professionals who were both qualified and had the right personality for their work environment. We helped the company bring onboard X high-quality
-                    professionals who specialise in areas such as private client tax, corporate tax and VAT, at all levels of seniority. It’s because of our diligence that we’ve developed a trusting relationship, where ECOVIS
-                    Wingrave Yeats believe in our recommendations as they are confident in our candidate's capabilities and attitudes.
-                </p>
+      <section class="main-page-section media-creative-section">
+         <div class="media-creative-wrapper">
+            <div class="media-creative-content-left white">
+               <div class="text-wrape-white">
+                  <h3>What we do</h3>
+                  <p>Connecting accountancy practices with top talent is the bedrock of the work we do. From global names within the top-10 leading mid-tier UK firms, independent practices and exciting niche boutiques, we provide our advice and support to a wide range of firms looking to hire the right people to help them grow.</p>
+                  <p>We’ll work together with the necessary decision makers within the practice to identify the details and demands of the role in question, as well as the culture, capabilities and personality of the team who will support the new hire to understand what makes a good fit. We’ll also consider what skills, experience, qualifications and approach the ideal candidate should have to be a success.</p>
+                  <p>From here, we provide introductions to the highest-quality candidates that are right for the role itself and the company more widely – an approach that applies all the way from junior trainees right through to experienced partners and directors.</p>
+               </div>
             </div>
-            <div class="recruiting-tax-content">
-                <p>
-                    <label>
-                        <span><b>Ruth Potter,</b> Tax Partner</span> ‘Taylor Hawkes has assisted our tax department in the recruitment of numerous service lines and at several different levels. Throughout the years, Taylor Hawkes
-                        has supplied us with a variety of specialist candidates, ranging from assistants through to senior managers. Their expertise and network give us the confidence ECOVIS will be meeting with a shortlist of
-                        highly qualified tax professionals that match the culture and personality we have at the company.’
-                    </label>
-                </p>
+            <div class="black media-creative-content-right">
+               <div class="text-wrape-black">
+                  <h3>We know Accounting<br> and we undestand your<br> sectors needs</h3>
+                  <div class="cont_select_center">
+                     <div class="select_mate" data-mate-select="active">
+                        <select onclick="return false;">
+                           <option value="">Choose your sector </option>
+                           <option value="1">TH Accountancy Practice (UK)</option>
+                           <option value="2">TH CPA (USA) </option>
+                           <option value="3">TH Media/Creative</option>
+                           <option value="4">TH Technology</option>
+                           <option value="5">TH Property & Construction</option>
+                           <option value="6">TH Legal</option>
+                           <option value="7">TH Global</option>
+                           <option value="8">TH Accountancy practices, sales purchases and valuations</option>
+                           <option value="9">TH Job seekers bootcamp</option>
+                        </select>
+                        <p class="selecionado_opcion" onclick="open_select(this)"></p>
+                        <span onclick="open_select(this)" class="icon_select_mate">
+                           <svg fill="#fff" height="24" width="24">
+                              <path d="M7.41 7.84 12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
+                              <path d="M0-.75h24v24H0z" fill="none"/>
+                           </svg>
+                        </span>
+                        <div class="cont_list_select_mate">
+                           <ul class="cont_select_int"> </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="bg-yellow">
+                  <div class="text-wrape-yellow">
+                     <h3>Our expertise</h3>
+                     <h4>Accounting</h4>
+                     <div class="slide-section">
+                        <p>Accountancy recruitment is one of our main services and includes roles from basic book-keeping through to regulatory compliance, technical advisory and strategic modelling work. Our in-depth knowledge of the accountancy space and network of candidates means we can dig deeper to find the people who really match the role.</p>
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-    </div>
-    <div class="image-next next-bg">
-        <div class="button-text-wrapper">
-            <p>Want to become the next company to see these results?</p>
-            <button class="btn-blue btn-h51">Email us today</button>
-        </div>
-    </div>
-</section>
+         </div>
+      </section>
+      <section class="blackboard-main">
+         <div class="container wraper">
+            <div class="blackboard">
+               <p>Expand your companies skill set with a team built around your needs</p>
+               <div class="button-text-wrapper"> <a href="mailto:info@taylorhawkes.com" class="btn-blue btn-h51 slide-white" data-aos="fade-up" data-aos-duration="1500"> <span>Email us today</span> </a> </div>
+            </div>
+         </div>
+      </section>
 @endsection
 @section('scripts')
 
 @parent
 
+<script>
+         window.onload = function(){
+         crear_select();
+         }
+         
+         function isMobileDevice() {
+           return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+         };
+         
+         
+         var li = new Array();
+         function crear_select(){
+         var div_cont_select = document.querySelectorAll("[data-mate-select='active']");
+         var select_ = '';
+         for (var e = 0; e < div_cont_select.length; e++) {
+         div_cont_select[e].setAttribute('data-indx-select',e);
+         div_cont_select[e].setAttribute('data-selec-open','false');
+         var ul_cont = document.querySelectorAll("[data-indx-select='"+e+"'] > .cont_list_select_mate > ul");
+         select_ = document.querySelectorAll("[data-indx-select='"+e+"'] >select")[0];
+         if (isMobileDevice()) { 
+         select_.addEventListener('change', function () {
+         _select_option(select_.selectedIndex,e);
+         });
+         }
+         var select_optiones = select_.options;
+         document.querySelectorAll("[data-indx-select='"+e+"']  > .selecionado_opcion ")[0].setAttribute('data-n-select',e);
+         document.querySelectorAll("[data-indx-select='"+e+"']  > .icon_select_mate ")[0].setAttribute('data-n-select',e);
+         for (var i = 0; i < select_optiones.length; i++) {
+         li[i] = document.createElement('li');
+         if (select_optiones[i].selected == true || select_.value == select_optiones[i].innerHTML ) {
+         li[i].className = 'active';
+         document.querySelector("[data-indx-select='"+e+"']  > .selecionado_opcion ").innerHTML = select_optiones[i].innerHTML;
+         };
+         li[i].setAttribute('data-index',i);
+         li[i].setAttribute('data-selec-index',e);
+         // funcion click al selecionar 
+         li[i].addEventListener( 'click', function(){  _select_option(this.getAttribute('data-index'),this.getAttribute('data-selec-index')); });
+         
+         li[i].innerHTML = select_optiones[i].innerHTML;
+         ul_cont[0].appendChild(li[i]);
+         
+           }; // Fin For select_optiones
+         }; // fin for divs_cont_select
+         } // Fin Function 
+         
+         
+         
+         var cont_slc = 0;
+         function open_select(idx){
+         var idx1 =  idx.getAttribute('data-n-select');
+         var ul_cont_li = document.querySelectorAll("[data-indx-select='"+idx1+"'] .cont_select_int > li");
+         var hg = 0;
+         var slect_open = document.querySelectorAll("[data-indx-select='"+idx1+"']")[0].getAttribute('data-selec-open');
+         var slect_element_open = document.querySelectorAll("[data-indx-select='"+idx1+"'] select")[0];
+         if (isMobileDevice()) { 
+         if (window.document.createEvent) { // All
+         var evt = window.document.createEvent("MouseEvents");
+         evt.initMouseEvent("mousedown", false, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+         slect_element_open.dispatchEvent(evt);
+         } else if (slect_element_open.fireEvent) { // IE
+         slect_element_open.fireEvent("onmousedown");
+         }else {
+         slect_element_open.click();
+         }
+         }else {
+         
+         
+         for (var i = 0; i < ul_cont_li.length; i++) {
+         hg += ul_cont_li[i].offsetHeight;
+         }; 
+         if (slect_open == 'false') {  
+         document.querySelectorAll("[data-indx-select='"+idx1+"']")[0].setAttribute('data-selec-open','true');
+         document.querySelectorAll("[data-indx-select='"+idx1+"'] > .cont_list_select_mate > ul")[0].style.height = hg+"px";
+         document.querySelectorAll("[data-indx-select='"+idx1+"'] > .icon_select_mate")[0].style.transform = 'rotate(180deg)';
+         }else{
+         document.querySelectorAll("[data-indx-select='"+idx1+"']")[0].setAttribute('data-selec-open','false');
+         document.querySelectorAll("[data-indx-select='"+idx1+"'] > .icon_select_mate")[0].style.transform = 'rotate(0deg)';
+         document.querySelectorAll("[data-indx-select='"+idx1+"'] > .cont_list_select_mate > ul")[0].style.height = "0px";
+         }
+         }
+         
+         } // fin function open_select
+         
+         function salir_select(indx){
+         var select_ = document.querySelectorAll("[data-indx-select='"+indx+"'] > select")[0];
+         document.querySelectorAll("[data-indx-select='"+indx+"'] > .cont_list_select_mate > ul")[0].style.height = "0px";
+         document.querySelector("[data-indx-select='"+indx+"'] > .icon_select_mate").style.transform = 'rotate(0deg)';
+         document.querySelectorAll("[data-indx-select='"+indx+"']")[0].setAttribute('data-selec-open','false');
+         }
+         
+         
+         function _select_option(indx,selc){
+         if (isMobileDevice()) { 
+         selc = selc -1;
+         }
+           var select_ = document.querySelectorAll("[data-indx-select='"+selc+"'] > select")[0];
+         
+         var li_s = document.querySelectorAll("[data-indx-select='"+selc+"'] .cont_select_int > li");
+         var p_act = document.querySelectorAll("[data-indx-select='"+selc+"'] > .selecionado_opcion")[0].innerHTML = li_s[indx].innerHTML;
+         var select_optiones = document.querySelectorAll("[data-indx-select='"+selc+"'] > select > option");
+         for (var i = 0; i < li_s.length; i++) {
+         if (li_s[i].className == 'active') {
+         li_s[i].className = '';
+         };
+         li_s[indx].className = 'active';
+         
+         };
+         select_optiones[indx].selected = true;
+         select_.selectedIndex = indx;
+         select_.onchange();
+         salir_select(selc); 
+         }
+      </script>
+      <script>$(document).ready(function(){
+         $('.owl-carousel').owlCarousel({
+             loop:true,
+             margin:0,
+             responsiveClass:true,
+             responsive:{
+                 0:{
+                     items:1,
+                     nav:true,
+                     autoHeight:true
+                 },
+                 400:{
+                     items:1,
+                     nav:true,
+                   autoHeight:true
+                 },
+                 600:{
+                     items:1,
+                     nav:true,
+                   autoHeight:true
+                 },
+                 1000:{
+                     items:1,
+                     nav:false,
+                     loop:true,
+                     autoplay:true,
+                     autoplayTimeout:2000,
+                     autoplayHoverPause:false,
+                   autoHeight:true
+                 }
+             }
+         })
+         });
+      </script>
 @endsection
