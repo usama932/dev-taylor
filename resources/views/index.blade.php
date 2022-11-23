@@ -42,7 +42,7 @@
              </div>
         </div>
         <div class="scroll-down">
-            <a href="#accountingSection"> <img src="{{ asset('dist/icon-scroll-white.f42c481e.svg') }}"> <span>Scroll</span> </a>
+            <a href="#accountingSection"><img src="{{ asset('dist/accounting-image.10c416a6.png') }}" alt="image"> <span>Scroll</span> </a>
         </div>
     </div>
 </section>
@@ -52,9 +52,21 @@
                             <h4>Specialist Accounting & Finance Recruitment</h4>
                         </div>
                         <div class="accounting-content">
-                            <div class="image-wrapper">
-                                    <div id="logocontainer" class="logo-img"  style="width:auto; height: 80px;"></div>
-                            </div>
+                            <div class="image-wrapper"> <img src="{{ asset('dist/accounting-image.10c416a6.png') }}" alt="image"> </div>
+                            {{-- <div class="image-wrapper">
+                                <img src="{{ asset('dist/accounting-image.54abfafb.png') }}" alt="image">
+                                <div id="logo2" class="logo-img"  style="width:auto; height: 55px;"></div>
+                                <script>
+                                    var animation = bodymovin.loadAnimation({
+                                    // animationData: { / ... / },
+                                    container: document.getElementById('logo2'), // required
+                                    path:'{{ asset('.json') }}', // required
+                                    renderer: 'svg', // required
+                                    loop: true, // optional
+                                    autoplay: true, // optional
+                                    });
+                                </script>
+                            </div> --}}
                             <div class="slider-wrapper">
                                 <div id="testimonials" class="owl-carousel">
                                     @foreach ($specialist_slider->sliderSlides as $key => $slide)
@@ -78,18 +90,8 @@
         </div>
         <div class="recruitment-image">
             <div class="image-wrapper">
-                <div id="logo2" class="logo-img"  style="width:auto; height: 55px;"></div>
-                <script>
-                    var animation = bodymovin.loadAnimation({
-                    // animationData: { / ... / },
-                    container: document.getElementById('logo2'), // required
-                    path:'{{ asset('dist/Test.json') }}', // required
-                    renderer: 'svg', // required
-                    loop: true, // optional
-                    autoplay: true, // optional
-                    });
-                </script>
-                
+                <img src="{{ asset('dist/recruitment-image.4e34f13c.png') }}" alt="image">
+
                 <div class="overview-items">
                     <div class="item one"></div>
                     <div class="item two"></div>

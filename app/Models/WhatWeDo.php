@@ -25,6 +25,7 @@ class WhatWeDo extends Model implements HasMedia
 
     protected $appends = [
         'featured_image',
+        'title_image',
     ];
 
     protected $dates = [
@@ -59,6 +60,17 @@ class WhatWeDo extends Model implements HasMedia
     public function getFeaturedImageAttribute()
     {
         $file = $this->getMedia('featured_image')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+        }
+
+        return $file;
+    }
+    public function getTitleImageAttribute()
+    {
+        $file = $this->getMedia('title_image')->last();
         if ($file) {
             $file->url       = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');
