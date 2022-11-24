@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">  
     <link rel="stylesheet" href="{{ asset('dist/index.8d4b7bfa.css')}}">
     <link href="{{ asset('dist/index.fcc43225.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('dist/index.a8788fe3.css') }}">
+    
+    
     @yield('styles')
 </head>
 
@@ -93,8 +96,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
-
 <script type="module" src="{{ asset('dist/contact.b5605e32.js')}}"></script> 
+<script type="module" src="{{ asset('dist/contact.b735df6d.js')}}"></script> 
 
 @yield('scripts')
 

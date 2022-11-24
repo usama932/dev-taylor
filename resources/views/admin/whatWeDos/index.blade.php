@@ -85,6 +85,7 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'title', name: 'title' },
 { data: 'status', name: 'status' },
+{ data: 'status', name: 'status' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

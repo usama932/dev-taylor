@@ -21,12 +21,13 @@
             <div class="media-banner-wrapper">
                 <div class="media-banner-content">
                     <div class="mediabanner-logo"><img src="{{ asset('dist/taylor-hawkes-logo-yellow.9d4d837d.svg') }}" /></div>
-                    <h3>@if($whatwedo->title_image)<img src="{{asset($whatwedo->title_image)}}" style=""/> @else {{ $whatwedo->title }}@endif</h3>
+                    <h3>@if($whatwedo->title_image)<img src="{{asset($whatwedo->title_image)}}" style="width:100% !important ; height:auto !important"/> @else {{ $whatwedo->title }}@endif</h3>
                 </div>
             </div>
         </div>
     </section>
 </div>
+@if($whatwedo->page_text)
 <?php
     
     $format = PREG_SPLIT_DELIM_CAPTURE;
@@ -35,6 +36,7 @@
     $keywords = preg_split('/(\[[^]]+\])/', $text, -1, $format);
     
     ?>
+    @endif
  <section class="media-creative-section">
         <div class="media-creative-wrapper">
             <div class="media-creative-content-left">
@@ -52,12 +54,12 @@
             </div>
         </div>
     </section>
-@if($whatwedo->case_study->count >  0))
+@if( $whatwedo->case_study)
 <?php
     
     $format = PREG_SPLIT_DELIM_CAPTURE;
     
-    $text = $whatwedo->page_text;
+    $text = $whatwedo->case_study->content;
     $key = preg_split('/(\[[^]]+\])/', $text, -1, $format);
     
 ?>
@@ -72,13 +74,13 @@
        
             <div class="recruiting-tax-wrapper">
                 <div class="recruiting-tax-content">
-                    @if (isset($keywords[0]))
+                    @if (isset($key[0]))
                     {!! $key[0] !!}
                     @endif
                   
                 </div>
                 <div class="recruiting-tax-content">
-                  @if (isset($keywords[2]))
+                  @if (isset($key[2]))
                     {!! $key[2] !!}
                     @endif
                 </div>

@@ -25,7 +25,6 @@ class WhatWeDo extends Model implements HasMedia
 
     protected $appends = [
         'featured_image',
-        'title_image',
     ];
 
     protected $dates = [

@@ -4,7 +4,20 @@
 @section('content')
 <div class="loader-section" id="loader">
     <div class="loader-image">
-        <img src="{{ asset('dist/taylor-hawkes-logo-black.c9014c2b.svg') }}">
+            <a href="/">
+                <div id="logocontainer" class="logo-img"  style="width:auto; height: 55px;"></div>
+            </a>
+                <script>
+                        var animation = bodymovin.loadAnimation({
+                    // animationData: { / ... / },
+                    container: document.getElementById('logocontainer'), // required
+                    path:'{{ asset('Test2.json') }}', // required
+                    renderer: 'svg', // required
+                    loop: true, // optional
+                    autoplay: true, // optional
+                    });
+                </script>
+        
     </div>
 </div>
 
@@ -13,7 +26,11 @@
     <div class="container">
         <div class="banner-wrapper">
             <div class="banner-content">
-                <div class="logo-wrapper"> <img src="{{ asset('dist/taylor-hawkes-logo-black.c9014c2b.svg') }}"> </div>
+                <div class="logo-wrapper" data-aos="fade-up" data-aos-duration="1500">
+                     <div id="logoContainerHeader" class="logoContainer"></div>
+                  </div>
+        
+               
                 <div class="text-wrapper">
                     <h4>Data-lead recruitment specialist for finance & accounting</h4>
                 </div>
@@ -41,45 +58,46 @@
                 </div>
              </div>
         </div>
-        <div class="scroll-down">
-            <a href="#accountingSection"><img src="{{ asset('dist/accounting-image.10c416a6.png') }}" alt="image"> <span>Scroll</span> </a>
-        </div>
+           <div class="scroll-down" data-aos="fade-up" data-aos-duration="3500"> <a href="#accountingSection"> <img src="/icon-scroll-white.f42c481e.svg"> <span>Scroll</span> </a> </div>
+       
     </div>
 </section>
-                 <section class="accounting-section" id="accountingSection">
-                    <div class="accounting-wrapper">
-                        <div class="title-wrapper">
-                            <h4>Specialist Accounting & Finance Recruitment</h4>
-                        </div>
-                        <div class="accounting-content">
-                            <div class="image-wrapper"> <img src="{{ asset('dist/accounting-image.10c416a6.png') }}" alt="image"> </div>
-                            {{-- <div class="image-wrapper">
-                                <img src="{{ asset('dist/accounting-image.54abfafb.png') }}" alt="image">
-                                <div id="logo2" class="logo-img"  style="width:auto; height: 55px;"></div>
-                                <script>
-                                    var animation = bodymovin.loadAnimation({
-                                    // animationData: { / ... / },
-                                    container: document.getElementById('logo2'), // required
-                                    path:'{{ asset('.json') }}', // required
-                                    renderer: 'svg', // required
-                                    loop: true, // optional
-                                    autoplay: true, // optional
-                                    });
-                                </script>
-                            </div> --}}
-                            <div class="slider-wrapper">
-                                <div id="testimonials" class="owl-carousel">
-                                    @foreach ($specialist_slider->sliderSlides as $key => $slide)
-                                        <div class="item">
-                                            <p>{{ $slide->description }}</p>
-                                        </div>
-                                    @endforeach
-
-                                </div>
-                            </div>
-                        </div>
+<section class="accounting-section" id="accountingSection">
+<div class="accounting-wrapper">
+    <div class="title-wrapper">
+        <h4>Specialist Accounting & Finance Recruitment</h4>
+    </div>
+    <div class="accounting-content">
+       <div class="image-wrapper" data-aos="fade-up" data-aos-duration="1500">
+                  <div id="logoContainerAccounting" class="accounting-image"></div>
+               </div>
+        {{-- <div class="image-wrapper">
+            <img src="{{ asset('dist/accounting-image.54abfafb.png') }}" alt="image">
+            <div id="logo2" class="logo-img"  style="width:auto; height: 55px;"></div>
+            <script>
+                var animation = bodymovin.loadAnimation({
+                // animationData: { / ... / },
+                container: document.getElementById('logo2'), // required
+                path:'{{ asset('.json') }}', // required
+                renderer: 'svg', // required
+                loop: true, // optional
+                autoplay: true, // optional
+                });
+            </script>
+        </div> --}}
+        <div class="slider-wrapper">
+            <div id="testimonials" class="owl-carousel">
+                @foreach ($specialist_slider->sliderSlides as $key => $slide)
+                    <div class="item">
+                        <p>{{ $slide->description }}</p>
                     </div>
-                </section>
+                @endforeach
+
+            </div>
+        </div>
+    </div>
+</div>
+</section>
 <section class="recruitment-section">
     <div class="recruitment-wrapper">
         <div class="recruitment-content">

@@ -43,7 +43,7 @@
     
     $format = PREG_SPLIT_DELIM_CAPTURE;
     
-    $text = $whatwedo->page_text;
+    $text = $page->page_text;
     $keywords = preg_split('/(\[[^]]+\])/', $text, -1, $format);
     
     ?>
