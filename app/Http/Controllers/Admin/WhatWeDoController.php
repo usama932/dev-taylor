@@ -75,29 +75,27 @@ class WhatWeDoController extends Controller
         $image ="unset";
         if ($request->title_image) {
            
-            $image = time().'.'.$request->file->extension();
+            $image = time().'.'.$request->title_image->extension();
 
-            $request->file->move(public_path('uploads'), $fileName);
+            $request->title_image->move(public_path('uploads'), $image);
 
            
         }
      
         $WhatWeDo = WhatWeDo::create([
-            'title'=>$request->title,
-            'excerpt'=>$request->excerpt,
-            'page_text'=>$request->page_text,
-            'cta_button_text'=>$request->cta_button_text,
-            'cta_url'=>$request->cta_url,
-            'case_study_id'=>$request->case_study_id,
-            'featured'=>$request->featured,
-            'status'=>$request->status,
-            'slug'=>$request->slug,
-            'parent_id'=>$request->parent_id,
-            'order_by'=>$request->order_by,
-            'title_image'=>$image,
+                'title'=>$request->title,
+                'excerpt'=>$request->excerpt,
+                'page_text'=>$request->page_text,
+                'cta_button_text'=>$request->cta_button_text,
+                'cta_url'=>$request->cta_url,
+                'case_study_id'=>$request->case_study_id,
+                'featured'=>$request->featured,
+                'status'=>$request->status,
+                'slug'=>$request->slug,
+                'parent_id'=>$request->parent_id,
+                'order_by'=>$request->order_by,
+                'title_image'=>$image,
                     ]);
-        $whatWeDo = WhatWeDo::create($request->all());
-      
         if ($request->input('featured_image', false)) {
             $whatWeDo->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
         }
@@ -124,26 +122,16 @@ class WhatWeDoController extends Controller
     {
         $whatWeDo->update($request->all());
         $image ="unset";
+
         if ($request->title_image) {
            
-            $image = time().'.'.$request->file->extension();
+            $image = time().'.'.$request->title_image->extension();
 
-            $request->file->move(public_path('uploads'), $fileName);
+            $request->title_image->move(public_path('uploads'), $image);
             $whatWeDo->update([
                 'title_image' => $image
             ]);
            
-        }
-        
-        if ($request->input('title_image', false)) {
-            if (!$whatWeDo->title_image || $request->input('title_image') !== $whatWeDo->title_image->file_name) {
-                if ($whatWeDo->title_image) {
-                    $whatWeDo->title_image->delete();
-                }
-                $whatWeDo->addMedia(storage_path('tmp/uploads/' . basename($request->input('title_image'))))->toMediaCollection('title_image');
-            }
-        } elseif ($whatWeDo->featured_image) {
-            $whatWeDo->featured_image->delete();
         }
         if ($request->input('featured_image', false)) {
             if (!$whatWeDo->featured_image || $request->input('featured_image') !== $whatWeDo->featured_image->file_name) {

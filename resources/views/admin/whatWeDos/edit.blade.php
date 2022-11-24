@@ -53,14 +53,7 @@
             </div>
              <div class="form-group">
                 <label for="logo">Title Image</label>
-                <div class="needsclick dropzone {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="logo-dropzone">
-                </div>
-                @if($errors->has('logo'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('logo') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.caseStudy.fields.logo_helper') }}</span>
+                <input type="file" name="title_image" class="form-control" value="{{$whatWeDo->title_image}}" />
             </div>
            
             <div class="form-group">

@@ -21,7 +21,7 @@
             <div class="media-banner-wrapper">
                 <div class="media-banner-content">
                     <div class="mediabanner-logo"><img src="{{ asset('dist/taylor-hawkes-logo-yellow.9d4d837d.svg') }}" /></div>
-                    <h3>@if($whatwedo->title_image)<img src="{{$whatwedo->title_image->getUrl()}}" /> @else {{ $whatwedo->title }}@endif</h3>
+                    <h3>@if($whatwedo->title_image)<img src="{{URL::asset('/image/$whatwedo->title_image')}}" /> @else {{ $whatwedo->title }}@endif</h3>
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
             </div>
         </div>
     </section>
-@if(!empty($whatwedo->case_study[0]->content))
+@if($whatwedo->case_study->count >  0))
 <?php
     
     $format = PREG_SPLIT_DELIM_CAPTURE;
@@ -60,8 +60,7 @@
     $text = $whatwedo->page_text;
     $key = preg_split('/(\[[^]]+\])/', $text, -1, $format);
     
-    ?>
-@if(!empty($whatwedo->case_study[0]->content))
+?>
 <section class="recruiting-tax-section">
     <div class="container">
         <div class="title-wrapper"><h4>{{ $whatwedo->case_study[0]->title ?? '' }}</h4></div>
@@ -94,6 +93,7 @@
     </div>
 </section>
 @endif
+
 @endsection
 @section('scripts')
 
