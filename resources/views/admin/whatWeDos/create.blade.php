@@ -50,10 +50,11 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.whatWeDo.fields.featured_image_helper') }}</span>
             </div>
-           <div class="form-group">
+            <div class="form-group">
                 <label for="logo">Title Image</label>
-                <div class="needsclick dropzone {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="logo-dropzone">
-                </div>
+                <input type="file" class="form-control" name="title_image" />
+                {{-- <div class="needsclick dropzone {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="logo-dropzone">
+                </div> --}}
                 @if($errors->has('logo'))
                     <div class="invalid-feedback">
                         {{ $errors->first('logo') }}
@@ -239,7 +240,7 @@ function coloumns(editor){
     Dropzone.options.featuredImageDropzone = {
     url: '{{ route('admin.what-we-dos.storeMedia') }}',
     maxFilesize: 10, // MB
-    acceptedFiles: '.jpeg,.jpg,.png,.gif,.json',
+    acceptedFiles: '.jpeg,.jpg,.png,.gif,.svg,.json',
     maxFiles: 1,
     addRemoveLinks: true,
     headers: {

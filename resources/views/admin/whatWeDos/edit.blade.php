@@ -62,7 +62,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.caseStudy.fields.logo_helper') }}</span>
             </div>
-            </div>
+           
             <div class="form-group">
                 <label for="cta_button_text">{{ trans('cruds.whatWeDo.fields.cta_button_text') }}</label>
                 <input class="form-control {{ $errors->has('cta_button_text') ? 'is-invalid' : '' }}" type="text" name="cta_button_text" id="cta_button_text" value="{{ old('cta_button_text', $whatWeDo->cta_button_text) }}">
@@ -217,7 +217,7 @@
     Dropzone.options.featuredImageDropzone = {
     url: '{{ route('admin.what-we-dos.storeMedia') }}',
     maxFilesize: 10, // MB
-    acceptedFiles: '.jpeg,.jpg,.png,.gif',
+    acceptedFiles: '.jpeg,.jpg,.png,.gif,.svg',
     maxFiles: 1,
     addRemoveLinks: true,
     headers: {

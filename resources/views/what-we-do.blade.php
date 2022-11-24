@@ -1,15 +1,26 @@
 @extends('layouts.frontend-main')
-
+@if($page->featured_image)
+<style>
+    .topbanner_image {
+  width: 100% !important;
+  height: 100vh !important;
+  background-image: url("{{$page->featured_image->getUrl() }} ");
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+</style>
+@endif
 @section('content')
-<div class="topbanner-bg-image">
+<div class="topbanner_image">
     @include('layouts.header')
     <section class="media-banner-section">
         <div class="container">
             <div class="media-banner-wrapper">
-                <div class="media-banner-content">
+                {{-- <div class="media-banner-content">
                     <div class="mediabanner-logo"><img src="{{ asset('dist/taylor-hawkes-logo-yellow.9d4d837d.svg') }}" /></div>
                     <h3>Media/Creative</h3>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
@@ -19,10 +30,8 @@
             <div class="media-creative-content-left white">
                <div class="text-wrape-white">
                   <h3>What we do</h3>
-                  <p>Connecting accountancy practices with top talent is the bedrock of the work we do. From global names within the top-10 leading mid-tier UK firms, independent practices and exciting niche boutiques, we provide our advice and support to a wide range of firms looking to hire the right people to help them grow.</p>
-                  <p>We’ll work together with the necessary decision makers within the practice to identify the details and demands of the role in question, as well as the culture, capabilities and personality of the team who will support the new hire to understand what makes a good fit. We’ll also consider what skills, experience, qualifications and approach the ideal candidate should have to be a success.</p>
-                  <p>From here, we provide introductions to the highest-quality candidates that are right for the role itself and the company more widely – an approach that applies all the way from junior trainees right through to experienced partners and directors.</p>
-               </div>
+                  <p>{!! $page->page_text !!}</p>
+                </div>
             </div>
             <div class="black media-creative-content-right">
                <div class="text-wrape-black">
@@ -30,6 +39,7 @@
                   <div class="cont_select_center">
                      <div class="select_mate" data-mate-select="active">
                         <select onclick="return false;">
+                    
                            <option value="">Choose your sector </option>
                            <option value="1">TH Accountancy Practice (UK)</option>
                            <option value="2">TH CPA (USA) </option>

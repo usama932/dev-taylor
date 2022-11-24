@@ -39,26 +39,25 @@
        </div>
     </section>
  </div>
-    @php
-            $dom = new domDocument;
-            @$dom->loadHTML($page->page_text);
-            $figures = $dom->getElementsByTagName('p');
-            $element = $dom->saveHtml($figures[0]);
-            $element1 = $dom->saveHtml($figures[1]);
-            $element2 = $dom->saveHtml($figures[2]);
-            $element3 = $dom->saveHtml($figures[3]);
-    @endphp
+   <?php
+    
+    $format = PREG_SPLIT_DELIM_CAPTURE;
+    
+    $text = $whatwedo->page_text;
+    $keywords = preg_split('/(\[[^]]+\])/', $text, -1, $format);
+    
+    ?>
 <section id="abouttextsection" class="about-text-section">
     <div class="about-text-wrapper">
         <div class="about-content-left">
-           @php echo htmlspecialchars_decode($element) ;@endphp
-           @php echo htmlspecialchars_decode($element1) ;@endphp
-
+                @if (isset($keywords[0]))
+                    {!! $keywords[0] !!}
+                @endif
         </div>
         <div class="about-content-right">
-            @php echo htmlspecialchars_decode($element2) ;@endphp
-            @php echo htmlspecialchars_decode($element3) ;@endphp
-
+                @if (isset($keywords[2]))
+                    {!! $keywords[2] !!}
+                @endif
         </div>
     </div>
 </section>

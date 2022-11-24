@@ -1,7 +1,20 @@
+
 @extends('layouts.frontend-main')
 
 @section('content')
-<div class="topbanner-bg-image" style="background-image:url(media-banner-image.b75715dd.jpg) !important;">
+@if($whatwedo->featured_image)
+<style>
+    .topbanner_image {
+  width: 100% !important;
+  height: 100vh !important;
+  background-image: url("{{$whatwedo->featured_image->getUrl() }} ");
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+</style>
+@endif
+<div class="topbanner_image">
     @include('layouts.header')
     <section class="media-banner-section">
         <div class="container">
@@ -13,43 +26,41 @@
             </div>
         </div>
     </section>
-</div>yy
-
-@php
-$dom = new domDocument;
-@$dom->loadHTML($whatwedo->page_text);
-$figures = $dom->getElementsByTagName('p');
-$element = $dom->saveHtml($figures[0]);
-$element1 = $dom->saveHtml($figures[1]);
-$element2 = $dom->saveHtml($figures[2]);
-$element3 = $dom->saveHtml($figures[3]);
-@endphp
-
-<section class="media-creative-section">
-    <div class="media-creative-wrapper">
-        <div class="media-creative-content-left">
-         {!! $whatwedo->page_text !!}
-        </div>
-        <div class="media-creative-content-right">
-           
-        </div>
-        <div class="find-more">
-            <a href=" {{ $whatwedo->cta_url }}"> {{ $whatwedo->cta_button_text }}<img src="
+</div>
+<?php
+    
+    $format = PREG_SPLIT_DELIM_CAPTURE;
+    
+    $text = $whatwedo->page_text;
+    $keywords = preg_split('/(\[[^]]+\])/', $text, -1, $format);
+    
+    ?>
+ <section class="media-creative-section">
+        <div class="media-creative-wrapper">
+            <div class="media-creative-content-left">
+                {!! $keywords[0] !!}
+            </div>
+            <div class="media-creative-content-right">
+                @if (isset($keywords[2]))
+                    {!! $keywords[2] !!}
+                @endif
+            </div>
+            <div class="find-more">
+                <a href=" {{ $whatwedo->cta_url }}"> {{ $whatwedo->cta_button_text }}<img
+                        src="
                 {{ asset('dist/icon-arrow-right-black.5aba9cbd.svg') }}" /> </a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 @if(!empty($whatwedo->case_study[0]->content))
-@php
-$dom = new domDocument;
-@$dom->loadHTML($whatwedo->case_study[0]->content);
-$figures = $dom->getElementsByTagName('p');
-$b = $dom->saveHtml($figures[0]);
-$b1 = $dom->saveHtml($figures[1]);
-$b2 = $dom->saveHtml($figures[2]);
-$b3 = $dom->saveHtml($figures[3]);
-@endphp
-@endif
+<?php
+    
+    $format = PREG_SPLIT_DELIM_CAPTURE;
+    
+    $text = $whatwedo->page_text;
+    $key = preg_split('/(\[[^]]+\])/', $text, -1, $format);
+    
+    ?>
 @if(!empty($whatwedo->case_study[0]->content))
 <section class="recruiting-tax-section">
     <div class="container">
@@ -62,12 +73,15 @@ $b3 = $dom->saveHtml($figures[3]);
        
             <div class="recruiting-tax-wrapper">
                 <div class="recruiting-tax-content">
-                    @php echo htmlspecialchars_decode($b) ;@endphp
-                    @php echo htmlspecialchars_decode($b1);@endphp
+                    @if (isset($keywords[0]))
+                    {!! $key[0] !!}
+                    @endif
+                  
                 </div>
                 <div class="recruiting-tax-content">
-                    @php echo htmlspecialchars_decode($b2);@endphp
-                    @php echo htmlspecialchars_decode($b3);@endphp
+                  @if (isset($keywords[2]))
+                    {!! $key[2] !!}
+                    @endif
                 </div>
             </div>
         

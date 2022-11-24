@@ -31,7 +31,7 @@ class IndexController extends Controller
     {
 
         $pageSlug = request()->segment(1);
-
+        $whatwedos =  WhatWeDo::all();
         $page  = ContentPage::where('slug', $pageSlug)->with('categories', 'parent', 'tags','contactInfoLocations','slidesidSlides','pagePageCustomFields')->first();
 
         if(!$pageSlug) {
@@ -46,7 +46,7 @@ class IndexController extends Controller
         }
         $pageTemplate = \View::exists($pageSlug) ? $pageSlug : 'index';
 
-        return view($pageTemplate ,compact('page'));
+        return view($pageTemplate ,compact('page','whatwedos'));
     }
     public function knowledge_single($slug){
        $knowledge = Knowledge::where('slug',$slug)->first();
@@ -58,6 +58,7 @@ class IndexController extends Controller
     }
 public function whatwedo_single($link_to){
     $whatwedo = WhatWeDo::where('slug',$link_to)->first();
+    
     return view('what-we-do-single',compact('whatwedo'));
 }
 }

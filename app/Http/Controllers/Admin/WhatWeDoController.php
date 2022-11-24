@@ -71,11 +71,32 @@ class WhatWeDoController extends Controller
 
     public function store(StoreWhatWeDoRequest $request)
     {
-        $whatWeDo = WhatWeDo::create($request->all());
-        if ($request->input('title_image', false)) {
-         
-            $whatWeDo->addMedia(storage_path('tmp/uploads/' . basename($request->input('title_image'))))->toMediaCollection('title_image');
+      
+        $image ="unset";
+        if ($request->title_image) {
+           
+            $image = time().'.'.$request->file->extension();
+
+            $request->file->move(public_path('uploads'), $fileName);
+
+           
         }
+     
+        $WhatWeDo = WhatWeDo::create([
+            'title'=>$request->title,
+            'excerpt'=>$request->excerpt,
+            'page_text'=>$request->page_text,
+            'cta_button_text'=>$request->cta_button_text,
+            'cta_url'=>$request->cta_url,
+            'case_study_id'=>$request->case_study_id,
+            'featured'=>$request->featured,
+            'status'=>$request->status,
+            'slug'=>$request->slug,
+            'parent_id'=>$request->parent_id,
+            'order_by'=>$request->order_by,
+            'title_image'=>$image,
+                    ]);
+        $whatWeDo = WhatWeDo::create($request->all());
       
         if ($request->input('featured_image', false)) {
             $whatWeDo->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
@@ -102,6 +123,17 @@ class WhatWeDoController extends Controller
     public function update(UpdateWhatWeDoRequest $request, WhatWeDo $whatWeDo)
     {
         $whatWeDo->update($request->all());
+        $image ="unset";
+        if ($request->title_image) {
+           
+            $image = time().'.'.$request->file->extension();
+
+            $request->file->move(public_path('uploads'), $fileName);
+            $whatWeDo->update([
+                'title_image' => $image
+            ]);
+           
+        }
         
         if ($request->input('title_image', false)) {
             if (!$whatWeDo->title_image || $request->input('title_image') !== $whatWeDo->title_image->file_name) {
@@ -163,4 +195,5 @@ class WhatWeDoController extends Controller
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
+    
 }

@@ -42,6 +42,7 @@ class WhatWeDo extends Model implements HasMedia
         'cta_url',
         'case_study_id',
         'featured',
+        'title_image',
         'status',
         'slug',
         'parent_id',
@@ -50,7 +51,7 @@ class WhatWeDo extends Model implements HasMedia
         'updated_at',
         'deleted_at',
     ];
-
+    
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);

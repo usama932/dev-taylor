@@ -79,7 +79,7 @@
                             </div>
                         </div>
                     </div>
-                </section>>
+                </section>
 <section class="recruitment-section">
     <div class="recruitment-wrapper">
         <div class="recruitment-content">
