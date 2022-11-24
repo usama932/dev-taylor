@@ -73,13 +73,12 @@ class WhatWeDoController extends Controller
     {
       
         $image ="unset";
-        if ($request->title_image) {
+        if ($image = $request->file('title_image')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+           $image =  $image->move($destinationPath, $profileImage);
            
-            $image = time().'.'.$request->title_image->extension();
 
-            $request->title_image->move(public_path('uploads'), $image);
-
-           
         }
      
         $WhatWeDo = WhatWeDo::create([
@@ -123,16 +122,17 @@ class WhatWeDoController extends Controller
         $whatWeDo->update($request->all());
         $image ="unset";
 
-        if ($request->title_image) {
-           
-            $image = time().'.'.$request->title_image->extension();
+       
+        if ($image = $request->file('title_image')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+           $image =  $image->move($destinationPath, $profileImage);
+           $whatWeDo->update([
+            'title_image' => $image
+        ]);
 
-            $request->title_image->move(public_path('uploads'), $image);
-            $whatWeDo->update([
-                'title_image' => $image
-            ]);
-           
         }
+
         if ($request->input('featured_image', false)) {
             if (!$whatWeDo->featured_image || $request->input('featured_image') !== $whatWeDo->featured_image->file_name) {
                 if ($whatWeDo->featured_image) {

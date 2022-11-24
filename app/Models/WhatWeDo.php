@@ -69,18 +69,6 @@ class WhatWeDo extends Model implements HasMedia
 
         return $file;
     }
-    public function getTitleImageAttribute()
-    {
-        $file = $this->getMedia('title_image')->last();
-        if ($file) {
-            $file->url       = $file->getUrl();
-            $file->thumbnail = $file->getUrl('thumb');
-            $file->preview   = $file->getUrl('preview');
-        }
-
-        return $file;
-    }
-
     public function case_study()
     {
         return $this->belongsTo(CaseStudy::class, 'case_study_id');

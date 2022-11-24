@@ -21,7 +21,7 @@
             <div class="media-banner-wrapper">
                 <div class="media-banner-content">
                     <div class="mediabanner-logo"><img src="{{ asset('dist/taylor-hawkes-logo-yellow.9d4d837d.svg') }}" /></div>
-                    <h3>@if($whatwedo->title_image)<img src="{{URL::asset('/image/$whatwedo->title_image')}}" /> @else {{ $whatwedo->title }}@endif</h3>
+                    <h3>@if($whatwedo->title_image)<img src="{{asset($whatwedo->title_image)}}" style=""/> @else {{ $whatwedo->title }}@endif</h3>
                 </div>
             </div>
         </div>

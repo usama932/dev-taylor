@@ -51,9 +51,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.whatWeDo.fields.featured_image_helper') }}</span>
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <label for="logo">Title Image</label>
-                <input type="file" name="title_image" class="form-control" value="{{$whatWeDo->title_image}}" />
+                <input type="file" name="title_image" class="form-control" value="{{$whatWeDo->title_image}}">
             </div>
            
             <div class="form-group">
