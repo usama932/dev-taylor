@@ -209,7 +209,7 @@
 <script>
     Dropzone.options.featuredImageDropzone = {
     url: '{{ route('admin.what-we-dos.storeMedia') }}',
-    maxFilesize: 10, // MB
+    maxFilesize: 25, // MB
     acceptedFiles: '.jpeg,.jpg,.png,.gif,.svg',
     maxFiles: 1,
     addRemoveLinks: true,
@@ -217,9 +217,9 @@
       'X-CSRF-TOKEN': "{{ csrf_token() }}"
     },
     params: {
-      size: 10,
-      width: 4096,
-      height: 4096
+      size: 25,
+      width: 51600,
+      height: 51600
     },
     success: function (file, response) {
       $('form').find('input[name="featured_image"]').remove()

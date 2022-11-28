@@ -71,7 +71,7 @@ class WhatWeDoController extends Controller
 
     public function store(StoreWhatWeDoRequest $request)
     {
-      
+     dd(phpinfo()); 
         $image ="unset";
         if ($image = $request->file('title_image')) {
             $destinationPath = 'image/';
@@ -81,7 +81,7 @@ class WhatWeDoController extends Controller
 
         }
      
-        $WhatWeDo = WhatWeDo::create([
+        $whatWeDo = WhatWeDo::create([
                 'title'=>$request->title,
                 'excerpt'=>$request->excerpt,
                 'page_text'=>$request->page_text,

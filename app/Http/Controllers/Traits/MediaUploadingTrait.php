@@ -9,9 +9,10 @@ trait MediaUploadingTrait
     public function storeMedia(Request $request)
     {
         // Validates file size
+       
         if (request()->has('size')) {
             $this->validate(request(), [
-                'file' => 'max:' . request()->input('size') * 1024,
+                'file' => 'max:25000',
             ]);
         }
         // If width or height is preset - we are validating it as an image
@@ -19,8 +20,8 @@ trait MediaUploadingTrait
             $this->validate(request(), [
                 'file' => sprintf(
                     'image|dimensions:max_width=%s,max_height=%s',
-                    request()->input('width', 100000),
-                    request()->input('height', 100000)
+                    request()->input('width', 51200),
+                    request()->input('height', 51200)
                 ),
             ]);
         }

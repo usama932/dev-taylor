@@ -95,9 +95,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
-<script type="module" src="{{ asset('dist/contact.b5605e32.js')}}"></script> 
-<script type="module" src="{{ asset('dist/contact.b735df6d.js')}}"></script> 
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script> --}}
+<script type="module" src="{{asset('dist/contact.b5605e32.js')}}"></script> 
+<script type="module" src="{{asset('dist/contact.b735df6d.js')}}"></script> 
 
 @yield('scripts')
 
