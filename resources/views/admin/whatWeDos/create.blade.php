@@ -239,8 +239,8 @@ function coloumns(editor){
     },
     params: {
       size: 25,
-      width: 25600,
-      height: 25600
+      width: 51600,
+      height: 51600
     },
     success: function (file, response) {
       $('form').find('input[name="featured_image"]').remove()

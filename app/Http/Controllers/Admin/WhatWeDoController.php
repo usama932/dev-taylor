@@ -71,7 +71,6 @@ class WhatWeDoController extends Controller
 
     public function store(StoreWhatWeDoRequest $request)
     {
-     dd(phpinfo()); 
         $image ="unset";
         if ($image = $request->file('title_image')) {
             $destinationPath = 'image/';
@@ -95,6 +94,7 @@ class WhatWeDoController extends Controller
                 'order_by'=>$request->order_by,
                 'title_image'=>$image,
                     ]);
+                
         if ($request->input('featured_image', false)) {
             $whatWeDo->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
         }
@@ -132,18 +132,21 @@ class WhatWeDoController extends Controller
         ]);
 
         }
-
+       
         if ($request->input('featured_image', false)) {
+           
             if (!$whatWeDo->featured_image || $request->input('featured_image') !== $whatWeDo->featured_image->file_name) {
+                
                 if ($whatWeDo->featured_image) {
                     $whatWeDo->featured_image->delete();
                 }
+                
                 $whatWeDo->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
             }
         } elseif ($whatWeDo->featured_image) {
             $whatWeDo->featured_image->delete();
         }
-
+        
         return redirect()->route('admin.what-we-dos.index');
     }
 
