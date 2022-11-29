@@ -43,6 +43,34 @@
                 <label for="featured_image">{{ trans('cruds.whatWeDo.fields.featured_image') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('featured_image') ? 'is-invalid' : '' }}" id="featured_image-dropzone">
                 </div>
+                <button type="button" class="btn btn-primary btn-sm mt-2" data-toggle="modal" data-target="#exampleModal">
+                    Choose from gallery
+                </button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Choose Image</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                            <div class="row">
+                            @foreach ($medias as $media)
+                            <div class="col-md-3 m-2"> 
+                                <label>
+                                    <input type="radio" name="featured_image2" value="{{$media->file_name}}" >
+                                    <img src="{{$media->getUrl('thumb')}}" style="width:110px; height:auto;" >
+                                </label>
+                            </div>
+                            @endforeach
+                                </div>
+                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 @if($errors->has('featured_image'))
                     <div class="invalid-feedback">
                         {{ $errors->first('featured_image') }}

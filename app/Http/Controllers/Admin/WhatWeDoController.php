@@ -9,15 +9,18 @@ use App\Http\Requests\StoreWhatWeDoRequest;
 use App\Http\Requests\UpdateWhatWeDoRequest;
 use App\Models\CaseStudy;
 use App\Models\WhatWeDo;
+use Spatie\MediaLibrary\HasMedia;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
 class WhatWeDoController extends Controller
 {
     use MediaUploadingTrait;
+    use InteractsWithMedia;
 
     public function index(Request $request)
     {
@@ -62,15 +65,18 @@ class WhatWeDoController extends Controller
 
     public function create()
     {
+        $medias = Media::latest()->take(20)->get();
+
         abort_if(Gate::denies('what_we_do_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $case_studies = CaseStudy::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.whatWeDos.create', compact('case_studies'));
+        return view('admin.whatWeDos.create', compact('case_studies','medias'));
     }
 
     public function store(StoreWhatWeDoRequest $request)
     {
+       
         $image ="unset";
         if ($image = $request->file('title_image')) {
             $destinationPath = 'image/';
@@ -94,8 +100,13 @@ class WhatWeDoController extends Controller
                 'order_by'=>$request->order_by,
                 'title_image'=>$image,
                     ]);
-                
+              
         if ($request->input('featured_image', false)) {
+
+            $whatWeDo->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
+        }
+        if ($request->has('featured_image')) {
+
             $whatWeDo->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
         }
 

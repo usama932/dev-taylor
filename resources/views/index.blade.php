@@ -4,20 +4,19 @@
 @section('content')
 <div class="loader-section" id="loader">
     <div class="loader-image">
-            <a href="/">
-                <div id="logocontainer" class="logo-img"  style="width:auto; height: 55px;"></div>
-            </a>
-                <script>
-                        var animation = bodymovin.loadAnimation({
-                    // animationData: { / ... / },
-                    container: document.getElementById('logocontainer'), // required
-                    path:'{{ asset('Test2.json') }}', // required
-                    renderer: 'svg', // required
-                    loop: true, // optional
-                    autoplay: true, // optional
-                    });
-                </script>
-        
+        <a href="/">
+            <div id="logocontainer" class="logo-img"  style="width:auto; height: 55px;"></div>
+        </a>
+            <script>
+                    var animation = bodymovin.loadAnimation({
+                // animationData: { / ... / },
+                container: document.getElementById('logocontainer'), // required
+                path:'{{ asset('Test2.json') }}', // required
+                renderer: 'svg', // required
+                loop: true, // optional
+                autoplay: true, // optional
+                });
+            </script>
     </div>
 </div>
 
