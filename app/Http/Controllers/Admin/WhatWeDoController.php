@@ -76,7 +76,7 @@ class WhatWeDoController extends Controller
 
     public function store(StoreWhatWeDoRequest $request)
     {
-       
+        
         $image ="unset";
         if ($image = $request->file('title_image')) {
             $destinationPath = 'image/';
@@ -105,10 +105,27 @@ class WhatWeDoController extends Controller
 
             $whatWeDo->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
         }
-        if ($request->has('featured_image')) {
+        // if ($request->has('featured_image2')) {
+            
+       
+        // // If width or height is preset - we are validating it as an image
+        
+        // $path = storage_path('tmp/uploads');
 
-            $whatWeDo->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
-        }
+        // try {
+        //     if (!file_exists($path)) {
+        //         mkdir($path, 0755, true);
+        //     }
+        // } catch (\Exception $e) {
+        // }
+
+        // $file = $request->featured_image2;
+
+        // $name = uniqid() . '_' . trim($file->getClientOriginalName());
+
+        // $file->move($path, $name);
+        //     $whatWeDo->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image2'))))->toMediaCollection('featured_image');
+        // }
 
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $whatWeDo->id]);

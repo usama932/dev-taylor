@@ -11,7 +11,6 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Spatie\MediaLibrary\Models\Media;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 
@@ -51,7 +50,6 @@ class User extends Authenticatable
         'deleted_at',
     ];
 
-    
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
