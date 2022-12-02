@@ -1,4 +1,5 @@
-<div id="sidebar" class="c-sidebar c-sidebar-fixed c-sidebar-lg-show">
+
+<div id="sidebar" class="c-sidebar c-sidebar-fixed c-sidebar-lg-show" style="background-color:#000 !important; ">
 
     <div class="c-sidebar-brand d-md-down-none">
         <a class="c-sidebar-brand-full h4" href="#">
@@ -6,14 +7,14 @@
         </a>
     </div>
 
-    <ul class="c-sidebar-nav">
+    <ul class="c-sidebar-nav ">
         <li>
             <select class="searchable-field form-control">
 
             </select>
         </li>
-        <li class="c-sidebar-nav-item">
-            <a href="{{ route("admin.home") }}" class="c-sidebar-nav-link">
+        <li class="c-sidebar-nav-item"  >
+            <a href="{{ route("admin.home") }}" class="c-sidebar-nav-link" >
                 <i class="c-sidebar-nav-icon fas fa-fw fa-tachometer-alt">
 
                 </i>

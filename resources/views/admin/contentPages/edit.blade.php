@@ -1,258 +1,282 @@
 @extends('layouts.admin')
 @section('content')
-<div class="card">
-   <div class="card-header">
+<div class="main-card">
+   <div class="header">
       {{ trans('global.edit') }} {{ trans('cruds.contentPage.title_singular') }}
    </div>
-   <div class="card-body">
+   
       <form method="POST" action="{{ route("admin.content-pages.update", [$contentPage->id]) }}" enctype="multipart/form-data">
       @method('PUT')
       @csrf
-      <div class="form-group">
-         <label class="required" for="title">{{ trans('cruds.contentPage.fields.title') }}</label>
-         <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', $contentPage->title) }}" required>
-         @if($errors->has('title'))
-         <div class="invalid-feedback">
-            {{ $errors->first('title') }}
+      <div class="body">
+         <div class="mb-3">
+            <div class="form-group">
+               <label class="text-xs required" for="title">{{ trans('cruds.contentPage.fields.title') }}</label>
+               <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', $contentPage->title) }}" required>
+               @if($errors->has('title'))
+               <div class="invalid-feedback">
+                  {{ $errors->first('title') }}
+               </div>
+               @endif
+               <span class="help-block">{{ trans('cruds.contentPage.fields.title_helper') }}</span>
+            </div>
          </div>
-         @endif
-         <span class="help-block">{{ trans('cruds.contentPage.fields.title_helper') }}</span>
-      </div>
-      <div class="form-group">
-         <label for="excerpt">{{ trans('cruds.contentPage.fields.excerpt') }}</label>
-         <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt', $contentPage->excerpt) }}</textarea>
-         @if($errors->has('excerpt'))
-         <div class="invalid-feedback">
-            {{ $errors->first('excerpt') }}
+         <div class="mb-3">
+            <div class="form-group">
+               <label for="excerpt" class="text-xs">{{ trans('cruds.contentPage.fields.excerpt') }}</label>
+               <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt', $contentPage->excerpt) }}</textarea>
+               @if($errors->has('excerpt'))
+               <div class="invalid-feedback">
+                  {{ $errors->first('excerpt') }}
+               </div>
+               @endif
+               <span class="help-block">{{ trans('cruds.contentPage.fields.excerpt_helper') }}</span>
+            </div>
          </div>
-         @endif
-         <span class="help-block">{{ trans('cruds.contentPage.fields.excerpt_helper') }}</span>
-      </div>
-      <div class="form-group">
-         <label for="page_text">{{ trans('cruds.contentPage.fields.page_text') }}</label>
-         <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" name="page_text" id="page_text">{!! old('page_text', $contentPage->page_text) !!}</textarea>
-         @if($errors->has('page_text'))
-         <div class="invalid-feedback">
-            {{ $errors->first('page_text') }}
+         <div class="mb-3">
+            <div class="form-group">
+               <label for="page_text" class="text-xs">{{ trans('cruds.contentPage.fields.page_text') }}</label>
+               <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" name="page_text" id="page_text">{!! old('page_text', $contentPage->page_text) !!}</textarea>
+               @if($errors->has('page_text'))
+               <div class="invalid-feedback">
+                  {{ $errors->first('page_text') }}
+               </div>
+               @endif
+               <span class="help-block">{{ trans('cruds.contentPage.fields.page_text_helper') }}</span>
+            </div>
          </div>
-         @endif
-         <span class="help-block">{{ trans('cruds.contentPage.fields.page_text_helper') }}</span>
-      </div>
-      <div class="form-group">
-         <label for="featured_image">{{ trans('cruds.contentPage.fields.featured_image') }}</label>
-         <div class="needsclick dropzone {{ $errors->has('featured_image') ? 'is-invalid' : '' }}" id="featured_image-dropzone">
+         <div class="mb-3">
+            <div class="form-group">
+               <label for="featured_image"  class="text-xs">{{ trans('cruds.contentPage.fields.featured_image') }}</label>
+               <div class="needsclick dropzone {{ $errors->has('featured_image') ? 'is-invalid' : '' }}" id="featured_image-dropzone">
+               </div>
+               @if($errors->has('featured_image'))
+               <div class="invalid-feedback">
+                  {{ $errors->first('featured_image') }}
+               </div>
+               @endif
+               <span class="help-block">{{ trans('cruds.contentPage.fields.featured_image_helper') }}</span>
+            </div>
          </div>
-         @if($errors->has('featured_image'))
-         <div class="invalid-feedback">
-            {{ $errors->first('featured_image') }}
+         <div class="mb-3">
+            <div class="form-group">
+               <label  class="text-xs">{{ trans('cruds.contentPage.fields.status') }}</label>
+               <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
+               <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+               @foreach(App\Models\ContentPage::STATUS_SELECT as $key => $label)
+               <option value="{{ $key }}" {{ old('status', $contentPage->status) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+               @endforeach
+               </select>
+               @if($errors->has('status'))
+               <div class="invalid-feedback">
+                  {{ $errors->first('status') }}
+               </div>
+               @endif
+               <span class="help-block">{{ trans('cruds.contentPage.fields.status_helper') }}</span>
+            </div>
          </div>
-         @endif
-         <span class="help-block">{{ trans('cruds.contentPage.fields.featured_image_helper') }}</span>
-      </div>
-      <div class="form-group">
-         <label>{{ trans('cruds.contentPage.fields.status') }}</label>
-         <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
-         <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-         @foreach(App\Models\ContentPage::STATUS_SELECT as $key => $label)
-         <option value="{{ $key }}" {{ old('status', $contentPage->status) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+         <div class="mb-3">
+            <div class="form-group">
+               <label for="parent_id"  class="text-xs">{{ trans('cruds.contentPage.fields.parent') }}</label>
+               <select class="form-control select2 {{ $errors->has('parent') ? 'is-invalid' : '' }}" name="parent_id" id="parent_id">
+               @foreach($parents as $id => $entry)
+               <option value="{{ $id }}" {{ (old('parent_id') ? old('parent_id') : $contentPage->parent->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+               @endforeach
+               </select>
+               @if($errors->has('parent'))
+               <div class="invalid-feedback">
+                  {{ $errors->first('parent') }}
+               </div>
+               @endif
+               <span class="help-block">{{ trans('cruds.contentPage.fields.parent_helper') }}</span>
+            </div>
+         </div>
+         @if($contentPage->title == 'Contact Us')
+         @foreach($contentPage->contactInfoLocations as $key => $custom)
+         <div class="mb-3">
+            <label for="slug"  class="text-xs">
+                  <h6>Office {{ $custom->id }}</h6>
+            </label>
+            <input type="hidden" name="addMoreInputFields[{{  $custom->id}}][location_id]" value="{{  $custom->id}}">
+         </div>
+         <div class="mb-3">
+            <div class="form-group">
+                  <label for="slug"  class="text-xs">Location Country</label>
+                  <input class="form-control" type="text" name="addMoreInputFields[{{  $custom->id}}][location_country]"  value="{{  $custom->location_country}}">
+            </div>
+         </div>
+         <div class="mb-3">
+            <div class="form-group">
+                  <label for="slug"  class="text-xs">Location Phone</label>
+                  <input class="form-control" type="text" name="addMoreInputFields[{{  $custom->id}}][location_phone]"  value="{{  $custom->location_phone }}">
+            </div>
+         </div>
+         <div class="mb-3"  class="text-xs">
+            <div class="form-group">
+                  <label for="slug">Location Address</label>
+                  <input class="form-control" type="text" name="addMoreInputFields[{{  $custom->id}}][location_address]"  value="{{ $custom->location_country }}">
+            </div>
+         </div>
+         <div class="mb-3">
+            <div class="form-group">
+                  <label for="slug"  class="text-xs">Location Address_Link</label>
+                  <input class="form-control" type="text" name="addMoreInputFields[{{  $custom->id}}][location_addlink]"  value="{{  $custom->location_addlink }}">
+            </div>
+         </div>
          @endforeach
-         </select>
-         @if($errors->has('status'))
-         <div class="invalid-feedback">
-            {{ $errors->first('status') }}
+         @endif
+         @if($contentPage->title == 'About us')
+         <h5>Future Section:</h5>
+         @foreach ($contentPage->pagePageCustomFields as $key => $field )
+         @if($field->field_lable == 'cta text')
+               <div class="mb-3">
+               <label>{{Str::upper( $field->field_lable )}}</label>
+               <input type="hidden" name="addMoreFields[{{  $field->id}}][field_id]" value="{{ $field->id}}">
+
+               <input class="form-control"  name="addMoreFields[{{$field->id}}][field_value]" value="{{ $field->field_value }}" >
+               </div>
+         @endif
+         @if($field->field_lable == 'cta url')
+         <div class="mb-3">
+         <label>{{Str::upper( $field->field_lable )}}</label>
+         <input type="hidden" name="addMoreFields[{{  $field->id }}][field_id]" value="{{ $field->id}}">
+         <input class="form-control"  name="addMoreFields[{{$field->id}}][field_value]" value="{{ $field->field_value }}" >
          </div>
          @endif
-         <span class="help-block">{{ trans('cruds.contentPage.fields.status_helper') }}</span>
-      </div>
-      <div class="form-group">
-         <label for="parent_id">{{ trans('cruds.contentPage.fields.parent') }}</label>
-         <select class="form-control select2 {{ $errors->has('parent') ? 'is-invalid' : '' }}" name="parent_id" id="parent_id">
-         @foreach($parents as $id => $entry)
-         <option value="{{ $id }}" {{ (old('parent_id') ? old('parent_id') : $contentPage->parent->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
          @endforeach
-         </select>
-         @if($errors->has('parent'))
-         <div class="invalid-feedback">
-            {{ $errors->first('parent') }}
-         </div>
+         @if($contentPage->slidesidSlides->count() > 0)
+               @foreach($contentPage->slidesidSlides as $key => $slide)
+                  @if($slide->slider->name == 'Future')
+                     <label>{{Str::upper($slide->title) }}</label>
+                     <input type="hidden" name="addMoreInputs[{{  $slide->id}}][slide_id]" value="{{ $slide->id}}">
+                     <textarea class="form-control"  name="addMoreInputs[{{$slide->id}}][slide_description]"  >{{ $slide->description }}</textarea>
+                  @endif
+               @endforeach
          @endif
-         <span class="help-block">{{ trans('cruds.contentPage.fields.parent_helper') }}</span>
-      </div>
-      @if($contentPage->title == 'Contact Us')
-        @foreach($contentPage->contactInfoLocations as $key => $custom)
-        <label for="slug">
-            <h6>Office {{ $custom->id }}</h6>
-        </label>
-        <input type="hidden" name="addMoreInputFields[{{  $custom->id}}][location_id]" value="{{  $custom->id}}">
-        <div class="form-group">
-            <label for="slug">Location Country</label>
-            <input class="form-control" type="text" name="addMoreInputFields[{{  $custom->id}}][location_country]"  value="{{  $custom->location_country}}">
-        </div>
-        <div class="form-group">
-            <label for="slug">Location Phone</label>
-            <input class="form-control" type="text" name="addMoreInputFields[{{  $custom->id}}][location_phone]"  value="{{  $custom->location_phone }}">
-        </div>
-        <div class="form-group">
-            <label for="slug">Location Address</label>
-            <input class="form-control" type="text" name="addMoreInputFields[{{  $custom->id}}][location_address]"  value="{{ $custom->location_country }}">
-        </div>
-        <div class="form-group">
-            <label for="slug">Location Address_Link</label>
-            <input class="form-control" type="text" name="addMoreInputFields[{{  $custom->id}}][location_addlink]"  value="{{  $custom->location_addlink }}">
-        </div>
-        @endforeach
-      @endif
-      @if($contentPage->title == 'About us')
-      <h5>Future Section:</h5>
-        @foreach ($contentPage->pagePageCustomFields as $key => $field )
-        @if($field->field_lable == 'cta text')
-            <div class="mb-3">
-            <label>{{Str::upper( $field->field_lable )}}</label>
-            <input type="hidden" name="addMoreFields[{{  $field->id}}][field_id]" value="{{ $field->id}}">
-
-            <input class="form-control"  name="addMoreFields[{{$field->id}}][field_value]" value="{{ $field->field_value }}" >
-            </div>
-        @endif
-        @if($field->field_lable == 'cta url')
-        <div class="mb-3">
-        <label>{{Str::upper( $field->field_lable )}}</label>
-        <input type="hidden" name="addMoreFields[{{  $field->id }}][field_id]" value="{{ $field->id}}">
-        <input class="form-control"  name="addMoreFields[{{$field->id}}][field_value]" value="{{ $field->field_value }}" >
-        </div>
-        @endif
-        @endforeach
-        @if($contentPage->slidesidSlides->count() > 0)
-            @foreach($contentPage->slidesidSlides as $key => $slide)
-                @if($slide->slider->name == 'Future')
-                    <label>{{Str::upper($slide->title) }}</label>
-                    <input type="hidden" name="addMoreInputs[{{  $slide->id}}][slide_id]" value="{{ $slide->id}}">
-                    <textarea class="form-control"  name="addMoreInputs[{{$slide->id}}][slide_description]"  >{{ $slide->description }}</textarea>
-                @endif
-            @endforeach
-        @endif
-      @endif
-      @if($contentPage->title == 'Home')
-        @if($contentPage->slidesidSlides->count() > 0)
-
-            <h5>Top Banner:</h5>
-
-        <br>
-        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-            Add New Slide
-        </button>
-        <hr>
-        <table class=" table table-bordered table-striped table-hover">
-            <tr>
-            <th>
-                Title
-            </th>
-            {{-- <th>
-                Description
-            </th> --}}
-            <th>
-                Status
-            </th>
-            <th>
-                Action
-            </th>
-            </tr>
-            @foreach($contentPage->slidesidSlides as $key => $slide)
-            @if($slide->slider->type == 'topslider')
-            <tr>
-            <td>
-                {{  $slide->title  }}
-            </td>
-            {{-- <td>
-                {{  $slide->deescription  }}
-            </td> --}}
-            <td>
-                {{ App\Models\Slide::STATUS_SELECT[$slide->status] ?? '' }}
-            </td>
-            <td>
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editslide{{ $slide->id }}">
-                    Edit
-                </button>
-            </td>
-            </tr>
-            @endif
-            @endforeach
-
-        </table>
-        @endif
-
-
-            <h5>Specialist Section:</h5>
-
-        @if($contentPage->pagePageCustomFields->count() > 0)
-        @foreach ($contentPage->pagePageCustomFields as $key => $field )
-        @if($field->field_lable == 'specialist')
-            <div class="mb-3">
-                <input type="hidden" name="addMoreFields[{{  $field->id}}][field_id]" value="{{ $field->id}}">
-            <label>Title</label>
-            <input class="form-control"  name="addMoreFields[{{  $field->id}}][field_value]" value="{{ $field->field_value }}" >
-            </div>
-        @endif
-        @endforeach
-        @endif
-        @foreach($contentPage->slidesidSlides as $key => $slide)
-        @if($slide->slider->name == 'Specialist')
-        <div class="mb-3">
-            <label>{{$slide->title}}</label>
-            <input type="hidden" name="addMoreInputs[{{  $slide->id}}][slide_id]" value="{{ $slide->id}}">
-            <textarea class="form-control"  name="addMoreInputs[{{  $slide->id}}][slide_description]"  >{{ $slide->description }}</textarea>
-        </div>
-        @endif
-        @endforeach
-        <label for="slug">
-        <h5>Recruitement Section:</h5>
-        </label>
-        @if($contentPage->pagePageCustomFields->count() > 0)
-        @foreach ($contentPage->pagePageCustomFields as $key => $field )
-        @if($field->field_lable == 'Recruitment')
-            <div class="mb-3">
-            <label>Title</label>
-            <input type="hidden" name="addMoreFields[{{  $field->id}}][field_id]" value="{{ $field->id}}">
-
-            <input class="form-control"  name="addMoreFields[{{$field->id}}][field_value]" value="{{ $field->field_value }}" >
-            </div>
-        @endif
-        @if($field->field_lable == 'Description')
-        <div class="mb-3">
-        <label>Description</label>
-        <input type="hidden" name="addMoreFields[{{  $field->id }}][field_id]" value="{{ $field->id}}">
-        <input class="form-control"  name="addMoreFields[{{$field->id}}][field_value]" value="{{ $field->field_value }}" >
-        </div>
-        @endif
-        @endforeach
-        @endif
-        @foreach($contentPage->slidesidSlides as $key => $slide)
-        @if($slide->slider->name == 'Recruitment')
-        <div class="mb-3">
-        <label>{{$slide->title}}</label>
-        <input type="hidden" name="addMoreInputs[{{$slide->id}}][slide_id]" value="{{$slide->id}}">
-        <textarea class="form-control"  name="addMoreInputs[{{$slide->id}}][slide_description]">{{ $slide->description }}</textarea>
-        </div>
-        @endif
-        @endforeach
-
-        @endif
-      <div class="form-group">
-         <label for="slug">{{ trans('cruds.contentPage.fields.slug') }}</label>
-         <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', $contentPage->slug) }}">
-         @if($errors->has('slug'))
-         <div class="invalid-feedback">
-            {{ $errors->first('slug') }}
-         </div>
          @endif
-         <span class="help-block">{{ trans('cruds.contentPage.fields.slug_helper') }}</span>
-      </div>
-      <div class="form-group">
-         <button class="btn btn-danger" type="submit">
-         {{ trans('global.save') }}
+         @if($contentPage->title == 'Home')
+         @if($contentPage->slidesidSlides->count() > 0)
+
+               <h5>Top Banner:</h5>
+
+         <br>
+         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+               Add New Slide
          </button>
+         <hr>
+         <table class=" table table-bordered table-striped table-hover">
+               <tr>
+               <th>
+                  Title
+               </th>
+               {{-- <th>
+                  Description
+               </th> --}}
+               <th>
+                  Status
+               </th>
+               <th>
+                  Action
+               </th>
+               </tr>
+               @foreach($contentPage->slidesidSlides as $key => $slide)
+               @if($slide->slider->type == 'topslider')
+               <tr>
+               <td>
+                  {{  $slide->title  }}
+               </td>
+               {{-- <td>
+                  {{  $slide->deescription  }}
+               </td> --}}
+               <td>
+                  {{ App\Models\Slide::STATUS_SELECT[$slide->status] ?? '' }}
+               </td>
+               <td>
+                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editslide{{ $slide->id }}">
+                     Edit
+                  </button>
+               </td>
+               </tr>
+               @endif
+               @endforeach
+
+         </table>
+         @endif
+
+
+               <h5>Specialist Section:</h5>
+
+         @if($contentPage->pagePageCustomFields->count() > 0)
+         @foreach ($contentPage->pagePageCustomFields as $key => $field )
+         @if($field->field_lable == 'specialist')
+               <div class="mb-3">
+                  <input type="hidden" name="addMoreFields[{{  $field->id}}][field_id]" value="{{ $field->id}}">
+               <label>Title</label>
+               <input class="form-control"  name="addMoreFields[{{  $field->id}}][field_value]" value="{{ $field->field_value }}" >
+               </div>
+         @endif
+         @endforeach
+         @endif
+         @foreach($contentPage->slidesidSlides as $key => $slide)
+         @if($slide->slider->name == 'Specialist')
+         <div class="mb-3">
+               <label>{{$slide->title}}</label>
+               <input type="hidden" name="addMoreInputs[{{  $slide->id}}][slide_id]" value="{{ $slide->id}}">
+               <textarea class="form-control"  name="addMoreInputs[{{  $slide->id}}][slide_description]"  >{{ $slide->description }}</textarea>
+         </div>
+         @endif
+         @endforeach
+         <label for="slug">
+         <h5>Recruitement Section:</h5>
+         </label>
+         @if($contentPage->pagePageCustomFields->count() > 0)
+         @foreach ($contentPage->pagePageCustomFields as $key => $field )
+         @if($field->field_lable == 'Recruitment')
+               <div class="mb-3">
+               <label>Title</label>
+               <input type="hidden" name="addMoreFields[{{  $field->id}}][field_id]" value="{{ $field->id}}">
+
+               <input class="form-control"  name="addMoreFields[{{$field->id}}][field_value]" value="{{ $field->field_value }}" >
+               </div>
+         @endif
+         @if($field->field_lable == 'Description')
+         <div class="mb-3">
+         <label>Description</label>
+         <input type="hidden" name="addMoreFields[{{  $field->id }}][field_id]" value="{{ $field->id}}">
+         <input class="form-control"  name="addMoreFields[{{$field->id}}][field_value]" value="{{ $field->field_value }}" >
+         </div>
+         @endif
+         @endforeach
+         @endif
+         @foreach($contentPage->slidesidSlides as $key => $slide)
+         @if($slide->slider->name == 'Recruitment')
+         <div class="mb-3">
+         <label>{{$slide->title}}</label>
+         <input type="hidden" name="addMoreInputs[{{$slide->id}}][slide_id]" value="{{$slide->id}}">
+         <textarea class="form-control"  name="addMoreInputs[{{$slide->id}}][slide_description]">{{ $slide->description }}</textarea>
+         </div>
+         @endif
+         @endforeach
+
+         @endif
+         <div class="form-group">
+            <label for="slug"  class="text-xs">{{ trans('cruds.contentPage.fields.slug') }}</label>
+            <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', $contentPage->slug) }}">
+            @if($errors->has('slug'))
+            <div class="invalid-feedback">
+               {{ $errors->first('slug') }}
+            </div>
+            @endif
+            <span class="help-block">{{ trans('cruds.contentPage.fields.slug_helper') }}</span>
+         </div>
+         <div class="form-group">
+            <div class="footer">
+               <button type="submit" class="submit-button">{{ trans('global.save') }}</button>
+            </div>
+         </div>
       </div>
       </form>
-   </div>
+   
 </div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

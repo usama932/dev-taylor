@@ -6,7 +6,7 @@
 <style>
     .topbanner_image {
   width: 100% !important;
-  height: 100vh !important;
+  height: 90vh !important;
   background-image: url("{{$whatwedo->featured_image->getUrl() }} ");
   background-position: center !important;
   background-repeat: no-repeat !important;

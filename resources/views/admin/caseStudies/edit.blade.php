@@ -1,152 +1,190 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class="card">
-    <div class="card-header">
+<div class="main-card">
+    <div class="header">
         {{ trans('global.edit') }} {{ trans('cruds.caseStudy.title_singular') }}
     </div>
 
-    <div class="card-body">
-        <form method="POST" action="{{ route("admin.case-studies.update", [$caseStudy->id]) }}" enctype="multipart/form-data">
-            @method('PUT')
-            @csrf
-            <div class="form-group">
-                <label class="required" for="title">{{ trans('cruds.caseStudy.fields.title') }}</label>
-                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', $caseStudy->title) }}" required>
-                @if($errors->has('title'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('title') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.caseStudy.fields.title_helper') }}</span>
+    
+    <form method="POST" action="{{ route("admin.case-studies.update", [$caseStudy->id]) }}" enctype="multipart/form-data">
+        @method('PUT')
+        @csrf
+        <div class="body">
+            <div class="mb-3">
+                <label class="text-xs required" for="title">{{ trans('cruds.caseStudy.fields.title') }}</label>
+                <div class="form-group">
+                
+                    <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', $caseStudy->title) }}" required>
+                    @if($errors->has('title'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('title') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.caseStudy.fields.title_helper') }}</span>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="subtitle">{{ trans('cruds.caseStudy.fields.subtitle') }}</label>
-                <input class="form-control {{ $errors->has('subtitle') ? 'is-invalid' : '' }}" type="text" name="subtitle" id="subtitle" value="{{ old('subtitle', $caseStudy->subtitle) }}">
-                @if($errors->has('subtitle'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('subtitle') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.caseStudy.fields.subtitle_helper') }}</span>
+            <div class="mb-3">
+                <label for="subtitle" class="text-xs required">{{ trans('cruds.caseStudy.fields.subtitle') }}</label>
+                <div class="form-group">
+                
+                    <input class="form-control {{ $errors->has('subtitle') ? 'is-invalid' : '' }}" type="text" name="subtitle" id="subtitle" value="{{ old('subtitle', $caseStudy->subtitle) }}">
+                    @if($errors->has('subtitle'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('subtitle') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.caseStudy.fields.subtitle_helper') }}</span>
+                </div>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="content">{{ trans('cruds.caseStudy.fields.content') }}</label>
-                <textarea class="form-control ckeditor {{ $errors->has('content') ? 'is-invalid' : '' }}" name="content" id="content">{!! old('content', $caseStudy->content) !!}</textarea>
-                @if($errors->has('content'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('content') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.caseStudy.fields.content_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="logo">{{ trans('cruds.caseStudy.fields.logo') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="logo-dropzone">
+                <div class="form-group">
+                    
+                    <textarea class="form-control ckeditor {{ $errors->has('content') ? 'is-invalid' : '' }}" name="content" id="content">{!! old('content', $caseStudy->content) !!}</textarea>
+                    @if($errors->has('content'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('content') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.caseStudy.fields.content_helper') }}</span>
                 </div>
-                @if($errors->has('logo'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('logo') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.caseStudy.fields.logo_helper') }}</span>
             </div>
-            <div class="form-group">
-                <label for="featuredtitle">{{ trans('cruds.caseStudy.fields.featuredtitle') }}</label>
-                <input class="form-control {{ $errors->has('featuredtitle') ? 'is-invalid' : '' }}" type="text" name="featuredtitle" id="featuredtitle" value="{{ old('featuredtitle', $caseStudy->featuredtitle) }}">
-                @if($errors->has('featuredtitle'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('featuredtitle') }}
+            <div class="mb-3">
+                <label for="logo" class="text-xs required">{{ trans('cruds.caseStudy.fields.logo') }}</label>
+                <div class="form-group">
+                    
+                    <div class="needsclick dropzone {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="logo-dropzone">
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.caseStudy.fields.featuredtitle_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="featuredimage">{{ trans('cruds.caseStudy.fields.featuredimage') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('featuredimage') ? 'is-invalid' : '' }}" id="featuredimage-dropzone">
+                    @if($errors->has('logo'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('logo') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.caseStudy.fields.logo_helper') }}</span>
                 </div>
-                @if($errors->has('featuredimage'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('featuredimage') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.caseStudy.fields.featuredimage_helper') }}</span>
             </div>
-            <div class="form-group">
-                <label for="cta_button">{{ trans('cruds.caseStudy.fields.cta_button') }}</label>
-                <input class="form-control {{ $errors->has('cta_button') ? 'is-invalid' : '' }}" type="text" name="cta_button" id="cta_button" value="{{ old('cta_button', $caseStudy->cta_button) }}">
-                @if($errors->has('cta_button'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('cta_button') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.caseStudy.fields.cta_button_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="cst_link">{{ trans('cruds.caseStudy.fields.cst_link') }}</label>
-                <input class="form-control {{ $errors->has('cst_link') ? 'is-invalid' : '' }}" type="text" name="cst_link" id="cst_link" value="{{ old('cst_link', $caseStudy->cst_link) }}">
-                @if($errors->has('cst_link'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('cst_link') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.caseStudy.fields.cst_link_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <div class="form-check {{ $errors->has('featured') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="featured" value="0">
-                    <input class="form-check-input" type="checkbox" name="featured" id="featured" value="1" {{ $caseStudy->featured || old('featured', 0) === 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="featured">{{ trans('cruds.caseStudy.fields.featured') }}</label>
+            <div class="mb-3">
+                <label for="featuredtitle" class="text-xs required">{{ trans('cruds.caseStudy.fields.featuredtitle') }}</label>
+                <div class="form-group">
+                    
+                    <input class="form-control {{ $errors->has('featuredtitle') ? 'is-invalid' : '' }}" type="text" name="featuredtitle" id="featuredtitle" value="{{ old('featuredtitle', $caseStudy->featuredtitle) }}">
+                    @if($errors->has('featuredtitle'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('featuredtitle') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.caseStudy.fields.featuredtitle_helper') }}</span>
                 </div>
-                @if($errors->has('featured'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('featured') }}
+            </div>
+            <div class="mb-3">
+                <div class="form-group">
+                    <label for="featuredimage" class="text-xs required">{{ trans('cruds.caseStudy.fields.featuredimage') }}</label>
+                    <div class="needsclick dropzone {{ $errors->has('featuredimage') ? 'is-invalid' : '' }}" id="featuredimage-dropzone">
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.caseStudy.fields.featured_helper') }}</span>
+                    @if($errors->has('featuredimage'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('featuredimage') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.caseStudy.fields.featuredimage_helper') }}</span>
+                </div>
             </div>
-            <div class="form-group">
-                <label>{{ trans('cruds.caseStudy.fields.status') }}</label>
-                <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
-                    <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\Models\CaseStudy::STATUS_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('status', $caseStudy->status) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('status'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('status') }}
+            <div class="mb-3">
+                <label for="cta_button" class="text-xs required">{{ trans('cruds.caseStudy.fields.cta_button') }}</label>
+                <div class="form-group">
+                    
+                    <input class="form-control {{ $errors->has('cta_button') ? 'is-invalid' : '' }}" type="text" name="cta_button" id="cta_button" value="{{ old('cta_button', $caseStudy->cta_button) }}">
+                    @if($errors->has('cta_button'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('cta_button') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.caseStudy.fields.cta_button_helper') }}</span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="cst_link" class="text-xs required">{{ trans('cruds.caseStudy.fields.cst_link') }}</label>
+                <div class="form-group">
+                
+                    <input class="form-control {{ $errors->has('cst_link') ? 'is-invalid' : '' }}" type="text" name="cst_link" id="cst_link" value="{{ old('cst_link', $caseStudy->cst_link) }}">
+                    @if($errors->has('cst_link'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('cst_link') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.caseStudy.fields.cst_link_helper') }}</span>
+                </div>
+            </div>
+            <div class="mb-3">
+               
+                    <div class="form-check {{ $errors->has('featured') ? 'is-invalid' : '' }}">
+                        <input type="hidden" name="featured" value="0">
+                        <input class="form-check-input" type="checkbox" name="featured" id="featured" value="1" {{ $caseStudy->featured || old('featured', 0) === 1 ? 'checked' : '' }}>
+                        <label class="form-check-label" for="featured">{{ trans('cruds.caseStudy.fields.featured') }}</label>
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.caseStudy.fields.status_helper') }}</span>
+                    @if($errors->has('featured'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('featured') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.caseStudy.fields.featured_helper') }}</span>
+              
             </div>
-            <div class="form-group">
-                <label for="slug">{{ trans('cruds.caseStudy.fields.slug') }}</label>
-                <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', $caseStudy->slug) }}">
-                @if($errors->has('slug'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('slug') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.caseStudy.fields.slug_helper') }}</span>
+            <div class="mb-3">
+                <label class="text-xs required">{{ trans('cruds.caseStudy.fields.status') }}</label>
+                <div class="form-group">
+                
+                    <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
+                        <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                        @foreach(App\Models\CaseStudy::STATUS_SELECT as $key => $label)
+                            <option value="{{ $key }}" {{ old('status', $caseStudy->status) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('status'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('status') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.caseStudy.fields.status_helper') }}</span>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="orderby">{{ trans('cruds.caseStudy.fields.orderby') }}</label>
-                <input class="form-control {{ $errors->has('orderby') ? 'is-invalid' : '' }}" type="number" name="orderby" id="orderby" value="{{ old('orderby', $caseStudy->orderby) }}" step="1">
-                @if($errors->has('orderby'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('orderby') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.caseStudy.fields.orderby_helper') }}</span>
+            <div class="mb-3">
+                <label for="slug" class="text-xs required">{{ trans('cruds.caseStudy.fields.slug') }}</label>
+                <div class="form-group">
+                
+                    <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', $caseStudy->slug) }}">
+                    @if($errors->has('slug'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('slug') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.caseStudy.fields.slug_helper') }}</span>
+                </div>
             </div>
-            <div class="form-group">
-                <button class="btn btn-danger" type="submit">
-                    {{ trans('global.save') }}
-                </button>
+            <div class="mb-3">
+                <label for="orderby" class="text-xs required">{{ trans('cruds.caseStudy.fields.orderby') }}</label>
+                <div class="form-group">
+                
+                    <input class="form-control {{ $errors->has('orderby') ? 'is-invalid' : '' }}" type="number" name="orderby" id="orderby" value="{{ old('orderby', $caseStudy->orderby) }}" step="1">
+                    @if($errors->has('orderby'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('orderby') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.caseStudy.fields.orderby_helper') }}</span>
+                </div>
             </div>
-        </form>
-    </div>
+            <div class="mb-3">
+                <div class="form-group">
+                    <div class="footer">
+                        <button type="submit" class="submit-button"> {{ trans('global.save') }}</button>
+                    </div>   
+                </div>
+            </div>
+        </div>
+    </form>
+    
 </div>
 
 

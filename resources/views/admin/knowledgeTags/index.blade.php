@@ -3,7 +3,7 @@
 @can('knowledge_tag_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.knowledge-tags.create') }}">
+            <a class="btn-md btn-blue" href="{{ route('admin.knowledge-tags.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.knowledgeTag.title_singular') }}
             </a>
         </div>

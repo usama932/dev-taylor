@@ -44,7 +44,7 @@ $knowledge =  $KnowledgeService->knowledge();
             <div class="items">
                 <p>{{ $knowledge->category->name }}<span>{{  date('M-y', strtotime($knowledge->publish_date)) }}</span></p>
                 <h3>
-                   {{ $knowledge->name}} <a href="{{ route('knowledge.show',$knowledge->slug) }}"><img src="{{ asset('dist/icon-arrow-right-white.53b92526.svg') }}" /></a>
+                   {{ $knowledge->name}} <a href=@if ($knowledge->slug)"{{ route('knowledge.show',$knowledge->slug ) }} " @endif><img src="{{ asset('dist/icon-arrow-right-white.53b92526.svg') }}" /></a>
                 </h3>
             </div>
 

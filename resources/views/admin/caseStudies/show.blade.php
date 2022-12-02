@@ -1,19 +1,19 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class="card">
-    <div class="card-header">
+<div class="main-card">
+    <div class="header">
         {{ trans('global.show') }} {{ trans('cruds.caseStudy.title') }}
     </div>
 
-    <div class="card-body">
-        <div class="form-group">
-            <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.case-studies.index') }}">
+    <div class="body">
+       
+            <div class="block pb-4">
+                <a class="btn-md btn-gray" href="{{ route('admin.case-studies.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
-            <table class="table table-bordered table-striped">
+            <table class="striped bordered show-table">
                 <tbody>
                     <tr>
                         <th>
@@ -129,12 +129,12 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.case-studies.index') }}">
+             <div class="block pt-4">
+                <a class="btn-md btn-gray" href="{{ route('admin.case-studies.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
-        </div>
+        
     </div>
 </div>
 

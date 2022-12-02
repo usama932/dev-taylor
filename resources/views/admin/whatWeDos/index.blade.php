@@ -3,7 +3,7 @@
 @can('what_we_do_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.what-we-dos.create') }}">
+            <a class="btn-md btn-blue" href="{{ route('admin.what-we-dos.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.whatWeDo.title_singular') }}
             </a>
         </div>

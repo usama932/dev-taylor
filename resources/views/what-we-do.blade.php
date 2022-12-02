@@ -3,7 +3,7 @@
 <style>
     .topbanner_image {
   width: 100% !important;
-  height: 100vh !important;
+  height: 80vh !important;
   background-image: url("{{$page->featured_image->getUrl() }} ");
   background-position: center !important;
   background-repeat: no-repeat !important;

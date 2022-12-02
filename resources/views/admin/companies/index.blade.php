@@ -3,18 +3,18 @@
 @can('company_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.companies.create') }}">
+            <a class="btn btn-blue" href="{{ route('admin.companies.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.company.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
-<div class="card">
+<div class="main-card">
     <div class="card-header">
         {{ trans('cruds.company.title_singular') }} {{ trans('global.list') }}
     </div>
 
-    <div class="card-body">
+    <div class="body">
         <div class="table-responsive">
             <table class=" table table-bordered table-striped table-hover datatable datatable-Company">
                 <thead>

@@ -1,101 +1,119 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class="card">
-    <div class="card-header">
+<div class="main-card">
+    <div class="header">
         {{ trans('global.create') }} {{ trans('cruds.contentPage.title_singular') }}
     </div>
 
-    <div class="card-body">
+    
         <form method="POST" action="{{ route("admin.content-pages.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
-                <label class="required" for="title">{{ trans('cruds.contentPage.fields.title') }}</label>
-                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
-                @if($errors->has('title'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('title') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.contentPage.fields.title_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="excerpt">{{ trans('cruds.contentPage.fields.excerpt') }}</label>
-                <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt') }}</textarea>
-                @if($errors->has('excerpt'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('excerpt') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.contentPage.fields.excerpt_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="page_text">{{ trans('cruds.contentPage.fields.page_text') }}</label>
-                <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" name="page_text" id="page_text">{!! old('page_text') !!}</textarea>
-                @if($errors->has('page_text'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('page_text') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.contentPage.fields.page_text_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="featured_image">{{ trans('cruds.contentPage.fields.featured_image') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('featured_image') ? 'is-invalid' : '' }}" id="featured_image-dropzone">
+            <div class="body">
+              <div class="mb-3">
+                <div class="form-group">
+                    <label class="text-xs required" for="title">{{ trans('cruds.contentPage.fields.title') }}</label>
+                    <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
+                    @if($errors->has('title'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('title') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.contentPage.fields.title_helper') }}</span>
                 </div>
-                @if($errors->has('featured_image'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('featured_image') }}
+              </div>
+              <div class="mb-3">
+                <div class="form-group">
+                    <label for="excerpt" class="text-xs ">{{ trans('cruds.contentPage.fields.excerpt') }}</label>
+                    <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt') }}</textarea>
+                    @if($errors->has('excerpt'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('excerpt') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.contentPage.fields.excerpt_helper') }}</span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="form-group">
+                    <label for="page_text"  class="text-xs ">{{ trans('cruds.contentPage.fields.page_text') }}</label>
+                    <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" name="page_text" id="page_text">{!! old('page_text') !!}</textarea>
+                    @if($errors->has('page_text'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('page_text') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.contentPage.fields.page_text_helper') }}</span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="form-group">
+                    <label for="featured_image"  class="text-xs ">{{ trans('cruds.contentPage.fields.featured_image') }}</label>
+                    <div class="needsclick dropzone {{ $errors->has('featured_image') ? 'is-invalid' : '' }}" id="featured_image-dropzone">
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.contentPage.fields.featured_image_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label>{{ trans('cruds.contentPage.fields.status') }}</label>
-                <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
-                    <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\Models\ContentPage::STATUS_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('status', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('status'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('status') }}
+                    @if($errors->has('featured_image'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('featured_image') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.contentPage.fields.featured_image_helper') }}</span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="form-group">
+                    <label  class="text-xs ">{{ trans('cruds.contentPage.fields.status') }}</label>
+                    <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
+                        <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                        @foreach(App\Models\ContentPage::STATUS_SELECT as $key => $label)
+                            <option value="{{ $key }}" {{ old('status', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('status'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('status') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.contentPage.fields.status_helper') }}</span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="form-group">
+                    <label for="parent_id">{{ trans('cruds.contentPage.fields.parent') }}</label>
+                    <select class="form-control select2 {{ $errors->has('parent') ? 'is-invalid' : '' }}" name="parent_id" id="parent_id">
+                        @foreach($parents as $id => $entry)
+                            <option value="{{ $id }}" {{ old('parent_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('parent'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('parent') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.contentPage.fields.parent_helper') }}</span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="form-group">
+                    <label for="slug"  class="text-xs ">{{ trans('cruds.contentPage.fields.slug') }}</label>
+                    <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', '') }}">
+                    @if($errors->has('slug'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('slug') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.contentPage.fields.slug_helper') }}</span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="form-group">
+                    <div class="footer">
+                      <button type="submit" class="submit-button">{{ trans('global.save') }}</button>
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.contentPage.fields.status_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="parent_id">{{ trans('cruds.contentPage.fields.parent') }}</label>
-                <select class="form-control select2 {{ $errors->has('parent') ? 'is-invalid' : '' }}" name="parent_id" id="parent_id">
-                    @foreach($parents as $id => $entry)
-                        <option value="{{ $id }}" {{ old('parent_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('parent'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('parent') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.contentPage.fields.parent_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="slug">{{ trans('cruds.contentPage.fields.slug') }}</label>
-                <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', '') }}">
-                @if($errors->has('slug'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('slug') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.contentPage.fields.slug_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-danger" type="submit">
-                    {{ trans('global.save') }}
-                </button>
+                </div>
+              </div>
             </div>
         </form>
-    </div>
+    
 </div>
 
 

@@ -3,7 +3,7 @@
 @can('knowledge_category_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.knowledge-categories.create') }}">
+            <a class="btn-md btn-blue" href="{{ route('admin.knowledge-categories.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.knowledgeCategory.title_singular') }}
             </a>
         </div>
