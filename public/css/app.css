@@ -914,8 +914,8 @@ html {
     left: 0;
     width: 16rem;
     --bg-opacity: 1;
-    background-color: #1a202c;
-    background-color: rgba(26, 32, 44, var(--bg-opacity));
+    background-color: #ffc200 !important;
+    /* background-color: rgba(26, 32, 44, var(--bg-opacity)); */
     transition-property: background-color, border-color, color, fill, stroke,
       opacity, box-shadow, transform;
     transition-duration: 0.3s;
@@ -936,6 +936,7 @@ html {
     align-items: center;
     padding: 0.75rem 1.5rem;
     display: block;
+    color: #000 !important;
     border-left-width: 4px;
   }
   .nav-link.active {
@@ -944,7 +945,7 @@ html {
     background-color: rgba(113, 128, 150, var(--bg-opacity));
     --bg-opacity: 0.25;
     --text-opacity: 1;
-    color: #f7fafc;
+    color: #000 !important;
     color: rgba(247, 250, 252, var(--text-opacity));
     --border-opacity: 1;
     border-color: #f7fafc;

@@ -4,7 +4,7 @@
 
     <div  class="flex items-center justify-center mt-4">
         <a class="flex items-center" href="#">
-             <span class="text-white text-2xl mx-2 font-semibold">{{ trans('panel.site_title') }}</span>
+             <span class="text-black text-2xl mx-2 font-semibold">{{ trans('panel.site_title') }}</span>
         </a>
     </div>
 
