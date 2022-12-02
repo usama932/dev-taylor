@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 @can('knowledge_tag_create')
-    <div style="margin-bottom: 10px;" class="row">
+    <div class="block my-4">
         <div class="col-lg-12">
             <a class="btn-md btn-blue" href="{{ route('admin.knowledge-tags.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.knowledgeTag.title_singular') }}

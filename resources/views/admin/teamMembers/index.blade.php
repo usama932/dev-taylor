@@ -1,38 +1,40 @@
 @extends('layouts.admin')
 @section('content')
 @can('team_member_create')
-    <div style="margin-bottom: 10px;" class="row">
+    <div class="block my-4">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.team-members.create') }}">
+            <a class="btn btn-blue" href="{{ route('admin.team-members.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.teamMember.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
-<div class="card">
-    <div class="card-header">
+<div class="main-card">
+    <div class="header">
         {{ trans('cruds.teamMember.title_singular') }} {{ trans('global.list') }}
     </div>
 
-    <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-TeamMember">
-            <thead>
-                <tr>
-                    <th width="10">
+    <div class="body">
+      <div class="w-full">
+          <table class=" stripe hover bordered datatable  ajaxTable  datatable-TeamMember">
+              <thead>
+                  <tr>
+                      <th width="10">
 
-                    </th>
-                    <th>
-                        {{ trans('cruds.teamMember.fields.name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.teamMember.fields.subheading') }}
-                    </th>
-                    <th>
-                        &nbsp;
-                    </th>
-                </tr>
-            </thead>
-        </table>
+                      </th>
+                      <th>
+                          {{ trans('cruds.teamMember.fields.name') }}
+                      </th>
+                      <th>
+                          {{ trans('cruds.teamMember.fields.subheading') }}
+                      </th>
+                      <th>
+                          &nbsp;
+                      </th>
+                  </tr>
+              </thead>
+          </table>
+      </div>
     </div>
 </div>
 

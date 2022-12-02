@@ -1,10 +1,10 @@
 @can($viewGate)
-    <a class="btn-sm btn-indigo" href="{{ route('admin.' . $crudRoutePart . '.show', $row->id) }}">
+    <a class="btn-sm" href="{{ route('admin.' . $crudRoutePart . '.show', $row->id) }}" style="background-color:#000 !important; color:#fff !important">
         {{ trans('global.view') }}
     </a>
 @endcan
 @can($editGate)
-    <a class="btn-sm btn-blue" href="{{ route('admin.' . $crudRoutePart . '.edit', $row->id) }}">
+    <a class="btn-sm" href="{{ route('admin.' . $crudRoutePart . '.edit', $row->id) }}" style="background-color:#ffc200 !important; color:#000 !important">
         {{ trans('global.edit') }}
     </a>
 @endcan

@@ -726,7 +726,7 @@ html {
   }
   .btn-green {
     --bg-opacity: 1;
-    background-color: #007299;
+    background-color: #38a169;
     background-color: rgba(56, 161, 105, var(--bg-opacity));
     --text-opacity: 1;
     color: #fff;
@@ -734,7 +734,7 @@ html {
   }
   .btn-green:hover {
     --bg-opacity: 1;
-    background-color: #000;
+    background-color: #48bb78;
     background-color: rgba(72, 187, 120, var(--bg-opacity));
   }
   .btn-indigo {
@@ -747,8 +747,7 @@ html {
   }
   .btn-indigo:hover {
     --bg-opacity: 1;
-    background-color: #000  !important;
-    color:#fff !important;
+    background-color: #4c51bf;
     background-color: rgba(76, 81, 191, var(--bg-opacity));
   }
   .btn-blue {
@@ -762,7 +761,6 @@ html {
   .btn-blue:hover {
     --bg-opacity: 1;
     background-color: #000 !important;
-    color: #fff !important;
     background-color: rgba(66, 153, 225, var(--bg-opacity));
   }
   table .striped tbody tr:nth-of-type(odd) {

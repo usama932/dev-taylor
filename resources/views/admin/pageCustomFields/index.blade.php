@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 @can('page_custom_field_create')
-    <div style="margin-bottom: 10px;" class="row">
+    <div class="block my-4">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route('admin.page-custom-fields.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.pageCustomField.title_singular') }}
@@ -9,14 +9,15 @@
         </div>
     </div>
 @endcan
-<div class="card">
-    <div class="card-header">
+<div class="main-card">
+    <div class="header">
         {{ trans('cruds.pageCustomField.title_singular') }} {{ trans('global.list') }}
     </div>
 
-    <div class="card-body">
+    <div class="body">
+    <div class="w-full">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-PageCustomField">
+            <table class=" stripe hover bordered datatable datatable-PageCustomField">
                 <thead>
                     <tr>
                         <th width="10">
@@ -135,6 +136,7 @@
                 </tbody>
             </table>
         </div>
+    </div>
     </div>
 </div>
 

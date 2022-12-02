@@ -1,22 +1,23 @@
 @extends('layouts.admin')
 @section('content')
 @can('content_tag_create')
-    <div style="margin-bottom: 10px;" class="row">
+    <div class="block my-4">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.content-tags.create') }}">
+            <a class="btn btn-blue" href="{{ route('admin.content-tags.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.contentTag.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
-<div class="card">
-    <div class="card-header">
+<div class="main-card">
+    <div class="header">
         {{ trans('cruds.contentTag.title_singular') }} {{ trans('global.list') }}
     </div>
 
-    <div class="card-body">
+    <div class="body">
+    <div  class="w-full">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-ContentTag">
+            <table class=" stripe hover bordered datatable  datatable-ContentTag">
                 <thead>
                     <tr>
                         <th width="10">
@@ -79,6 +80,7 @@
                 </tbody>
             </table>
         </div>
+    </div>
     </div>
 </div>
 

@@ -8,72 +8,65 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ trans('panel.site_title') }}</title>
-        <link href="{{ mix('css/app.css') }}" rel="stylesheet" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-    <link href="https://unpkg.com/@coreui/coreui@3.2/dist/css/coreui.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/css/perfect-scrollbar.min.css" rel="stylesheet" />
-    {{-- <link href="{{ asset('css/custom.css') }}" rel="stylesheet" /> --}}
-      <link href="{{ asset('css/custom1.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/custom1.css') }}" rel="stylesheet" />
     @yield('styles')
 </head>
 
-<body class="c-app">
-    @include('partials.menu')
-    <div class="c-wrapper">
-        <header class="c-header c-header-fixed px-3">
-            <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
-                <i class="fas fa-fw fa-bars"></i>
-            </button>
+<body>
+    <div class="flex h-screen bg-gray-200">
+        @include('partials.menu')
 
-            <a class="c-header-brand d-lg-none" href="#">{{ trans('panel.site_title') }}</a>
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <header class="main-header">
+                <div class="flex items-center">
+                    <button id="sidebar-enable" class="sidebar-enable">
+                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6H20M4 12H20M4 18H11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
 
-            <button class="c-header-toggler mfs-3 d-md-down-none" type="button" responsive="true">
-                <i class="fas fa-fw fa-bars"></i>
-            </button>
-
-            <ul class="c-header-nav ml-auto">
                 @if(count(config('panel.available_languages', [])) > 1)
-                    <li class="c-header-nav-item dropdown d-md-down-none">
-                        <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            {{ strtoupper(app()->getLocale()) }}
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            @foreach(config('panel.available_languages') as $langLocale => $langName)
-                                <a class="dropdown-item" href="{{ url()->current() }}?change_language={{ $langLocale }}">{{ strtoupper($langLocale) }} ({{ $langName }})</a>
-                            @endforeach
-                        </div>
-                    </li>
-                @endif
-
-
-            </ul>
-        </header>
-
-        <div class="c-body">
-            <main class="c-main">
-
-
-                <div class="container-fluid">
-                    @if(session('message'))
-                        <div class="row mb-2">
-                            <div class="col-lg-12">
-                                <div class="alert alert-success" role="alert">{{ session('message') }}</div>
+                    <div class="flex items-center">
+                        <div class="languages">
+                            <select onchange="window.location.href = $(this).val()">
+                                @foreach(config('panel.available_languages') as $langLocale => $langName)
+                                    <option
+                                        value="{{ url()->current() }}?change_language={{ $langLocale }}"
+                                        @if(strtoupper($langLocale) ==strtoupper(app()->getLocale())) selected @endif
+                                    >{{ strtoupper($langLocale) }} ({{ $langName }})</option>
+                                @endforeach
+                            </select>
+                            <div class="icon">
+                                <i class="fa fa-caret-down fill-current h-4 w-4" aria-hidden="true"></i>
                             </div>
+                        </div>
+                    </div>
+                @endif
+            </header>
+
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+                <div class="mx-auto px-6 py-8">
+                    @if(session('message'))
+                        <div class="alert success">
+                            {{ session('message') }}
                         </div>
                     @endif
                     @if($errors->count() > 0)
-                        <div class="alert alert-danger">
-                            <ul class="list-unstyled">
+                        <div class="alert danger">
+                            <ul class="list-none">
                                 @foreach($errors->all() as $error)
                                     <li>{{ $error }}</li>
                                 @endforeach
@@ -83,8 +76,6 @@
                     @yield('content')
 
                 </div>
-
-
             </main>
             <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
@@ -92,12 +83,9 @@
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/perfect-scrollbar.min.js"></script>
-    <script src="https://unpkg.com/@coreui/coreui@3.2/dist/js/coreui.min.js"></script>
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="//cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
     <script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.flash.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
@@ -115,21 +103,22 @@
     <script src="{{ asset('js/main.js') }}"></script>
     <script>
         $(function() {
-  let copyButtonTrans = '{{ trans('global.datatables.copy') }}'
+  {{-- let copyButtonTrans = '{{ trans('global.datatables.copy') }}'
   let csvButtonTrans = '{{ trans('global.datatables.csv') }}'
   let excelButtonTrans = '{{ trans('global.datatables.excel') }}'
   let pdfButtonTrans = '{{ trans('global.datatables.pdf') }}'
   let printButtonTrans = '{{ trans('global.datatables.print') }}'
   let colvisButtonTrans = '{{ trans('global.datatables.colvis') }}'
   let selectAllButtonTrans = '{{ trans('global.select_all') }}'
-  let selectNoneButtonTrans = '{{ trans('global.deselect_all') }}'
+  let selectNoneButtonTrans = '{{ trans('global.deselect_all') }}' --}}
 
   let languages = {
     'en': 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/English.json'
   };
 
-  $.extend(true, $.fn.dataTable.Buttons.defaults.dom.button, { className: 'btn' })
+  $.extend(true, $.fn.dataTable.Buttons.defaults.dom.button, { className: 'btn-md' })
   $.extend(true, $.fn.dataTable.defaults, {
+    responsive: true,
     language: {
       url: languages['{{ app()->getLocale() }}']
     },
@@ -153,7 +142,7 @@
     buttons: [
       {
         extend: 'selectAll',
-        className: 'btn-primary',
+        className: 'btn-indigo',
         text: selectAllButtonTrans,
         exportOptions: {
           columns: ':visible'
@@ -166,7 +155,7 @@
       },
       {
         extend: 'selectNone',
-        className: 'btn-primary',
+        className: 'btn-indigo',
         text: selectNoneButtonTrans,
         exportOptions: {
           columns: ':visible'
@@ -174,7 +163,7 @@
       },
       {
         extend: 'copy',
-        className: 'btn-default',
+        className: 'btn-gray',
         text: copyButtonTrans,
         exportOptions: {
           columns: ':visible'
@@ -182,7 +171,7 @@
       },
       {
         extend: 'csv',
-        className: 'btn-default',
+        className: 'btn-gray',
         text: csvButtonTrans,
         exportOptions: {
           columns: ':visible'
@@ -190,7 +179,7 @@
       },
       {
         extend: 'excel',
-        className: 'btn-default',
+        className: 'btn-gray',
         text: excelButtonTrans,
         exportOptions: {
           columns: ':visible'
@@ -198,7 +187,7 @@
       },
       {
         extend: 'pdf',
-        className: 'btn-default',
+        className: 'btn-gray',
         text: pdfButtonTrans,
         exportOptions: {
           columns: ':visible'
@@ -206,7 +195,7 @@
       },
       {
         extend: 'print',
-        className: 'btn-default',
+        className: 'btn-gray',
         text: printButtonTrans,
         exportOptions: {
           columns: ':visible'
@@ -214,7 +203,7 @@
       },
       {
         extend: 'colvis',
-        className: 'btn-default',
+        className: 'btn-gray',
         text: colvisButtonTrans,
         exportOptions: {
           columns: ':visible'
@@ -222,78 +211,6 @@
       }
     ]
   });
-
-  $.fn.dataTable.ext.classes.sPageButton = '';
-});
-
-    </script>
-    <script>
-        $(document).ready(function() {
-    $('.searchable-field').select2({
-        minimumInputLength: 3,
-        ajax: {
-            url: '{{ route("admin.globalSearch") }}',
-            dataType: 'json',
-            type: 'GET',
-            delay: 200,
-            data: function (term) {
-                return {
-                    search: term
-                };
-            },
-            results: function (data) {
-                return {
-                    data
-                };
-            }
-        },
-        escapeMarkup: function (markup) { return markup; },
-        templateResult: formatItem,
-        templateSelection: formatItemSelection,
-        placeholder : '{{ trans('global.search') }}...',
-        language: {
-            inputTooShort: function(args) {
-                var remainingChars = args.minimum - args.input.length;
-                var translation = '{{ trans('global.search_input_too_short') }}';
-
-                return translation.replace(':count', remainingChars);
-            },
-            errorLoading: function() {
-                return '{{ trans('global.results_could_not_be_loaded') }}';
-            },
-            searching: function() {
-                return '{{ trans('global.searching') }}';
-            },
-            noResults: function() {
-                return '{{ trans('global.no_results') }}';
-            },
-        }
-
-    });
-    function formatItem (item) {
-        if (item.loading) {
-            return '{{ trans('global.searching') }}...';
-        }
-        var markup = "<div class='searchable-link' href='" + item.url + "'>";
-        markup += "<div class='searchable-title'>" + item.model + "</div>";
-        $.each(item.fields, function(key, field) {
-            markup += "<div class='searchable-fields'>" + item.fields_formated[field] + " : " + item[field] + "</div>";
-        });
-        markup += "</div>";
-
-        return markup;
-    }
-
-    function formatItemSelection (item) {
-        if (!item.model) {
-            return '{{ trans('global.search') }}...';
-        }
-        return item.model;
-    }
-    $(document).delegate('.searchable-link', 'click', function() {
-        var url = $(this).attr('href');
-        window.location = url;
-    });
 });
 
     </script>

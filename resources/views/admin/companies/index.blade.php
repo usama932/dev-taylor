@@ -1,77 +1,79 @@
 @extends('layouts.admin')
 @section('content')
 @can('company_create')
-    <div style="margin-bottom: 10px;" class="row">
+    <div class="block my-4">
         <div class="col-lg-12">
-            <a class="btn btn-blue" href="{{ route('admin.companies.create') }}">
+            <a class="btn-md btn-blue" href="{{ route('admin.companies.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.company.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
 <div class="main-card">
-    <div class="card-header">
+    <div class="header">
         {{ trans('cruds.company.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-Company">
-                <thead>
-                    <tr>
-                        <th width="10">
+            <div class="w-full">
+                <table class="stripe hover bordered datatable datatable-Company">
+                    <thead>
+                        <tr>
+                            <th width="10">
 
-                        </th>
-                        <th>
-                            {{ trans('cruds.company.fields.company_name') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.company.fields.company_email') }}
-                        </th>
-                        <th>
-                            &nbsp;
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($companies as $key => $company)
-                        <tr data-entry-id="{{ $company->id }}">
-                            <td>
-
-                            </td>
-                            <td>
-                                {{ $company->company_name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $company->company_email ?? '' }}
-                            </td>
-                            <td>
-                                @can('company_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.companies.show', $company->id) }}">
-                                        {{ trans('global.view') }}
-                                    </a>
-                                @endcan
-
-                                @can('company_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.companies.edit', $company->id) }}">
-                                        {{ trans('global.edit') }}
-                                    </a>
-                                @endcan
-
-                                @can('company_delete')
-                                    <form action="{{ route('admin.companies.destroy', $company->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
-                                    </form>
-                                @endcan
-
-                            </td>
-
+                            </th>
+                            <th>
+                                {{ trans('cruds.company.fields.company_name') }}
+                            </th>
+                            <th>
+                                {{ trans('cruds.company.fields.company_email') }}
+                            </th>
+                            <th>
+                                &nbsp;
+                            </th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach($companies as $key => $company)
+                            <tr data-entry-id="{{ $company->id }}">
+                                <td>
+
+                                </td>
+                                <td>
+                                    {{ $company->company_name ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $company->company_email ?? '' }}
+                                </td>
+                                <td>
+                                    @can('company_show')
+                                        <a class="btn btn-xs btn-primary" href="{{ route('admin.companies.show', $company->id) }}">
+                                            {{ trans('global.view') }}
+                                        </a>
+                                    @endcan
+
+                                    @can('company_edit')
+                                        <a class="btn btn-xs btn-info" href="{{ route('admin.companies.edit', $company->id) }}">
+                                            {{ trans('global.edit') }}
+                                        </a>
+                                    @endcan
+
+                                    @can('company_delete')
+                                        <form action="{{ route('admin.companies.destroy', $company->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                        </form>
+                                    @endcan
+
+                                </td>
+
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

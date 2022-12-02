@@ -1,41 +1,43 @@
 @extends('layouts.admin')
 @section('content')
 @can('navigationmenu_create')
-    <div style="margin-bottom: 10px;" class="row">
+    <div class="block my-4">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.navigationmenus.create') }}">
+            <a class="btn btn-blue" href="{{ route('admin.navigationmenus.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.navigationmenu.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
-<div class="card">
-    <div class="card-header">
+<div class="main-card">
+    <div class="header">
         {{ trans('cruds.navigationmenu.title_singular') }} {{ trans('global.list') }}
     </div>
 
-    <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Navigationmenu">
-            <thead>
-                <tr>
-                    <th width="10">
+    <div class="body">
+        <div class="w-full">
+            <table class="stripe hover bordered datatable ajaxTable datatable-Navigationmenu">
+                <thead>
+                    <tr>
+                        <th width="10">
 
-                    </th>
-                    <th>
-                        {{ trans('cruds.navigationmenu.fields.id') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.navigationmenu.fields.name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.navigationmenu.fields.parent') }}
-                    </th>
-                    <th>
-                        &nbsp;
-                    </th>
-                </tr>
-            </thead>
-        </table>
+                        </th>
+                        <th>
+                            {{ trans('cruds.navigationmenu.fields.id') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.navigationmenu.fields.name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.navigationmenu.fields.parent') }}
+                        </th>
+                        <th>
+                            &nbsp;
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
     </div>
 </div>
 

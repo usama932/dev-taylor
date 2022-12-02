@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 @can('content_page_create')
-    <div style="margin-bottom: 10px;" class="row">
+    <div class="block my-4">
         <div class="col-lg-12">
             <a class="btn-md btn-blue" href="{{ route('admin.content-pages.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.contentPage.title_singular') }}
@@ -9,13 +9,13 @@
         </div>
     </div>
 @endcan
-<div class="card">
-    <div class="card-header">
+<div class="main-card">
+    <div class="header">
         {{ trans('cruds.contentPage.title_singular') }} {{ trans('global.list') }}
     </div>
 
-    <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-ContentPage">
+    <div class="body">
+        <table class=" stripe hover bordered datatable ajaxTable  datatable-ContentPage">
             <thead>
                 <tr>
                     <th width="10">
