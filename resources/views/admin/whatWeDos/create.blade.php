@@ -26,7 +26,7 @@
                     <label for="excerpt" class="text-xs required ">{{ trans('cruds.whatWeDo.fields.excerpt') }}</label>
                     <div class="form-group">
                         
-                        <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt') }}</textarea>
+                        <textarea class="form-control rows="4" cols="160" {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt') }}</textarea>
                         @if($errors->has('excerpt'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('excerpt') }}

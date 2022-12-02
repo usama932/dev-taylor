@@ -9,23 +9,23 @@
         </div>
     </div>
 @endcan
-<div class="card">
-    <div class="card-header">
+<div class="main-card">
+    <div class="header">
         {{ trans('cruds.knowledge.title_singular') }} {{ trans('global.list') }}
     </div>
 
-    <div class="card-body">
+    <div class="body">
         <div class="w-full">
-            <table class=" stripe hover bordered datatable ajaxTable datatable-Knowledge">
+            <table class=" stripe hover bordered datatable  ajaxTable datatable-Knowledge">
                 <thead>
                     <tr>
-                        <th width="10">
+                        <th width="300">
 
                         </th>
                         <th>
                             {{ trans('cruds.knowledge.fields.name') }}
                         </th>
-                        <th>
+                        <th width="300">
                             {{ trans('cruds.knowledge.fields.category') }}
                         </th>
                         {{-- <th>

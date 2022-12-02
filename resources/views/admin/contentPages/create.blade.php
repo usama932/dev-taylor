@@ -10,7 +10,7 @@
         <form method="POST" action="{{ route("admin.content-pages.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="body">
-              <div class="mb-3">
+             
                 <div class="form-group">
                     <label class="text-xs required" for="title">{{ trans('cruds.contentPage.fields.title') }}</label>
                     <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
@@ -21,11 +21,12 @@
                     @endif
                     <span class="help-block">{{ trans('cruds.contentPage.fields.title_helper') }}</span>
                 </div>
-              </div>
+              
               <div class="mb-3">
-                <div class="form-group">
+                
                     <label for="excerpt" class="text-xs ">{{ trans('cruds.contentPage.fields.excerpt') }}</label>
-                    <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt') }}</textarea>
+                    <div class="form-group">
+                    <textarea class="form-control  rows="4" cols="160" {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt') }}</textarea>
                     @if($errors->has('excerpt'))
                         <div class="invalid-feedback">
                             {{ $errors->first('excerpt') }}
