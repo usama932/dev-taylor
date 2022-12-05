@@ -1,19 +1,19 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class="card">
-    <div class="card-header">
+<div class="main-card">
+    <div class="header">
         {{ trans('global.show') }} {{ trans('cruds.pageCustomField.title') }}
     </div>
 
-    <div class="card-body">
+    <div class="body">
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.page-custom-fields.index') }}">
+                <a class="btn btn-blue" href="{{ route('admin.page-custom-fields.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
-            <table class="table table-bordered table-striped">
+            <table class="stripe hover bordered datatable">
                 <tbody>
                     <tr>
                         <th>
@@ -90,7 +90,7 @@
                 </tbody>
             </table>
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.page-custom-fields.index') }}">
+                <a class="btn btn-blue" href="{{ route('admin.page-custom-fields.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>

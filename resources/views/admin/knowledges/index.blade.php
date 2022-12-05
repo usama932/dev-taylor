@@ -19,10 +19,9 @@
             <table class=" stripe hover bordered datatable  ajaxTable datatable-Knowledge">
                 <thead>
                     <tr>
-                        <th width="300">
-
+                        <th  width="600">
                         </th>
-                        <th>
+                        <th width="800">
                             {{ trans('cruds.knowledge.fields.name') }}
                         </th>
                         <th width="300">
@@ -31,10 +30,10 @@
                         {{-- <th>
                             {{ trans('cruds.knowledgeCategory.fields.slug') }}
                         </th> --}}
-                        <th>
+                        <th width="300">
                             {{ trans('cruds.knowledge.fields.status') }}
                         </th>
-                        <th>
+                        <th  width="300">
                             {{ trans('cruds.knowledge.fields.publish_date') }}
                         </th>
                         <th>

@@ -112,7 +112,7 @@
             </a>
         @endcan
         @can('company_access')
-            <a class="nav-link{{ request()->is("admin/companies") || request()->is("admin/companies/*") ? "active" : "" }}" href="{{ route("admin.companies.index") }}">
+            <a class="nav-link {{ request()->is("admin/companies") || request()->is("admin/companies/*") ? "active" : "" }}" href="{{ route("admin.companies.index") }}">
                 <i class="fa-fw fas fa-building">
 
                 </i>
@@ -137,7 +137,7 @@
 
                             </i>
 
-                            <span class="mx-4"> {{ trans('cruds.navigationmenu.title') }}</span>
+                            <span class="mx-4"> Locations</span>
                         </a>
                     @endcan
  
@@ -147,7 +147,7 @@
 
                             </i>
 
-                            <span class="mx-4">{{ trans('cruds.knowledgeCategory.title') }}</span>
+                            <span class="mx-4">Menu</span>
                         </a>
                     @endcan
                     @can('menuitem_access')

@@ -1,14 +1,15 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class="card">
-    <div class="card-header">
+<div class="main-card">
+    <div class="header">
         {{ trans('global.create') }} {{ trans('cruds.teamMember.title_singular') }}
     </div>
 
-    <div class="card-body">
+    <div class="body">
         <form method="POST" action="{{ route("admin.team-members.store") }}" enctype="multipart/form-data">
             @csrf
+            <div class="mb-3">
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.teamMember.fields.name') }}</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
@@ -19,6 +20,8 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.teamMember.fields.name_helper') }}</span>
             </div>
+            </div>
+            <div class="mb-3">
             <div class="form-group">
                 <label for="subheading">{{ trans('cruds.teamMember.fields.subheading') }}</label>
                 <input class="form-control {{ $errors->has('subheading') ? 'is-invalid' : '' }}" type="text" name="subheading" id="subheading" value="{{ old('subheading', '') }}">
@@ -29,6 +32,8 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.teamMember.fields.subheading_helper') }}</span>
             </div>
+            </div>
+            <div class="mb-3">
             <div class="form-group">
                 <label for="image">{{ trans('cruds.teamMember.fields.image') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('image') ? 'is-invalid' : '' }}" id="image-dropzone">
@@ -40,9 +45,11 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.teamMember.fields.image_helper') }}</span>
             </div>
+            </div>
+            <div class="mb-3">
             <div class="form-group">
                 <label for="content">{{ trans('cruds.teamMember.fields.content') }}</label>
-                <textarea class="form-control {{ $errors->has('content') ? 'is-invalid' : '' }}" name="content" id="content">{{ old('content') }}</textarea>
+                <textarea class="form-control  rows="4" cols="166" {{ $errors->has('content') ? 'is-invalid' : '' }}" name="content" id="content">{{ old('content') }}</textarea>
                 @if($errors->has('content'))
                     <div class="invalid-feedback">
                         {{ $errors->first('content') }}
@@ -50,11 +57,15 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.teamMember.fields.content_helper') }}</span>
             </div>
-            <div class="form-group">
-                <button class="btn btn-danger" type="submit">
-                    {{ trans('global.save') }}
-                </button>
             </div>
+             <div class="mb-3">
+                <div class="form-group">
+                    <div class="footer">
+                        <button type="submit" class="submit-button"> {{ trans('global.save') }}</button>
+                    </div>   
+                </div>
+            </div>
+        </div>
         </form>
     </div>
 </div>

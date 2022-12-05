@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class="card">
-    <div class="card-header">
+<div class="main-card">
+    <div class="header">
         {{ trans('global.edit') }} {{ trans('cruds.teamMember.title_singular') }}
     </div>
 
-    <div class="card-body">
+    <div class="body">
         <form method="POST" action="{{ route("admin.team-members.update", [$teamMember->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
                 <label for="content">{{ trans('cruds.teamMember.fields.content') }}</label>
-                <textarea class="form-control {{ $errors->has('content') ? 'is-invalid' : '' }}" name="content" id="content">{{ old('content', $teamMember->content) }}</textarea>
+                <textarea class="form-control rows="4" cols="166" {{ $errors->has('content') ? 'is-invalid' : '' }}" name="content" id="content">{{ old('content', $teamMember->content) }}</textarea>
                 @if($errors->has('content'))
                     <div class="invalid-feedback">
                         {{ $errors->first('content') }}

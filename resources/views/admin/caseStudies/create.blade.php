@@ -35,7 +35,7 @@
                 <span class="help-block">{{ trans('cruds.caseStudy.fields.subtitle_helper') }}</span>
             </div>
             <div class="mb-3">
-                <label for="content" class="text-xs " >{{ trans('cruds.caseStudy.fields.content') }}</label>
+                <label for="content" >{{ trans('cruds.caseStudy.fields.content') }}</label>
                 <div class="form-group">
                 <textarea class="form-control ckeditor {{ $errors->has('content') ? 'is-invalid' : '' }}" name="content" id="content">{!! old('content') !!}</textarea>
                 </div>

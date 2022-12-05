@@ -25,7 +25,7 @@
                 <div class="mb-3">
                     <div class="form-group">
                         <label for="description" class="text-xs required">{{ trans('cruds.knowledge.fields.description') }}</label>
-                        <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description') }}</textarea>
+                        <textarea class="form-control rows="4" cols="166" {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description') }}</textarea>
                         @if($errors->has('description'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('description') }}
@@ -119,13 +119,13 @@
                         <span class="help-block">{{ trans('cruds.knowledge.fields.slug_helper') }}</span>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <div class="form-group">
-                        <div class="footer">
-                            <button type="submit" class="submit-button"> {{ trans('global.save') }}</button>
-                        </div>  
-                    </div>
+               <div class="mb-3">
+                <div class="form-group">
+                    <div class="footer">
+                        <button type="submit" class="submit-button"> {{ trans('global.save') }}</button>
+                    </div>   
                 </div>
+            </div>
             </div>
         </form>
     

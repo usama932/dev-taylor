@@ -15,7 +15,7 @@
     </div>
 
     <div class="body">
-    <div  class="w-full">
+    <div class="w-full">
         <div class="table-responsive">
             <table class=" stripe hover bordered datatable  datatable-ContentTag">
                 <thead>

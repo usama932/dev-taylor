@@ -16,8 +16,8 @@
 
     <div class="body">
     <div class="w-full">
-        <div class="table-responsive">
-            <table class=" stripe hover bordered datatable datatable-PageCustomField">
+        
+            <table class=" stripe hover bordered datatable datatable-PageCustomField overflow-auto">
                 <thead>
                     <tr>
                         <th width="10">
@@ -110,13 +110,13 @@
                             </td>
                             <td>
                                 @can('page_custom_field_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.page-custom-fields.show', $pageCustomField->id) }}">
+                                    <a class="btn-sm" href="{{ route('admin.page-custom-fields.show', $pageCustomField->id) }}"  style="background-color:#000 !important; color:#fff !important">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
                                 @can('page_custom_field_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.page-custom-fields.edit', $pageCustomField->id) }}">
+                                    <a class="btn-sm" href="{{ route('admin.page-custom-fields.edit', $pageCustomField->id) }}"  style="background-color:#ffc200 !important; color:#000 !important">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
@@ -125,7 +125,7 @@
                                     <form action="{{ route('admin.page-custom-fields.destroy', $pageCustomField->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                        <input type="submit"  class="btn-sm btn-red" value="{{ trans('global.delete') }}">
                                     </form>
                                 @endcan
 
@@ -135,7 +135,7 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
+       
     </div>
     </div>
 </div>
@@ -180,8 +180,12 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
+    
     order: [[ 1, 'desc' ]],
     pageLength: 100,
+     "sScrollX": "100%",
+            "sScrollXInner": "110%",
+            "bScrollCollapse": true
   });
   let table = $('.datatable-PageCustomField:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){

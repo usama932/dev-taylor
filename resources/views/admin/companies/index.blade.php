@@ -48,13 +48,13 @@
                                 </td>
                                 <td>
                                     @can('company_show')
-                                        <a class="btn btn-xs btn-primary" href="{{ route('admin.companies.show', $company->id) }}">
+                                        <a class="btn-sm" href="{{ route('admin.companies.show', $company->id) }}" style="background-color:#000 !important; color:#fff !important">
                                             {{ trans('global.view') }}
                                         </a>
                                     @endcan
 
                                     @can('company_edit')
-                                        <a class="btn btn-xs btn-info" href="{{ route('admin.companies.edit', $company->id) }}">
+                                        <a class="btn-sm" href="{{ route('admin.companies.edit', $company->id) }}" style="background-color:#ffc200 !important; color:#000 !important">
                                             {{ trans('global.edit') }}
                                         </a>
                                     @endcan
@@ -63,7 +63,7 @@
                                         <form action="{{ route('admin.companies.destroy', $company->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                            <input type="submit" class="btn-sm btn-red" value="{{ trans('global.delete') }}">
                                         </form>
                                     @endcan
 
