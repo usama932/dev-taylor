@@ -164,6 +164,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Eusonlito\LaravelMeta\MetaServiceProvider::class,
+        FruitCake\Cors\CorsServiceProvider::class,
 
         /*
          * Package Service Providers...
