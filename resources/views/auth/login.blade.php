@@ -1,57 +1,91 @@
 @extends('layouts.app')
 @section('content')
-<div class="auth-card">
-    <div class="title">
-        {{ trans('panel.site_title') }}
-    </div>
 
-    @if(session('message'))
-        <div class="alert success">
-            {{ session('message') }}
-        </div>
-    @endif
-
-    <form method="POST" action="{{ route('login') }}">
-                    @csrf
-
-        <label class="block">
-            <span class="text-gray-700 text-sm">{{ trans('global.login_email') }}</span>
-          
-            <input type="email" name="email" class="form-input {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" autofocus required>
-            @if($errors->has('email'))
-                <p class="invalid-feedback">{{ $errors->first('email') }}</p>
-            @endif
-        </label>
-
-        <label class="block mt-3">
-            <span class="text-gray-700 text-sm">{{ trans('global.login_password') }}</span>
-            <input type="password" name="password" class="form-input{{ $errors->has('password') ? ' is-invalid' : '' }}" required>
-          
-            @if($errors->has('password'))
-                <p class="invalid-feedback">{{ $errors->first('password') }}</p>
-            @endif
-        </label>
-
-        <div class="flex justify-between items-center mt-4">
-            <div>
-                <label class="inline-flex items-center">
-                    <input type="checkbox" name="remember" id="remember" class="form-checkbox text-indigo-600">
-                    <span class="mx-2 text-gray-600 text-sm">{{ trans('global.remember_me') }}</span>
-                </label>
-            </div>
-
-            @if(Route::has('password.request'))
-                <div>
-                    <a class="link" href="{{ route('password.request') }}">{{ trans('global.forgot_password') }}</a>
+      <section class="relative w-full h-full py-40 min-h-screen">
+        <div
+          class="absolute top-0 w-full h-full bg-blueGray-800 bg-full bg-no-repeat"
+          style="background-image: url(../../assets/img/register_bg_2.png)"
+        ></div>
+        <div class="container mx-auto px-4 h-full">
+          <div class="flex content-center items-center justify-center h-full">
+            <div class="w-full lg:w-4/12 px-4">
+              <div
+                class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0"
+              >
+                <div class="rounded-t mb-0 px-6 py-6">
+                  <div class="text-center mb-3">
+                    <h6 class="text-blueGray-500 text-sm font-bold">
+                      Login
+                    </h6>
+                  </div>
+                  <div class="btn-wrapper text-center">
+     
+                  <hr class="mt-6 border-b-1 border-blueGray-300" />
                 </div>
-            @endif
+                <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+                  <div class="text-blueGray-400 text-center mb-3 font-bold">
+                    <small>Login in with credentials</small>
+                  </div>
+                  <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <div class="relative w-full mb-3">
+                      <label
+                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        for="grid-password"
+                        >Email</label
+                      ><input
+                      type="email" name="email"
+                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        placeholder="Email"
+                      />
+                      
+                    </div>
+                    <div class="relative w-full mb-3">
+                      <label
+                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        for="grid-password"
+                        >Password</label
+                      ><input
+                      type="password" name="password"
+                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        placeholder="Password"
+                      />
+                      
+                    </div>
+                    <div>
+                      <label class="inline-flex items-center cursor-pointer"
+                        ><input
+                          id="customCheckLogin"
+                          type="checkbox"
+                          class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
+                        /><span
+                          class="ml-2 text-sm font-semibold text-blueGray-600"
+                          >Remember me</span
+                        ></label
+                      >
+                    </div>
+                    <div class="text-center mt-6">
+                      <button
+                        class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                        type="submit"
+                      >
+                        Login
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="flex flex-wrap mt-6">
+                <div class="w-1/2">
+                  
+                  <a href="{{ route('password.request') }}" class="text-blueGray-200"
+                    ><small>Forgot password?</small></a
+                  >
+                </div>
+              
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div class="mt-6">
-            <button type="submit" class="button">
-                {{ trans('global.login') }}
-            </button>
-        </div>
-    </form>
-</div>
+       
 @endsection
