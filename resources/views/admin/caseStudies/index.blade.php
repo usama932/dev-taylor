@@ -22,7 +22,7 @@
           </div>
           @endcan
         </div>
-        <div class="block w-full overflow-x-auto">
+        <div class="block w-full overflow-x-auto p-2">
           <!-- Projects table -->
            <table class=" items-center w-full bg-transparent border-collapse datatable-CaseStudy">
             <thead>

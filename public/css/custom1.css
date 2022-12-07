@@ -142,6 +142,7 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
     border-radius: .25rem;				/*rounded*/
     background: #667eea !important;		/*bg-indigo-500*/
     border: 1px solid transparent;		/*border border-transparent*/
+    padding: 2px;
 }
 
 /*Pagination Buttons - Hover */
@@ -152,6 +153,7 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
     border-radius: .25rem;				/*rounded*/
     background: #667eea !important;		/*bg-indigo-500*/
     border: 1px solid transparent;		/*border border-transparent*/
+    padding: 2px;
 }
 
 /*Add padding to bottom border */
