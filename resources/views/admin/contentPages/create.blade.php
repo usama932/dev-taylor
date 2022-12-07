@@ -1,19 +1,26 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class="main-card">
-    <div class="header">
-        {{ trans('global.create') }} {{ trans('cruds.contentPage.title_singular') }}
-    </div>
-
-    
-        <form method="POST" action="{{ route("admin.content-pages.store") }}" enctype="multipart/form-data">
-            @csrf
-            <div class="body">
-             
+<div class="px-4 md:px-10 mx-auto w-full -m-24">
+  <div class="flex flex-wrap mt-4">
+    <div class="w-full mb-12 px-4">
+      <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
+        <div class="rounded-t mb-0 px-4 py-3 border-0">
+          <div class="flex flex-wrap items-center">
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+              <h3 class="font-semibold text-lg text-blueGray-700">
+              {{ trans('global.create') }} {{ trans('cruds.contentPage.title_singular') }}
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="flex-auto px-4 lg:px-10 py-10 pt-0 bg-blueGray-100">
+          <form method="POST" action="{{ route("admin.content-pages.store") }}" enctype="multipart/form-data">
+              @csrf
+              <div class="mb-3 mt-3">
                 <div class="form-group">
-                    <label class="text-xs required" for="title">{{ trans('cruds.contentPage.fields.title') }}</label>
-                    <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
+                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 " for="title">{{ trans('cruds.contentPage.fields.title') }}</label>
+                    <input class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
                     @if($errors->has('title'))
                         <div class="invalid-feedback">
                             {{ $errors->first('title') }}
@@ -21,12 +28,12 @@
                     @endif
                     <span class="help-block">{{ trans('cruds.contentPage.fields.title_helper') }}</span>
                 </div>
-              
-              <div class="mb-3">
+                </div>
+                     <div class="mb-3">
                 
-                    <label for="excerpt" class="text-xs ">{{ trans('cruds.contentPage.fields.excerpt') }}</label>
+                    <label for="excerpt" class="block uppercase text-blueGray-600 text-xs font-bold  mb-2">{{ trans('cruds.contentPage.fields.excerpt') }}</label>
                     <div class="form-group">
-                    <textarea class="form-control  rows="4" cols="160" {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt') }}</textarea>
+                    <textarea class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150  rows="4" cols="160" {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt') }}</textarea>
                     @if($errors->has('excerpt'))
                         <div class="invalid-feedback">
                             {{ $errors->first('excerpt') }}
@@ -37,8 +44,8 @@
               </div>
               <div class="mb-3">
                 <div class="form-group">
-                    <label for="page_text"  class="text-xs ">{{ trans('cruds.contentPage.fields.page_text') }}</label>
-                    <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" name="page_text" id="page_text">{!! old('page_text') !!}</textarea>
+                    <label for="page_text"  class="block uppercase text-blueGray-600 text-xs font-bold mb-2 ">{{ trans('cruds.contentPage.fields.page_text') }}</label>
+                    <textarea class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" name="page_text" id="page_text">{!! old('page_text') !!}</textarea>
                     @if($errors->has('page_text'))
                         <div class="invalid-feedback">
                             {{ $errors->first('page_text') }}
@@ -49,7 +56,7 @@
               </div>
               <div class="mb-3">
                 <div class="form-group">
-                    <label for="featured_image"  class="text-xs ">{{ trans('cruds.contentPage.fields.featured_image') }}</label>
+                    <label for="featured_image"  class="block uppercase text-blueGray-600 text-xs font-bold  mb-2">{{ trans('cruds.contentPage.fields.featured_image') }}</label>
                     <div class="needsclick dropzone {{ $errors->has('featured_image') ? 'is-invalid' : '' }}" id="featured_image-dropzone">
                     </div>
                     @if($errors->has('featured_image'))
@@ -62,8 +69,8 @@
               </div>
               <div class="mb-3">
                 <div class="form-group">
-                    <label  class="text-xs ">{{ trans('cruds.contentPage.fields.status') }}</label>
-                    <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
+                    <label  class="block uppercase text-blueGray-600 text-xs font-bold mb-2">{{ trans('cruds.contentPage.fields.status') }}</label>
+                    <select class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
                         <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                         @foreach(App\Models\ContentPage::STATUS_SELECT as $key => $label)
                             <option value="{{ $key }}" {{ old('status', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
@@ -79,8 +86,8 @@
               </div>
               <div class="mb-3">
                 <div class="form-group">
-                    <label for="parent_id">{{ trans('cruds.contentPage.fields.parent') }}</label>
-                    <select class="form-control select2 {{ $errors->has('parent') ? 'is-invalid' : '' }}" name="parent_id" id="parent_id">
+                    <label for="parent_id mb-2">{{ trans('cruds.contentPage.fields.parent') }}</label>
+                    <select class="form-control mb-2  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 select2 {{ $errors->has('parent') ? 'is-invalid' : '' }}" name="parent_id" id="parent_id">
                         @foreach($parents as $id => $entry)
                             <option value="{{ $id }}" {{ old('parent_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                         @endforeach
@@ -95,8 +102,8 @@
               </div>
               <div class="mb-3">
                 <div class="form-group">
-                    <label for="slug"  class="text-xs ">{{ trans('cruds.contentPage.fields.slug') }}</label>
-                    <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', '') }}">
+                    <label for="slug"  class="block uppercase text-blueGray-600 text-xs font-bold  ">{{ trans('cruds.contentPage.fields.slug') }}</label>
+                    <input class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', '') }}">
                     @if($errors->has('slug'))
                         <div class="invalid-feedback">
                             {{ $errors->first('slug') }}
@@ -106,17 +113,18 @@
                 </div>
               </div>
               <div class="mb-3">
-                <div class="form-group">
-                    <div class="footer">
-                      <button type="submit" class="submit-button">{{ trans('global.save') }}</button>
-                    </div>
-                </div>
+                  <div class="form-group">
+                    <button class="btn btn-indigo mr-2" type="submit">
+                        Save
+                    </button>
+                  </div>
               </div>
-            </div>
-        </form>
-    
+          </form
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
 
 
 @endsection

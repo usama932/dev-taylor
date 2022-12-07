@@ -1,22 +1,31 @@
 @extends('layouts.admin')
 @section('content')
-@can('content_tag_create')
-    <div class="block my-4">
-        <div class="col-lg-12">
-            <a class="btn btn-blue" href="{{ route('admin.content-tags.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.contentTag.title_singular') }}
-            </a>
-        </div>
-    </div>
-@endcan
-<div class="main-card">
-    <div class="header">
-        {{ trans('cruds.contentTag.title_singular') }} {{ trans('global.list') }}
-    </div>
 
-    <div class="body">
-    <div class="w-full">
-        <div class="table-responsive">
+
+<div class="px-4 md:px-10 mx-auto w-full -m-24">
+  <div class="flex flex-wrap mt-4">
+    <div class="w-full mb-12 px-4">
+      <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
+        <div class="rounded-t mb-0 px-4 py-3 border-0">
+          <div class="flex flex-wrap items-center">
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+              <h3 class="font-semibold text-lg text-blueGray-700">
+                {{ trans('cruds.contentTag.title_singular') }} {{ trans('global.list') }}
+              </h3>
+            </div>
+            @can('content_tag_create')
+            <div class="btn-text-left"> 
+              <a class="btn btn-indigo" href="{{ route('admin.content-tags.create') }}">
+                 {{ trans('global.add') }} {{ trans('cruds.contentTag.title_singular') }}
+            </a>
+            </div>
+            @endcan
+           
+          </div>
+        </div>
+        <div class="block w-full overflow-x-auto">
+          <!-- Projects table -->
+             <div class="table-responsive">
             <table class=" stripe hover bordered datatable  datatable-ContentTag">
                 <thead>
                     <tr>
@@ -80,10 +89,11 @@
                 </tbody>
             </table>
         </div>
+        </div>
+      </div>
     </div>
-    </div>
+  </div>
 </div>
-
 
 
 @endsection

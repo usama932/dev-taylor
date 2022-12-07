@@ -11,17 +11,18 @@
                 {{ trans('cruds.contentPage.title_singular') }}
               </h3>
             </div>
-
+            
             <div class="btn-text-left"> 
               <a class="btn btn-indigo" href="{{ route('admin.content-pages.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.contentPage.title_singular') }}
             </a>
             </div>
+           
           </div>
         </div>
         <div class="block w-full overflow-x-auto">
           <!-- Projects table -->
-          <table class=" items-center w-full bg-transparent border-collapse ajaxTable  datatable-ContentPage ">
+          <table class=" stripe hover bordered datatable  ajaxTable  datatable-ContentPage p-2">
               <thead>
                   <tr>
                       <th width="10">
