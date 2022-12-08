@@ -16,6 +16,7 @@
          rel="stylesheet"
          href="../../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
          />
+         <script src="https://cdn.tailwindcss.com"></script>
       <link rel="stylesheet" href="../../assets/styles/tailwind.css" />
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
       <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet" />
@@ -319,7 +320,7 @@
 
             </div>
          </nav>
-         <div class="relative bg-pink-600 md:pt-32 pb-32 pt-12">
+         <div class="relative  md:pt-32 pb-16 pt-12" style="background-color:#ffc200">
             <div class="px-4 md:px-10 mx-auto w-full">
             
             </div>

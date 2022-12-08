@@ -22,7 +22,7 @@
             @endcan
           </div>
         </div>
-        <div class="block w-full overflow-x-auto">
+        <div class="block w-full overflow-x-auto p-2">
           <!-- Projects table -->
           <table class="stripe hover bordered datatable ajaxTable  datatable-WhatWeDo">
             <thead>

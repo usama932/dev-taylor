@@ -16,193 +16,192 @@
           </div>
         </div>
         <div class="flex-auto px-4 lg:px-10 py-10 pt-0 bg-blueGray-100">
-        <form method="POST" action="{{ route("admin.what-we-dos.store") }}" enctype="multipart/form-data">
-            @csrf
-            <div class="body">
-                <div class="mb-3 mt-3">
-                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="title">{{ trans('cruds.whatWeDo.fields.title') }}</label>
-                    <div class="form-group">
-                        <input class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
-                        @if($errors->has('title'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('title') }}
-                            </div>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.whatWeDo.fields.title_helper') }}</span>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="excerpt" class="block uppercase text-blueGray-600 text-xs font-bold mb-2 ">{{ trans('cruds.whatWeDo.fields.excerpt') }}</label>
-                    <div class="form-group">
-                        
-                        <textarea class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 rows="4" cols="160" {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt') }}</textarea>
-                        @if($errors->has('excerpt'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('excerpt') }}
-                            </div>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.whatWeDo.fields.excerpt_helper') }}</span>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="page_text" class="block uppercase text-blueGray-600 text-xs font-bold mb-2 ">{{ trans('cruds.whatWeDo.fields.page_text') }}</label>
-                    <div class="form-group">
-                        
-                        <textarea class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" name="page_text" id="page_text">{!! old('page_text') !!}</textarea>
-                        @if($errors->has('page_text'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('page_text') }}
-                            </div>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.whatWeDo.fields.page_text_helper') }}</span>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="featured_image" class="block uppercase text-blueGray-600 text-xs font-bold mb-2">{{ trans('cruds.whatWeDo.fields.featured_image') }}</label>
-                    <div class="form-group">
-                        
-                        <div class="needsclick dropzone {{ $errors->has('featured_image') ? 'is-invalid' : '' }}" id="featured_image-dropzone">
+            <form method="POST" action="{{ route("admin.what-we-dos.store") }}" enctype="multipart/form-data">
+                @csrf
+                <div class="body">
+                    <div class="mb-3 mt-3">
+                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="title">{{ trans('cruds.whatWeDo.fields.title') }}</label>
+                        <div class="form-group">
+                            <input class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
+                            @if($errors->has('title'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('title') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.whatWeDo.fields.title_helper') }}</span>
                         </div>
-                        {{-- <button type="button" class="btn btn-primary btn-sm mt-2" data-toggle="modal" data-target="#exampleModal">
-                            Choose from gallery
-                        </button>
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Choose Image</h5>
-                                        <button type="button" class=" btn-sm btn-indigo close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                    <div class="row">
-                                    @foreach ($medias as $media)
-                                    <div class="col-md-3 m-2"> 
-                                        <label>
-                                            <input type="radio" name="featured_image2" value="{{$media->file_name}}" >
-                                            <img src="{{$media->getUrl('thumb')}}" style="width:110px; height:auto;" >
-                                        </label>
-                                    </div>
-                                    @endforeach
+                    </div>
+                    <div class="mb-3">
+                        <label for="excerpt" class="block uppercase text-blueGray-600 text-xs font-bold mb-2 ">{{ trans('cruds.whatWeDo.fields.excerpt') }}</label>
+                        <div class="form-group">
+                            
+                            <textarea class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 rows="4" cols="160" {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt') }}</textarea>
+                            @if($errors->has('excerpt'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('excerpt') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.whatWeDo.fields.excerpt_helper') }}</span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="page_text" class="block uppercase text-blueGray-600 text-xs font-bold mb-2 ">{{ trans('cruds.whatWeDo.fields.page_text') }}</label>
+                        <div class="form-group">
+                            
+                            <textarea class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" name="page_text" id="page_text">{!! old('page_text') !!}</textarea>
+                            @if($errors->has('page_text'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('page_text') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.whatWeDo.fields.page_text_helper') }}</span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="featured_image" class="block uppercase text-blueGray-600 text-xs font-bold mb-2">{{ trans('cruds.whatWeDo.fields.featured_image') }}</label>
+                        <div class="form-group">
+                            
+                            <div class="needsclick dropzone {{ $errors->has('featured_image') ? 'is-invalid' : '' }}" id="featured_image-dropzone">
+                            </div>
+                            {{-- <button type="button" class="btn btn-primary btn-sm mt-2" data-toggle="modal" data-target="#exampleModal">
+                                Choose from gallery
+                            </button>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Choose Image</h5>
+                                            <button type="button" class=" btn-sm btn-indigo close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
-                                    <button type="button" class="bbtn-sm btn-indigo" data-dismiss="modal">Close</button>
+                                        <div class="modal-body">
+                                        <div class="row">
+                                        @foreach ($medias as $media)
+                                        <div class="col-md-3 m-2"> 
+                                            <label>
+                                                <input type="radio" name="featured_image2" value="{{$media->file_name}}" >
+                                                <img src="{{$media->getUrl('thumb')}}" style="width:110px; height:auto;" >
+                                            </label>
+                                        </div>
+                                        @endforeach
+                                            </div>
+                                        <button type="button" class="bbtn-sm btn-indigo" data-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div> --}}
-                        @if($errors->has('featured_image'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('featured_image') }}
-                            </div>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.whatWeDo.fields.featured_image_helper') }}</span>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="logo">Title Image</label>
-                    <div class="form-group">
-                    <input type="file" name="title_image" class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="">
-                        
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <div class="form-group">
-                        <label for="cta_button_text">{{ trans('cruds.whatWeDo.fields.cta_button_text') }}</label>
-                        <input class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('cta_button_text') ? 'is-invalid' : '' }}" type="text" name="cta_button_text" id="cta_button_text" value="{{ old('cta_button_text', '') }}">
-                        @if($errors->has('cta_button_text'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('cta_button_text') }}
-                            </div>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.whatWeDo.fields.cta_button_text_helper') }}</span>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    
-                        <div class="form-check {{ $errors->has('featured') ? 'is-invalid' : '' }}">
-                            <input type="hidden" name="featured" value="0">
-                            <input class="form-check-input" type="checkbox" name="featured" id="featured" value="1" {{ old('featured', 0) == 1 ? 'checked' : '' }}>
-                            <label class="form-check-label" for="featured">{{ trans('cruds.caseStudy.fields.featured') }}</label>
+                            </div> --}}
+                            @if($errors->has('featured_image'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('featured_image') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.whatWeDo.fields.featured_image_helper') }}</span>
                         </div>
-                        @if($errors->has('featured'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('featured') }}
-                            </div>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.caseStudy.fields.featured_helper') }}</span>
-                    
-                </div>
-                <div class="mb-3">
-                    <label for="cta_url" class="text-xs required ">{{ trans('cruds.whatWeDo.fields.cta_url') }}</label>
-                    <div class="form-group">
+                    </div>
+                    <div class="mb-3">
+                        <label for="logo">Title Image</label>
+                        <div class="form-group">
+                        <input type="file" name="title_image" class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="">
+                            
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label for="cta_button_text">{{ trans('cruds.whatWeDo.fields.cta_button_text') }}</label>
+                            <input class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('cta_button_text') ? 'is-invalid' : '' }}" type="text" name="cta_button_text" id="cta_button_text" value="{{ old('cta_button_text', '') }}">
+                            @if($errors->has('cta_button_text'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('cta_button_text') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.whatWeDo.fields.cta_button_text_helper') }}</span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
                         
-                        <input class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('cta_url') ? 'is-invalid' : '' }}" type="text" name="cta_url" id="cta_url" value="{{ old('cta_url', '') }}">
-                        @if($errors->has('cta_url'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('cta_url') }}
+                            <div class="form-check {{ $errors->has('featured') ? 'is-invalid' : '' }}">
+                                <input type="hidden" name="featured" value="0">
+                                <input class="form-check-input" type="checkbox" name="featured" id="featured" value="1" {{ old('featured', 0) == 1 ? 'checked' : '' }}>
+                                <label class="form-check-label" for="featured">{{ trans('cruds.caseStudy.fields.featured') }}</label>
                             </div>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.whatWeDo.fields.cta_url_helper') }}</span>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <div class="form-group">
-                        <label for="case_study_id">{{ trans('cruds.whatWeDo.fields.case_study') }}</label>
-                        <select class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 select2 {{ $errors->has('case_study') ? 'is-invalid' : '' }}" name="case_study_id" id="case_study_id">
-                            @foreach($case_studies as $id => $entry)
-                                <option value="{{ $id }}" {{ old('case_study_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                            @endforeach
-                        </select>
-                        @if($errors->has('case_study'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('case_study') }}
-                            </div>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.whatWeDo.fields.case_study_helper') }}</span>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label class="text-xs required ">{{ trans('cruds.whatWeDo.fields.status') }}</label>
-                    <div class="form-group">
+                            @if($errors->has('featured'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('featured') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.caseStudy.fields.featured_helper') }}</span>
                         
-                        <select class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
-                            <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                            @foreach(App\Models\WhatWeDo::STATUS_SELECT as $key => $label)
-                                <option value="{{ $key }}" {{ old('status', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                            @endforeach
-                        </select>
-                        @if($errors->has('status'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('status') }}
-                            </div>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.whatWeDo.fields.status_helper') }}</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cta_url" class="text-xs required ">{{ trans('cruds.whatWeDo.fields.cta_url') }}</label>
+                        <div class="form-group">
+                            
+                            <input class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('cta_url') ? 'is-invalid' : '' }}" type="text" name="cta_url" id="cta_url" value="{{ old('cta_url', '') }}">
+                            @if($errors->has('cta_url'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('cta_url') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.whatWeDo.fields.cta_url_helper') }}</span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label for="case_study_id">{{ trans('cruds.whatWeDo.fields.case_study') }}</label>
+                            <select class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 select2 {{ $errors->has('case_study') ? 'is-invalid' : '' }}" name="case_study_id" id="case_study_id">
+                                @foreach($case_studies as $id => $entry)
+                                    <option value="{{ $id }}" {{ old('case_study_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('case_study'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('case_study') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.whatWeDo.fields.case_study_helper') }}</span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="text-xs required ">{{ trans('cruds.whatWeDo.fields.status') }}</label>
+                        <div class="form-group">
+                            
+                            <select class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
+                                <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                                @foreach(App\Models\WhatWeDo::STATUS_SELECT as $key => $label)
+                                    <option value="{{ $key }}" {{ old('status', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('status'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('status') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.whatWeDo.fields.status_helper') }}</span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="slug" class="text-xs required ">{{ trans('cruds.whatWeDo.fields.slug') }}</label>
+                        <div class="form-group">
+                            
+                            <input class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', '') }}">
+                            @if($errors->has('slug'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('slug') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.whatWeDo.fields.slug_helper') }}</span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <button class="btn btn-indigo mr-2" type="submit">
+                                Save
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="slug" class="text-xs required ">{{ trans('cruds.whatWeDo.fields.slug') }}</label>
-                    <div class="form-group">
-                        
-                        <input class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', '') }}">
-                        @if($errors->has('slug'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('slug') }}
-                            </div>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.whatWeDo.fields.slug_helper') }}</span>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <div class="form-group">
-                        <button class="btn btn-indigo mr-2" type="submit">
-                            Save
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    
+            </form>
         </div>
       </div>
     </div>

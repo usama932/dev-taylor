@@ -1,48 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-{{-- <div class="main-card">
-    <div class="header">
-        {{ trans('global.create') }} {{ trans('cruds.contentTag.title_singular') }}
-    </div>
 
-    <div class="body">
-        <form method="POST" action="{{ route("admin.content-tags.store") }}" enctype="multipart/form-data">
-            @csrf
-            <div class="mb-3">
-                <div class="form-group">
-                    <label class="required" class="text-xs " for="name">{{ trans('cruds.contentTag.fields.name') }}</label>
-                    <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
-                    @if($errors->has('name'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('name') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.contentTag.fields.name_helper') }}</span>
-                </div>
-            </div>
-            <div class="mb-3">
-                <div class="form-group">
-                    <label for="slug" class="text-xs ">{{ trans('cruds.contentTag.fields.slug') }}</label>
-                    <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', '') }}">
-                    @if($errors->has('slug'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('slug') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.contentTag.fields.slug_helper') }}</span>
-                </div>
-            </div>
-            <div class="mb-3">
-                <div class="form-group">
-                    <button class="btn btn-danger" type="submit">
-                        {{ trans('global.save') }}
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div> --}}
 
 <div class="px-4 md:px-10 mx-auto w-full -m-24">
   <div class="flex flex-wrap mt-4">
@@ -62,7 +21,7 @@
             @csrf
             <div class="mb-3 mt-3">
                 <div class="form-group">
-                    <label class="required" class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="name">{{ trans('cruds.contentTag.fields.name') }}</label>
+                    <label  class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="name">{{ trans('cruds.contentTag.fields.name') }}</label>
                     <input class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
                     @if($errors->has('name'))
                         <div class="invalid-feedback">
