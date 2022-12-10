@@ -20,7 +20,7 @@
               <div class="mb-3 mt-3">
                 <div class="form-group">
                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 " for="title">{{ trans('cruds.contentPage.fields.title') }}</label>
-                    <input class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
+                    <input class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
                     @if($errors->has('title'))
                         <div class="invalid-feedback">
                             {{ $errors->first('title') }}

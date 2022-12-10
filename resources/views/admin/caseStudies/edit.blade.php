@@ -64,7 +64,7 @@
                 <label for="logo" class="block uppercase text-blueGray-600 text-xs font-bold mb-2">{{ trans('cruds.caseStudy.fields.logo') }}</label>
                 <div class="form-group">
                     
-                    <div class="needsclick    border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150dropzone {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="logo-dropzone">
+                    <div class="needsclick  dropzone form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150dropzone {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="logo-dropzone">
                     </div>
                     @if($errors->has('logo'))
                         <div class="invalid-feedback">

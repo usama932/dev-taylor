@@ -18,6 +18,7 @@
          />
          <script src="https://cdn.tailwindcss.com"></script>
       <link rel="stylesheet" href="../../assets/styles/tailwind.css" />
+        
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
       <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet" />
       <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -29,9 +30,9 @@
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
       <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
       <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/css/perfect-scrollbar.min.css" rel="stylesheet" />
-      {{-- 
-      <link href="{{ asset('css/custom1.css') }}" rel="stylesheet" />
-      --}}
+      <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+      <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+      
       @yield('styles')
    </head>
    <body class="text-blueGray-700 antialiased">
@@ -247,6 +248,7 @@
                       </a>
                     </li>
                   @endcan
+                  
                   @can('team_member_access')
                     <li class="items-center">
                       <a
@@ -293,13 +295,13 @@
                     @endcan
                   @endif
                   <li class="items-center">
-                    <a class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500" href="#" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
-                      <i class="fa-fw fas fa-sign-out-alt"></i>
+                    <a class="mr-2 text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500" href="#" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
+                      <i class="fa-fw fas fa-sign-out-alt mr-2"></i>
 
                       {{ trans('global.logout') }}
                     </a>
                   <li>
-                
+                  
                </ul>
               
             </div>
@@ -346,7 +348,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
-      {{-- <script src="{{ asset('js/main.js') }}"></script> --}}
+      <script src="{{ asset('js/main.js') }}"></script>
       <script>
          $(function() {
          {{-- let copyButtonTrans = '{{ trans('global.datatables.copy') }}'
