@@ -1,20 +1,31 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class="main-card">
-    <div class="header">
-        {{ trans('global.edit') }} {{ trans('cruds.knowledge.title_singular') }}
-    </div>
 
-    
-        <form method="POST" action="{{ route("admin.knowledges.update", [$knowledge->id]) }}" enctype="multipart/form-data">
+
+<div class="px-4 md:px-10 mx-auto w-full -m-24">
+  <div class="flex flex-wrap mt-4">
+    <div class="w-full mb-12 px-4">
+      <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
+        <div class="rounded-t mb-0 px-4 py-3 border-0">
+          <div class="flex flex-wrap items-center">
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+              <h3 class="font-semibold text-lg text-blueGray-700">
+                {{ trans('global.edit') }} {{ trans('cruds.knowledge.title_singular') }}
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="flex-auto px-4 lg:px-10 py-10 pt-0 bg-blueGray-100" style="background-color:#F0F4F8 !important" >
+ 
+             <form method="POST" action="{{ route("admin.knowledges.update", [$knowledge->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
-            <div class="body">
-                <div class="mb-3">
+            <div class="body" >
+                <div class="mb-3 mt-3">
                     <div class="form-group">
-                        <label class="text-xs required" for="name">{{ trans('cruds.knowledge.fields.name') }}</label>
-                        <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $knowledge->name) }}" required>
+                        <label class=" block uppercase text-blueGray-600 text-xs font-bold mb-2 required" for="name">{{ trans('cruds.knowledge.fields.name') }}</label>
+                        <input class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $knowledge->name) }}" required>
                         @if($errors->has('name'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('name') }}
@@ -25,8 +36,8 @@
                 </div>
                 <div class="mb-3">
                     <div class="form-group">
-                        <label for="description" class="text-xs required">{{ trans('cruds.knowledge.fields.description') }}</label>
-                        <textarea class="form-control rows="4" cols="166" {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description', $knowledge->description) }}</textarea>
+                        <label for="description" class=" block uppercase text-blueGray-600 text-xs font-bold mb-2 required">{{ trans('cruds.knowledge.fields.description') }}</label>
+                        <textarea class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 rows="4" cols="166" {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description', $knowledge->description) }}</textarea>
                         @if($errors->has('description'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('description') }}
@@ -37,8 +48,8 @@
                 </div>
                 <div class="mb-3">
                     <div class="form-group">
-                        <label for="content" class="text-xs required">{{ trans('cruds.knowledge.fields.content') }}</label>
-                        <textarea class="form-control ckeditor {{ $errors->has('content') ? 'is-invalid' : '' }}" name="content" id="content">{!! old('content', $knowledge->content) !!}</textarea>
+                        <label for="content" class=" block uppercase text-blueGray-600 text-xs font-bold mb-2 required">{{ trans('cruds.knowledge.fields.content') }}</label>
+                        <textarea class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 ckeditor {{ $errors->has('content') ? 'is-invalid' : '' }}" name="content" id="content">{!! old('content', $knowledge->content) !!}</textarea>
                         @if($errors->has('content'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('content') }}
@@ -49,8 +60,8 @@
                 </div>
                 <div class="mb-3">
                     <div class="form-group">
-                        <label for="category_id" class="text-xs required">{{ trans('cruds.knowledge.fields.category') }}</label>
-                        <select class="form-control select2 {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category_id" id="category_id">
+                        <label for="category_id" class=" block uppercase text-blueGray-600 text-xs font-bold mb-2 required">{{ trans('cruds.knowledge.fields.category') }}</label>
+                        <select class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 select2 {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category_id" id="category_id">
                             @foreach($categories as $id => $entry)
                                 <option value="{{ $id }}" {{ (old('category_id') ? old('category_id') : $knowledge->category->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                             @endforeach
@@ -65,8 +76,8 @@
                 </div>
                 <div class="mb-3">
                     <div class="form-group">
-                        <label for="tag_id" class="text-xs required">{{ trans('cruds.knowledge.fields.tag') }}</label>
-                        <select class="form-control select2 {{ $errors->has('tag') ? 'is-invalid' : '' }}" name="tag_id" id="tag_id">
+                        <label for="tag_id" class=" block uppercase text-blueGray-600 text-xs font-bold mb-2 required">{{ trans('cruds.knowledge.fields.tag') }}</label>
+                        <select class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 select2 {{ $errors->has('tag') ? 'is-invalid' : '' }}" name="tag_id" id="tag_id">
                             @foreach($tags as $id => $entry)
                                 <option value="{{ $id }}" {{ (old('tag_id') ? old('tag_id') : $knowledge->tag->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                             @endforeach
@@ -81,8 +92,8 @@
                 </div>
                 <div class="mb-3">
                     <div class="form-group">
-                        <label class="text-xs required">{{ trans('cruds.knowledge.fields.status') }}</label>
-                        <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
+                        <label class=" block uppercase text-blueGray-600 text-xs font-bold mb-2 required">{{ trans('cruds.knowledge.fields.status') }}</label>
+                        <select class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
                             <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                             @foreach(App\Models\Knowledge::STATUS_SELECT as $key => $label)
                                 <option value="{{ $key }}" {{ old('status', $knowledge->status) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
@@ -98,8 +109,8 @@
                 </div>
                 <div class="mb-3">
                     <div class="form-group">
-                        <label for="publish_date" class="text-xs required">{{ trans('cruds.knowledge.fields.publish_date') }}</label>
-                        <input class="form-control datetime {{ $errors->has('publish_date') ? 'is-invalid' : '' }}" type="text" name="publish_date" id="publish_date" value="{{ old('publish_date', $knowledge->publish_date) }}">
+                        <label for="publish_date" class=" block uppercase text-blueGray-600 text-xs font-bold mb-2 required">{{ trans('cruds.knowledge.fields.publish_date') }}</label>
+                        <input class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 datetime {{ $errors->has('publish_date') ? 'is-invalid' : '' }}" type="text" name="publish_date" id="publish_date" value="{{ old('publish_date', $knowledge->publish_date) }}">
                         @if($errors->has('publish_date'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('publish_date') }}
@@ -110,8 +121,8 @@
                 </div>
                 <div class="mb-3">
                     <div class="form-group">
-                        <label for="slug" class="text-xs required">{{ trans('cruds.knowledge.fields.slug') }}</label>
-                        <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', $knowledge->slug) }}">
+                        <label for="slug" class=" block uppercase text-blueGray-600 text-xs font-bold mb-2 required">{{ trans('cruds.knowledge.fields.slug') }}</label>
+                        <input class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', $knowledge->slug) }}">
                         @if($errors->has('slug'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('slug') }}
@@ -121,18 +132,19 @@
                     </div>
                     </div>
             <div class="mb-3">
-                    <div class="form-group">
-                        <div class="footer">
-                            <button type="submit" class="submit-button"> {{ trans('global.save') }}</button>
-                        </div>   
-                    </div>
+                                 <div class="form-group">
+                <button class="btn btn-indigo mr-2" type="submit">
+                  Save
+                </button>
+              </div>
                 </div>
             </div>
         </form>
-    
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
 
 @endsection
 

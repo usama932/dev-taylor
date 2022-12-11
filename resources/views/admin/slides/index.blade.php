@@ -1,22 +1,29 @@
 @extends('layouts.admin')
 @section('content')
-@can('slide_create')
-    <div class="block my-4">
-        <div class="col-lg-12">
-            <a class="btn btn-blue" href="{{ route('admin.slides.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.slide.title_singular') }}
-            </a>
-        </div>
-    </div>
-@endcan
-<div class="card">
-    <div class="header">
-        {{ trans('cruds.slide.title_singular') }} {{ trans('global.list') }}
-    </div>
 
-    <div class="body">
-      <div class="w-full">
-          <table class="stripe hover bordered datatable ajaxTable  datatable-Slide">
+<div class="px-4 md:px-10 mx-auto w-full -m-24">
+  <div class="flex flex-wrap mt-4">
+    <div class="w-full mb-12 px-4">
+      <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
+        <div class="rounded-t mb-0 px-4 py-3 border-0">
+          <div class="flex flex-wrap items-center">
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+              <h3 class="font-semibold text-lg text-blueGray-700">
+                {{ trans('cruds.slide.title_singular') }} {{ trans('global.list') }}
+              </h3>
+            </div>
+            @can('slide_create')
+              <div class="btn-text-left"> 
+                <a class="btn btn-indigo" href="{{ route('admin.slides.create') }}">
+                  {{ trans('global.add') }} {{ trans('cruds.slide.title_singular') }}
+              </a>
+              </div>
+            </div>
+            @endcan
+          </div>
+        <div class="block w-full overflow-x-auto p-2">
+          <!-- Projects table -->
+            <table class="items-center w-full bg-transparent border-collapse ajaxTable  datatable-Slide">
               <thead>
                   <tr>
                       <th width="10">
@@ -34,11 +41,11 @@
                   </tr>
               </thead>
           </table>
+        </div>
       </div>
     </div>
+  </div>
 </div>
-
-
 
 @endsection
 @section('scripts')

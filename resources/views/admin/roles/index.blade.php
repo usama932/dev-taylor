@@ -1,23 +1,32 @@
 @extends('layouts.admin')
 @section('content')
-@can('role_create')
-    <div class="block my-4">
-        <div class="col-lg-12">
-            <a class="btn btn-blue" href="{{ route('admin.roles.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.role.title_singular') }}
-            </a>
-        </div>
-    </div>
-@endcan
-<div class="main-card">
-    <div class="header">
-        {{ trans('cruds.role.title_singular') }} {{ trans('global.list') }}
-    </div>
 
-    <div class="body">
-        <div class="table-responsive">
-            <div class="w-full">
-                <table class=" stripe hover bordered datatable datatable-Role">
+
+
+<div class="px-4 md:px-10 mx-auto w-full -m-24">
+  <div class="flex flex-wrap mt-4">
+    <div class="w-full mb-12 px-4">
+      <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
+        <div class="rounded-t mb-0 px-4 py-3 border-0">
+          <div class="flex flex-wrap items-center">
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+              <h3 class="font-semibold text-lg text-blueGray-700">
+                {{ trans('cruds.role.title_singular') }} {{ trans('global.list') }}
+              </h3>
+            </div>
+            @can('role_create')
+                <div class="btn-text-left"> 
+                <a class="btn btn-indigo" href="{{ route('admin.roles.create') }}">
+                    {{ trans('global.add') }} {{ trans('cruds.role.title_singular') }}
+                </a>
+                </div>
+            </div>
+            @endcan
+        </div>
+        <div class="block w-full overflow-x-auto p-2">
+          <!-- Projects table -->
+          
+           <table class=" items-center w-full bg-transparent border-collapse datatable-Role">
                     <thead>
                         <tr>
                             <th width="10">
@@ -51,18 +60,19 @@
                                 </td>
                                 <td>
                                     @foreach($role->permissions as $key => $item)
-                                        <span class="badge badge-info">{{ $item->title }}</span>
+                                        <span class="btn-sm m-1"  style="background-color:#ffc200 !important; color:#000 !important">{{ $item->title }}</span>
+
                                     @endforeach
                                 </td>
                                 <td>
                                     @can('role_show')
-                                        <a class="btn btn-xs btn-primary" href="{{ route('admin.roles.show', $role->id) }}">
+                                        <a class="btn btn-sm " href="{{ route('admin.roles.show', $role->id) }}" style="background-color:#000 !important; color:#fff !important">
                                             {{ trans('global.view') }}
                                         </a>
                                     @endcan
 
                                     @can('role_edit')
-                                        <a class="btn btn-xs btn-info" href="{{ route('admin.roles.edit', $role->id) }}">
+                                        <a class="btn btn-sm" href="{{ route('admin.roles.edit', $role->id) }}" style="background-color:#ffc200 !important; color:#000 !important">
                                             {{ trans('global.edit') }}
                                         </a>
                                     @endcan
@@ -71,7 +81,7 @@
                                         <form action="{{ route('admin.roles.destroy', $role->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                            <input type="submit" class="btn btn-sm " value="{{ trans('global.delete') }}" style="background-color:#FF0000 !important; color:#000 !important">
                                         </form>
                                     @endcan
 
@@ -81,12 +91,11 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-
-
 
 @endsection
 @section('scripts')

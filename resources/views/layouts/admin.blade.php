@@ -180,7 +180,7 @@
                   Admin Layout Pages
                </h6>
                <!-- Navigation -->
-               <ul class="md:flex-col md:min-w-full flex flex-col list-none">
+                <ul class="md:flex-col md:min-w-full flex flex-col list-none">
                   <li class="items-center">
                      <a
                         href="{{ route("admin.home") }}"
@@ -190,6 +190,7 @@
                       Dashboard
                      </a>
                   </li>
+                  
                   @can('content_page_access')
                     <li class="items-center">
                       <a
@@ -248,6 +249,37 @@
                       </a>
                     </li>
                   @endcan
+                   @can('knowledge_management_access')
+                    <li  class="items-center">
+                      <button type="button" class="flex items-centermd:flex-col md:min-w-full flex flex-col list-none" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                        <a href="#" class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500" sidebar-toggle-item><i class="fa-fw fas fa-users mr-2">
+                        </i>{{ trans('cruds.knowledgeManagement.title') }}</a>
+                      </button>
+                      <ul id="dropdown-example" class="hidden md:flex-col md:min-w-full flex flex-col list-none">
+                        @can('knowledge_access')
+                          <li class="items-center" >
+                            <a href="{{ route("admin.knowledges.index") }}"
+                              class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"><i class="mr-2 fa-fw fas fa-unlock-alt">
+                                </i>{{ trans('cruds.knowledge.title') }}</a>
+                          </li>
+                        @endcan
+                        @can('knowledge_category_access')
+                          <li class="items-center">  
+                            <a href="{{ route("admin.knowledge-categories.index") }}"
+                              class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"><i class="fa-fw fas fa-tags mr-2">
+                            </i>{{ trans('cruds.knowledgeCategory.title') }}</a>
+                          </li>
+                        @endcan
+                        @can('knowledge_tag_access')
+                          <li class="items-center">
+                            <a href="{{ route("admin.knowledge-tags.index") }}"
+                              class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"> <i class="fa-fw fas fa-tags mr-2">
+                                </i>{{ trans('cruds.knowledgeTag.title') }}</a>
+                          </li>
+                        @endcan
+                      </ul>
+                      </li>
+                  @endcan
                   
                   @can('team_member_access')
                     <li class="items-center">
@@ -288,12 +320,90 @@
                     @can('profile_password_edit')
                     <li class="items-center">
                     <a class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"  href="{{ route('profile.password.edit') }}">
-                        <i class="fa-fw fas fa-key"></i>
+                        <i class="fa-fw fas fa-key mr-2"></i>
                         {{ trans('global.change_password') }}
                         </a>
                     </li>
                     @endcan
                   @endif
+                  @can('setting_access')
+                  <li  class="items-center">
+                    <button type="button" class="flex items-centermd:flex-col md:min-w-full flex flex-col list-none" aria-controls="dropdown-example1" data-collapse-toggle="dropdown-example1">
+                      <a href="#" class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500" sidebar-toggle-item> <i class="fa-fw fas fa-cogs mr-2">
+                    </i>{{ trans('cruds.setting.title') }}</a>
+                    </button>
+                    <ul id="dropdown-example1" class="hidden md:flex-col md:min-w-full flex flex-col list-none">
+                      @can('location_access')
+                      <li class="items-center" >
+                        <a href="{{ route("admin.locations.index") }}"
+                        class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"><i class="mr-2 fa-fw fas fa-th-list">
+
+                            </i>Locations</a>
+                      </li>
+                      @endcan
+                      @can('navigationmenu_access')
+                        <li class="items-center">
+                          <a href="{{ route("admin.navigationmenus.index") }}"
+                            class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"> <i class="fa-fw fas fa-th-list mr-2">
+
+                              </i>Menu</a>
+                        </li>
+                      @endcan
+                      @can('menuitem_access')
+                        <li class="items-center">
+                          <a href="{{ route("admin.menuitems.index") }}"
+                            class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">   <i class="fa-fw fas fa-cogs mr-2"></i> {{ trans('cruds.menuitem.title') }}</a>
+                        </li>
+                      @endcan
+                      @can('slider_access')
+                        <li class="items-center">
+                          <a href="{{ route("admin.sliders.index") }}"
+                            class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"><i class="fa-fw fas fa-cogs mr-2">
+                            </i>{{ trans('cruds.slider.title') }} </a>
+                        </li>
+                      @endcan
+                      @can('slide_access')
+                        <li class="items-center">
+                          <a href="{{ route("admin.slides.index") }}"
+                            class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"><i class="mr-2 fa-fw fas fa-cogs">
+
+                            </i> {{ trans('cruds.slide.title') }}</a>
+                        </li>
+                      @endcan
+                      @can('user_access')
+                        <li class="items-center">
+                          <a href="{{ route("admin.users.index") }}"
+                            class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">  <i class="mr-2 fa-fw fas fa-user">
+
+                            </i>{{ trans('cruds.user.title') }}</a>
+                        </li>
+                      @endcan
+                      @can('role_access')
+                        <li class="items-center">
+                          <a href="{{ route("admin.roles.index") }}"
+                            class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"> <i class="mr-2 fa-fw fas fa-briefcase">
+
+                            </i>{{ trans('cruds.role.title') }}</a>
+                        </li>
+                        @can('permission_access')
+                          <li class="items-center">
+                            <a href="{{ route("admin.permissions.index") }}"
+                              class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">  <i class="mr-2 fa-fw fas fa-unlock-alt">
+                            </i>{{ trans('cruds.permission.title') }}</a>
+                          </li>
+                        @endcan
+                        @can('audit_log_access')
+                          <li class="items-center">
+                            <a href="{{ route("admin.audit-logs.index") }}"
+                              class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"> <i class="mr-2 fa-fw fas fa-file-alt">
+
+                            </i>{{ trans('cruds.auditLog.title') }}</a>
+                          </li>
+                        @endcan
+                      @endcan
+                    </ul>
+                  </li>
+                  @endcan
                   <li class="items-center">
                     <a class="mr-2 text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500" href="#" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                       <i class="fa-fw fas fa-sign-out-alt mr-2"></i>
@@ -301,8 +411,9 @@
                       {{ trans('global.logout') }}
                     </a>
                   <li>
-                  
-               </ul>
+                 
+                
+                </ul>
               
             </div>
          </div>
@@ -329,7 +440,7 @@
          </div>
          @yield('content')
       </div>
-      
+      <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/perfect-scrollbar.min.js"></script>
       <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

@@ -1,18 +1,26 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class="main-card">
-    <div class="header">
-        {{ trans('global.create') }} {{ trans('cruds.teamMember.title_singular') }}
-    </div>
-
-    <div class="body">
-        <form method="POST" action="{{ route("admin.team-members.store") }}" enctype="multipart/form-data">
+<div class="px-4 md:px-10 mx-auto w-full -m-24">
+  <div class="flex flex-wrap mt-4">
+    <div class="w-full mb-12 px-4">
+      <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
+        <div class="rounded-t mb-0 px-4 py-3 border-0">
+          <div class="flex flex-wrap items-center">
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+              <h3 class="font-semibold text-lg text-blueGray-700">
+              {{ trans('global.create') }} {{ trans('cruds.teamMember.title_singular') }}
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="flex-auto px-4 lg:px-10 py-10 pt-0 bg-blueGray-100">
+             <form method="POST" action="{{ route("admin.team-members.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="mb-3">
+            <div class="mb-3 mt-3">
             <div class="form-group">
-                <label class="required" for="name">{{ trans('cruds.teamMember.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
+                <label class="required block uppercase text-blueGray-600 text-xs font-bold mb-2" for="name">{{ trans('cruds.teamMember.fields.name') }}</label>
+                <input class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
                 @if($errors->has('name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('name') }}
@@ -23,8 +31,8 @@
             </div>
             <div class="mb-3">
             <div class="form-group">
-                <label for="subheading">{{ trans('cruds.teamMember.fields.subheading') }}</label>
-                <input class="form-control {{ $errors->has('subheading') ? 'is-invalid' : '' }}" type="text" name="subheading" id="subheading" value="{{ old('subheading', '') }}">
+                <label for="subheading" class="block uppercase text-blueGray-600 text-xs font-bold mb-2">{{ trans('cruds.teamMember.fields.subheading') }}</label>
+                <input class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 {{ $errors->has('subheading') ? 'is-invalid' : '' }}" type="text" name="subheading" id="subheading" value="{{ old('subheading', '') }}">
                 @if($errors->has('subheading'))
                     <div class="invalid-feedback">
                         {{ $errors->first('subheading') }}
@@ -35,7 +43,7 @@
             </div>
             <div class="mb-3">
             <div class="form-group">
-                <label for="image">{{ trans('cruds.teamMember.fields.image') }}</label>
+                <label for="image" class="block uppercase text-blueGray-600 text-xs font-bold mb-2">{{ trans('cruds.teamMember.fields.image') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('image') ? 'is-invalid' : '' }}" id="image-dropzone">
                 </div>
                 @if($errors->has('image'))
@@ -48,8 +56,8 @@
             </div>
             <div class="mb-3">
             <div class="form-group">
-                <label for="content">{{ trans('cruds.teamMember.fields.content') }}</label>
-                <textarea class="form-control  rows="4" cols="166" {{ $errors->has('content') ? 'is-invalid' : '' }}" name="content" id="content">{{ old('content') }}</textarea>
+                <label for="content" class="block uppercase text-blueGray-600 text-xs font-bold mb-2">{{ trans('cruds.teamMember.fields.content') }}</label>
+                <textarea class="form-control  border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150  rows="4" cols="166" {{ $errors->has('content') ? 'is-invalid' : '' }}" name="content" id="content">{{ old('content') }}</textarea>
                 @if($errors->has('content'))
                     <div class="invalid-feedback">
                         {{ $errors->first('content') }}
@@ -60,17 +68,19 @@
             </div>
              <div class="mb-3">
                 <div class="form-group">
-                    <div class="footer">
-                        <button type="submit" class="submit-button"> {{ trans('global.save') }}</button>
-                    </div>   
+                    <button class="btn btn-indigo mr-2" type="submit">
+                    Save
+                    </button>
                 </div>
             </div>
         </div>
         </form>
+    
+        </div>
+      </div>
     </div>
+  </div>
 </div>
-
-
 
 @endsection
 
