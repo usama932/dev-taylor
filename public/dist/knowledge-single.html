@@ -222,28 +222,25 @@
     <script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
     <script src="/knowledge.18dbc454.js" defer=""></script>
     <script>$(document).ready(function() {
-    gsap.to(".items-wrapper .items", {
-        yPercent: -250,
+    gsap.to(".knowldge-single .items-wrapper .items", {
         opacity: 0,
-        ease: "none",
+        yPercent: -350,
+        ease: "linear",
         scrollTrigger: {
             trigger: ".knowldge-single-text",
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-            pinSpacing: false
+            // start: "bottom bottom",
+            // end: "bottom bottom",
+            scrub: true
         }
     });
-    gsap.to(".black-area", {
-        yPercent: -550,
-        opacity: 0,
-        ease: "none",
+    gsap.to(".knowldge-single-text", {
+        yPercent: -12,
+        ease: "linear",
         scrollTrigger: {
-            trigger: ".text-wrapper",
-            start: "bottom top ",
-            end: "top bottom",
-            scrub: true,
-            pinSpacing: false
+            trigger: ".black-area p",
+            start: "top center",
+            end: "bottom center",
+            scrub: true
         }
     });
 });

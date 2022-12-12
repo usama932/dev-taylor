@@ -2544,6 +2544,7 @@ section.blackboard-main .wraper .blackboard .button-text-wrapper {
   text-align: center;
   text-transform: uppercase;
   margin-top: 6px;
+  font-family: atten_newmedium, sans-serif;
   font-size: 12px;
   font-weight: 500;
   line-height: 14px;
@@ -3429,7 +3430,7 @@ p, h1, h2, h3, h4, h5 {
 
 .accounting-section .accounting-wrapper .accounting-content .button-wrapper .buttonBox#goto1, .accounting-section .accounting-wrapper .accounting-content .button-wrapper .buttonBox#backTo2 {
   display: none;
-  left: 18.1406vw;
+  left: -7.1406vw;
 }
 
 .accounting-section .accounting-wrapper .accounting-content .button-wrapper .buttonBox#goto1 .slider-arrow, .accounting-section .accounting-wrapper .accounting-content .button-wrapper .buttonBox#backTo2 .slider-arrow {

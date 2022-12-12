@@ -1,0 +1,292 @@
+@import "variables";
+
+.knowledge-section{
+  padding: 70px 0 70px;
+  @media (max-width: $small-tablet) {
+    padding: 70px 25px;
+  }
+  .items-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 64px 15px;
+    padding: 0 100px;
+    @media (max-width: $small-tablet) {
+      padding: 0;
+    }
+    .items {
+      padding: 30px;
+      border-left: 5px solid $white;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      width: calc(33.33% - 10px);
+      cursor: pointer;
+      transition: 0.5s ease-in;
+      &:hover{
+        transition: 0.5s ease-in;
+        p {
+          color: $black-50;
+          span {
+            color: $white-50;
+          }
+        }
+        h3 {
+          color: $black-50;
+        }
+      }
+      @media (max-width: $large-tablet) {
+        width: calc(50% - 10px);
+        padding: 25px;
+      }
+      @media (max-width: $small-phone) {
+        width: 100%;
+      }
+      p {
+        color: $black;
+        font-family: 'atten_newregular', sans-serif;
+        font-size: 16px;
+        letter-spacing: 0;
+        line-height: 19px;
+        text-transform: uppercase;
+        span {
+          color: $white;
+          padding-left: 10px;
+        }
+      }
+      h3 {
+        color: $black;
+        font-family: 'atten_newregular', sans-serif;
+        font-size: 34px;
+        letter-spacing: 0;
+        line-height: 40px;
+      }
+    }
+  }
+}
+.knowledge-mail-section {
+  padding: 70px 0 0;
+  @media (max-width: $large-tablet) {
+    padding: 70px 25px;
+  }
+  .content-wrapper {
+    padding: 0 100px;
+    @media (max-width: $large-tablet) {
+      padding: 0;
+    }
+    .image-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      @media (max-width: $large-tablet) {
+        flex-direction: column;
+      }
+      .image-wrapper-outer{
+        width: 65%;
+        height: 517px;
+        position: relative;
+        background-color: $black;
+        @media (max-width: $large-tablet) {
+          width: 100%;
+        }
+        .image {
+          width: 100%;
+          height: 100%;
+          background-size: cover !important;
+          background-repeat: no-repeat !important;
+          background-position: center center !important;
+          position: relative;
+          background-attachment: fixed !important;
+          &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 85%;
+            background: linear-gradient(0deg, $black 0%, rgba(255,255,255,0) 100%);
+          }
+        }
+        p {
+          width: 100%;
+          color: $white;
+          z-index: 2;
+          letter-spacing: 0;
+          text-align: center;
+          padding: 0 200px 0 100px;
+          font-family: 'atten_newregular', sans-serif;
+          font-size: 34px;
+          font-weight: 300;
+          line-height: 48px;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          @media (max-width: $large-tablet) {
+            font-size: 34px;
+          }
+        }
+      }
+      .mail-wrapper {
+        width: 45%;
+        padding: 60px 78px 71px 71px;
+        background-color: $white;
+        margin-left: -100px;
+        margin-top: 80px;
+        z-index: 2;
+        position: relative;
+        @media (max-width: $large-tablet) {
+          width: 100%;
+          padding: 25px;
+          margin-left: 0px;
+        margin-top: 0px;
+        }
+        h4 {
+          color: $black;
+          font-family: 'atten_newregular', sans-serif;
+          font-size: 34px;
+          font-weight: 300;
+          letter-spacing: 0;
+          line-height: 40px;
+          margin-bottom: 42px;
+        }
+        .input-wrapper {
+          margin-bottom: 24px;
+          .checkbox-wrapper {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 10px;
+            gap: 10px;
+            p {
+              color:$black-80;
+              font-family: 'atten_newregular', sans-serif;
+              font-size: 13px;
+              font-weight: 300;
+              letter-spacing: 0;
+              line-height: 18px;
+              a {
+                color:$black-80;
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+        .button-wrapper {
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+}
+
+/******************************** knowldge single page ***********************************/
+
+.knowldge-single {
+  padding: 70px 0 0 0;
+  .container {
+    .items-wrapper {
+      flex-wrap: nowrap;
+      justify-content: center;
+      padding: 0 100px;
+      display: flex;
+           @media (max-width: $large-tablet) {
+           padding: 0 32px;
+      }
+
+      .items {
+        width: 60%;
+        flex-direction: column;
+        gap: 25px;
+        padding: 30px 0px;
+        display: flex;
+           @media (max-width: $large-tablet) {
+        width: 90%;
+      }
+        h3 {
+          font-size: 41px;
+          font-weight: 300;
+          letter-spacing: 0;
+          line-height: 48px;
+        }
+
+        p {
+          color: $black;
+          font-family: "atten_newregular", sans-serif;
+          font-size: 16px;
+          letter-spacing: 0;
+          line-height: 19px;
+          text-transform: uppercase;
+          span {
+            color: $white;
+            padding-left: 10px;
+          }
+        }
+      }
+    }
+
+    .black-area {
+      background-color: $black;
+      width: 60%;
+      margin: 0 auto;
+      padding: 60px;
+    @media (max-width: $large-tablet) {
+        width: 90%;
+          padding: 25px;
+      }
+      p {
+        color: $white;
+        font-size: 19px;
+        line-height: 29px;
+      }
+    }
+  }
+}
+
+.knowldge-single-text {
+  padding: 0 0 70px 0;
+  background-color: $white;
+  .container {
+
+   .outer {
+
+    padding: 50px 0px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+     @media (max-width: $small-tablet) {
+           padding: 25px 0px;
+      }
+    .text-wrapper {
+      width: 60%;
+        padding: 0px 60px;
+  @media (max-width: $large-tablet) {
+        width: 90%;
+           padding: 0px 25px;
+      }
+
+      h4 {
+        font-size: 19px;
+        font-family: 'atten_newmedium', sans-serif;
+        padding: 25px 0px 15px 0px;
+      }
+
+      p {
+        font-size: 19px;
+        letter-spacing: 0;
+        line-height: 29px;
+        padding-bottom: 40px;
+      }
+    }
+  }
+ }
+}
+
+@keyframes bounceArrow {
+  50% {
+    transform: translateX(-8px);
+  }
+}

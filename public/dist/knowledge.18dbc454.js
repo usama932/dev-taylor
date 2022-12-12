@@ -808,7 +808,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "Logo Black Loader",
         container: document.getElementById("logoContainerLoader"),
-        path: "https://taylorhawkes.sanepress.com/json/logo-loader.json",
+        path: "/json/logo-loader.json",
         renderer: "svg",
         loop: false,
         autoplay: true
@@ -816,7 +816,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "Logo Black Header",
         container: document.getElementById("logoContainerHeader"),
-        path: "https://taylorhawkes.sanepress.com/json/logo-black.json",
+        path: "/json/logo-black.json",
         renderer: "svg",
         loop: false,
         autoplay: true
@@ -824,7 +824,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "Logo Black Footer",
         container: document.getElementById("logoContainerFooter"),
-        path: "https://taylorhawkes.sanepress.com/json/logo-black.json",
+        path: "/json/logo-black.json",
         renderer: "svg",
         loop: false,
         autoplay: true
@@ -832,7 +832,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "Logo Yellow",
         container: document.getElementById("logoContainerYellow"),
-        path: "https://taylorhawkes.sanepress.com/json/logo-yellow.json",
+        path: "/json/logo-yellow.json",
         renderer: "svg",
         loop: false,
         autoplay: true
@@ -840,7 +840,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "Scroll White Before",
         container: document.getElementById("scroll-white-before"),
-        path: "https://taylorhawkes.sanepress.com/json/scroll-white-before.json",
+        path: "/json/scroll-white-before.json",
         renderer: "svg",
         loop: false,
         autoplay: true
@@ -848,7 +848,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "Scroll White After",
         container: document.getElementById("scroll-white-after"),
-        path: "https://taylorhawkes.sanepress.com/json/scroll-white-after.json",
+        path: "/json/scroll-white-after.json",
         renderer: "svg",
         loop: true,
         autoplay: true
@@ -856,7 +856,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "Scroll Black Before",
         container: document.getElementById("scroll-black-before"),
-        path: "https://taylorhawkes.sanepress.com/json/scroll-black-before.json",
+        path: "/json/scroll-black-before.json",
         renderer: "svg",
         loop: false,
         autoplay: true
@@ -864,7 +864,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "Scroll Black After",
         container: document.getElementById("scroll-black-after"),
-        path: "https://taylorhawkes.sanepress.com/json/scroll-black-after.json",
+        path: "/json/scroll-black-after.json",
         renderer: "svg",
         loop: true,
         autoplay: true
@@ -872,7 +872,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "Arrow White Before",
         container: document.getElementById("arrow-white-before"),
-        path: "https://taylorhawkes.sanepress.com/json/arrow-white-before.json",
+        path: "/json/arrow-white-before.json",
         renderer: "svg",
         loop: false,
         autoplay: true
@@ -880,7 +880,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "Arrow White After",
         container: document.getElementById("arrow-white-after"),
-        path: "https://taylorhawkes.sanepress.com/json/arrow-white-after.json",
+        path: "/json/arrow-white-after.json",
         renderer: "svg",
         loop: true,
         autoplay: true
@@ -888,7 +888,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "Arrow Yellow Before",
         container: document.getElementById("arrow-yellow-before"),
-        path: "https://taylorhawkes.sanepress.com/json/arrow-yellow-before.json",
+        path: "/json/arrow-yellow-before.json",
         renderer: "svg",
         loop: false,
         autoplay: true
@@ -896,7 +896,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "Arrow Yellow After",
         container: document.getElementById("arrow-yellow-after"),
-        path: "https://taylorhawkes.sanepress.com/json/arrow-yellow-after.json",
+        path: "/json/arrow-yellow-after.json",
         renderer: "svg",
         loop: true,
         autoplay: true
@@ -904,7 +904,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "Arrow White Left Before",
         container: document.getElementById("arrow-white-left-before"),
-        path: "https://taylorhawkes.sanepress.com/json/arrow-white-before.json",
+        path: "/json/arrow-white-before.json",
         renderer: "svg",
         loop: false,
         autoplay: true
@@ -912,7 +912,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "Arrow White Left After",
         container: document.getElementById("arrow-white-left-after"),
-        path: "https://taylorhawkes.sanepress.com/json/arrow-white-after.json",
+        path: "/json/arrow-white-after.json",
         renderer: "svg",
         loop: true,
         autoplay: true
@@ -920,7 +920,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "Arrow White Right Before",
         container: document.getElementById("arrow-white-right-before"),
-        path: "https://taylorhawkes.sanepress.com/json/arrow-white-before.json",
+        path: "/json/arrow-white-before.json",
         renderer: "svg",
         loop: false,
         autoplay: true
@@ -928,7 +928,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "Arrow White Right After",
         container: document.getElementById("arrow-white-right-after"),
-        path: "https://taylorhawkes.sanepress.com/json/arrow-white-after.json",
+        path: "/json/arrow-white-after.json",
         renderer: "svg",
         loop: true,
         autoplay: true
@@ -942,7 +942,7 @@ window.addEventListener("load", function() {
         renderer: "svg",
         loop: false,
         autoplay: true,
-        path: "https://taylorhawkes.sanepress.com/json/itemImage1.json"
+        path: "/json/itemImage1.json"
     });
     let itemImage2Animate = lottie.loadAnimation({
         name: "Item Image 2",
@@ -950,7 +950,7 @@ window.addEventListener("load", function() {
         renderer: "svg",
         loop: false,
         autoplay: false,
-        path: "https://taylorhawkes.sanepress.com/json/itemImage2.json"
+        path: "/json/itemImage2.json"
     });
     let itemImage3Animate = lottie.loadAnimation({
         name: "Item Image 3",
@@ -958,12 +958,12 @@ window.addEventListener("load", function() {
         renderer: "svg",
         loop: false,
         autoplay: false,
-        path: "https://taylorhawkes.sanepress.com/json/itemImage3.json"
+        path: "/json/itemImage3.json"
     });
     var animation = lottie.loadAnimation({
         name: "goto2 Arrow Before",
         container: document.getElementById("goto2-arrow-before"),
-        path: "https://taylorhawkes.sanepress.com/json/arrow-yellow-before.json",
+        path: "/json/arrow-yellow-before.json",
         renderer: "svg",
         loop: false,
         autoplay: true
@@ -971,7 +971,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "goto2 Arrow After",
         container: document.getElementById("goto2-arrow-after"),
-        path: "https://taylorhawkes.sanepress.com/json/arrow-yellow-after.json",
+        path: "/json/arrow-yellow-after.json",
         renderer: "svg",
         loop: true,
         autoplay: true
@@ -979,7 +979,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "goto1 Arrow Before",
         container: document.getElementById("goto1-arrow-before"),
-        path: "https://taylorhawkes.sanepress.com/json/arrow-yellow-before.json",
+        path: "/json/arrow-yellow-before.json",
         renderer: "svg",
         loop: false,
         autoplay: true
@@ -987,7 +987,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "goto1 Arrow After",
         container: document.getElementById("goto1-arrow-after"),
-        path: "https://taylorhawkes.sanepress.com/json/arrow-yellow-after.json",
+        path: "/json/arrow-yellow-after.json",
         renderer: "svg",
         loop: true,
         autoplay: true
@@ -995,7 +995,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "goto3 Arrow Before",
         container: document.getElementById("goto3-arrow-before"),
-        path: "https://taylorhawkes.sanepress.com/json/arrow-yellow-before.json",
+        path: "/json/arrow-yellow-before.json",
         renderer: "svg",
         loop: false,
         autoplay: true
@@ -1003,7 +1003,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "goto3 Arrow After",
         container: document.getElementById("goto3-arrow-after"),
-        path: "https://taylorhawkes.sanepress.com/json/arrow-yellow-after.json",
+        path: "/json/arrow-yellow-after.json",
         renderer: "svg",
         loop: true,
         autoplay: true
@@ -1011,7 +1011,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "backTo2 Arrow Before",
         container: document.getElementById("backTo2-arrow-before"),
-        path: "https://taylorhawkes.sanepress.com/json/arrow-yellow-before.json",
+        path: "/json/arrow-yellow-before.json",
         renderer: "svg",
         loop: false,
         autoplay: true
@@ -1019,7 +1019,7 @@ window.addEventListener("load", function() {
     var animation = lottie.loadAnimation({
         name: "backTo2 Arrow After",
         container: document.getElementById("backTo2-arrow-after"),
-        path: "https://taylorhawkes.sanepress.com/json/arrow-yellow-after.json",
+        path: "/json/arrow-yellow-after.json",
         renderer: "svg",
         loop: true,
         autoplay: true
@@ -1107,7 +1107,7 @@ window.addEventListener("load", function() {
         $(this).siblings("#goto1").delay(300).fadeIn("fast");
         itemImage2Animate.playSegments([
             0,
-            88.0000035843135
+            43.0000017514259
         ]);
     });
     $("#goto1").click(function() {
@@ -1125,6 +1125,8 @@ window.addEventListener("load", function() {
             0,
             95.0000038694293
         ]);
+        itemImage1Animate.setDirection(-1);
+        itemImage1Animate.play();
     });
     $("#goto3").click(function() {
         event.preventDefault();
@@ -1157,8 +1159,10 @@ window.addEventListener("load", function() {
         $(this).siblings("#goto3").delay(300).removeClass("fadeOff");
         itemImage2Animate.playSegments([
             0,
-            88.0000035843135
+            43.0000017514259
         ]);
+        itemImage2Animate.setDirection(-1);
+        itemImage1Animate.play();
     });
     $("#goto2").hover(function() {
         $(this).children().find("#goto2-arrow-before").toggleClass("off");

@@ -1,0 +1,36 @@
+
+//widths
+$max-width: 1920px;
+$inner-body-width: 1170px;
+
+//colors
+$white: #fff;
+$white-50: rgb(255 255 255 / 50%);
+$black: #000;
+$black-30: rgb(0 0 0 / 30%);
+$black-50: rgb(0 0 0 / 50%);
+$black-60: rgb(0 0 0 / 60%);
+$black-80: rgba(0,0,0,0.8);
+$dark-grey: #202020;
+$bule: #007299;
+$bule-50: rgba(0, 114, 153, 0.5);
+$yellow: #FFC200;
+$activeTabBG: #BDCCD6;
+$activeTabText: #333333;
+$lightGrey: #9FACAB;
+$gradient-black: linear-gradient(100deg, #000 0%, #555 100%);
+$gradient-yellow: linear-gradient(100deg, #FFC200 0%, rgba(255, 194, 0, 0.5) 100%);
+
+//Media screens
+$large-laptop: 1280px;
+$medium-laptop: 1200px;
+$small-laptop: 1024px;
+$large-tablet: 992px;
+$small-tablet: 768px;
+$large-phone: 680px;
+$phablet: 600px;
+$small-phone: 550px;
+$iphone-pro-max: 414px;
+$iphone-pro: 390px;
+$iphone-mini: 360px;
+$smallest-phone: 320px;

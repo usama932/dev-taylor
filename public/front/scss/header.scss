@@ -1,0 +1,247 @@
+@import "variables";
+.header-section {
+  //padding: 32px 32px;
+  @media (max-width: $large-tablet) {
+    //padding: 32px 25px;
+  }
+  .navbar {
+    justify-content: space-between;
+    padding: 0;
+    .logo-wrapper {
+      padding: 0px 32px;
+    }
+    .menu-wrapper {
+      .navbar-nav {
+        //gap: 20px;
+        align-items: center;
+        .nav-item {
+          position: relative;
+          z-index: 2;
+          padding: 32px 10px;
+          .nav-link {
+            position: relative;
+            color: $black;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-family: 'atten_newmedium';
+            letter-spacing: 0;
+            line-height: 17px;
+            &:before {
+              content: "";
+              position: absolute;
+              width: 0;
+              height: 2px;
+              background-color: $white;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              margin: 0 auto;
+              border-radius: 1px;
+              transition: 0.2s ease-in;
+            }
+          }
+          .dropdown-menu {
+            background-color: transparent;
+            padding: 0.625rem 32px 32px;
+            margin: 0;
+            border: none;
+            display: block;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.4s ease-in;
+            left: -22px;
+            right: 0;
+            width: min-content;
+            transform: none;
+            li{
+              .dropdown-item {
+                color: $black;
+                letter-spacing: 0;
+                padding: 0.1rem 0.5rem;
+                font-family: 'atten_newmedium';
+                font-size: 14px;
+                line-height: 17px;
+                transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+                &:focus, &:hover, &.active  {
+                  background-color: transparent;
+                  color: $black-50;
+                }
+              }
+              &.active {
+                .dropdown-item {
+                  color: $white-50;
+                }
+              }
+            }
+          }
+          &:hover {
+            .dropdown-menu {
+              visibility: visible;
+              opacity: 1;
+            }
+          }
+          &:hover,&.active{
+            .nav-link {
+              color: $black-50;
+              &:before {
+                transition: 0.2s ease-out;
+                width: 35px;
+              }
+            }
+          }
+          &:last-child {
+            .nav-link {
+              background-color: $white;
+              color: $black;
+              border-radius: 20px;
+              padding: 10px 20px;
+              overflow: hidden;
+              position: relative;
+              z-index: 1;
+              span{
+                z-index: 2;
+                position: relative;
+              }
+              &:before {
+                display: none;
+              }
+              &:after {
+                content: "";
+                position: absolute;
+                background: $bule;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                top: 100%;
+                z-index: -1;
+                transition: top 0.18s ease-out;
+                width: 100%;
+              }
+              &:hover, &:active,  &:focus{
+                &:after {
+                  top: 0;
+                  background-color: $bule;
+                  z-index: 1;
+                }
+                opacity: 1 !important;
+                background-color: transparent;
+                color: $white !important;
+              }
+            }
+            &:hover, &.active {
+              .nav-link {
+                color: $black;
+                opacity: 0.5;
+              }
+            }
+          }
+        }
+      }
+      .navbar-toggler {
+        border: 1px solid $black;;
+        padding: 0;
+        width: 40px;
+        height: 40px;
+      }
+    }
+    &.navbar-light {
+      .menu-wrapper {
+        .navbar-nav {
+          .nav-item {
+            .nav-link {
+              color: $white;
+              &:before {
+                background-color: $yellow;
+              }
+            }
+            .dropdown-menu {
+              li{
+                .dropdown-item {
+                  color: $white;
+                  &:focus, &:hover, &.active {
+                    color: $white-50;
+                  }
+                }
+                 &.active {
+                   .dropdown-item {
+                     color: $white-50;
+                   }
+                }
+              }
+            }
+            &:hover, &.active {
+              .nav-link {
+                color: $white-50;
+              }
+            }
+
+            &:last-child {
+              .nav-link {
+                background-color: $yellow;
+                color: $black;
+              }
+            }
+          }
+        }
+        .navbar-toggler {
+          border: 1px solid $white;;
+        }
+      }
+    }
+    &.navbar-white-bg {
+      .menu-wrapper {
+        .navbar-nav {
+          .nav-item {
+            .nav-link {
+              &:before {
+                background-color: $yellow;
+              }
+            }
+            &:last-child {
+              .nav-link {
+                background-color: $yellow;
+                color: $black;
+              }
+            }
+          }
+        }
+        .navbar-toggler {
+          border: 1px solid $black;;
+        }
+      }
+    }
+  }
+}
+
+@keyframes beat{
+  to { transform: scale(1.3); }
+}
+.navbar-nav li {
+  opacity: 0;
+  animation: fadeIn 1s ease-in both;
+}
+.navbar-nav li:nth-child(1) {
+  animation-delay: .5s;
+}
+.navbar-nav li:nth-child(2) {
+  animation-delay: .8s;
+}
+.navbar-nav li:nth-child(3) {
+  animation-delay: 1.1s;
+}
+.navbar-nav li:nth-child(4) {
+  animation-delay: 1.4s;
+}
+.navbar-nav li:nth-child(5) {
+  animation-delay: 1.7s;
+  padding-right: 32px !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

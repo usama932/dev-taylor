@@ -401,7 +401,7 @@
                                 unrivalled knowledge of the sector and network of skilled candidates. If you think you have the
                                 right expertise to join our team, or you feel we’d be a good fit for your skills and experience,
                                 we’d be happy to hear from you.</p>
-                            <div class="blue-button-wrapper" data-aos="fade-up" data-aos-duration="2000">
+                            <div class="blue-button-wrapper">
                                 <div class="image-container"><img src="/team-member.d4b3dca6.jpg"></div>
                                 <div class="find-more">
                                     <a href="JavaScript:Void(0)" class="slide-white">
@@ -517,7 +517,7 @@
         }
     });
     gsap.to(".scroll-down", {
-        yPercent: -500,
+        yPercent: -700,
         ease: "none",
         scrollTrigger: {
             trigger: "#abouttextsection",
@@ -526,13 +526,43 @@
             scrub: true
         }
     });
-    gsap.to(".mail-wrapper", {
-        yPercent: -250,
+    gsap.to("#abouttextsection", {
+        yPercent: -40,
         ease: "none",
         scrollTrigger: {
-            trigger: ".footer-section",
+            trigger: ".about-text-wrapper",
             // start: "top bottom", // the default values
             // end: "bottom top",
+            scrub: true
+        }
+    });
+    gsap.to(".image-wrapper-outer", {
+        yPercent: -500,
+        ease: "linear",
+        scrollTrigger: {
+            trigger: ".footer-section",
+            // start: "top center",
+            // end: "bottom center",
+            scrub: true
+        }
+    });
+    gsap.to(".mail-wrapper", {
+        yPercent: -400,
+        ease: "linear",
+        scrollTrigger: {
+            trigger: ".footer-section",
+            // start: "top center",
+            // end: "bottom center",
+            scrub: true
+        }
+    });
+    gsap.to(".blue-button-wrapper", {
+        yPercent: -300,
+        ease: "linear",
+        scrollTrigger: {
+            trigger: ".footer-section",
+            // start: "top center",
+            // end: "bottom center",
             scrub: true
         }
     });
