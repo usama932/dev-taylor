@@ -6,18 +6,18 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <meta name="csrf-token" content="{{ csrf_token() }}">
       <title>{{ trans('panel.site_title') }}</title>
-      <link rel="shortcut icon" href="../../assets/img/favicon.ico" />
+      <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico')}}" />
       <link
          rel="apple-touch-icon"
          sizes="76x76"
-         href="../../assets/img/apple-icon.png"
+         href="{{ asset('assets/img/apple-icon.png')}}"
          />
       <link
          rel="stylesheet"
-         href="../../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+         href="{{ asset('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css')}}"
          />
          <script src="https://cdn.tailwindcss.com"></script>
-      <link rel="stylesheet" href="../../assets/styles/tailwind.css" />
+      <link rel="stylesheet" href="{{ asset('assets/styles/tailwind.css')}}" />
         
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
       <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet" />

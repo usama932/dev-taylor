@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- icon -->
-    <link rel="icon" href="{{ asset('dist/taylor-hawkes-logo-black.c9014c2b.svg') }}" type="image/svg+xml">
+    <link rel="icon" href="{{asset('/dist/taylor-hawkes-logo-black.c9014c2b.svg') }}" type="image/svg+xml">
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -23,10 +23,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">  
-    <link rel="stylesheet" href="{{ asset('dist/index.8d4b7bfa.css')}}">
-    <link href="{{ asset('dist/index.fcc43225.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('dist/index.a8788fe3.css') }}">
-    
+    <link rel="stylesheet" href="{{asset('dist/index.e8265c92.css')}}">  
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -35,6 +32,77 @@
     })(window,document,'script','dataLayer','GTM-NMLNZVF');</script>
     <!-- End Google Tag Manager -->
     @yield('styles')
+        <style>main-banner-section .banner-wrapper {
+  justify-content: center;
+  align-items: center;
+}
+
+.main-banner-section .banner-wrapper .banner-slider {
+  height: 450px;
+}
+
+.image-1 {
+  opacity: 0;
+}
+
+.carousel-items h5 {
+  letter-spacing: 0;
+  opacity: 0;
+  font-family: AmazObitaemOstrovV\.2, sans-serif;
+  font-size: 73px;
+  line-height: 93px;
+  transform: translateY(-40px);
+}
+
+.carousal-contents {
+  width: 100%;
+  height: 450px;
+  background-color: #000;
+  transition: background .3s, border .3s, border-radius .3s, box-shadow .3s;
+  position: relative;
+}
+
+.carousal-contents .carousal-image {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: background .3s, border-radius .3s, opacity .3s;
+  position: relative;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.carousal-contents .carousel-caption {
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+}
+
+.carousel-inners {
+  position: relative;
+}
+
+.carousel-items {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+}
+
+.carousel-captions {
+  z-index: 999;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+</style>
 </head>
 
 <body class="overflow-hidden">
@@ -45,7 +113,7 @@
     @yield('content')
     <footer class="footer-section">
         <div class="logo-section">
-            <div class="logo-wrapper"> <img src="{{ asset('dist/taylor-hawkes-logo-black.c9014c2b.svg')}}" <span>{{$SiteSettings['company']->company_name ?? ''}}</span> </div>
+            <div class="logo-wrapper"> <img src="../../dist/taylor-hawkes-logo-black.c9014c2b.svg')}}" <span>{{$SiteSettings['company']->company_name ?? ''}}</span> </div>
         </div>
         <div class="top-content">
             <div class="dark-bg left-wrapper">
@@ -97,16 +165,169 @@
     </footer>
 
 </body>
-<script type="module" src="{{ asset('dist/contact.b60beef8.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script> --}}
-<script type="module" src="{{asset('dist/contact.b5605e32.js')}}"></script> 
-<script type="module" src="{{asset('dist/contact.b735df6d.js')}}"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous" ></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.8.1/lottie.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/aos@2.3.0/dist/aos.js" crossorigin="anonymous"></script>
+<script src="{{asset('dist/casestudy.ea3444c6.js')}}" id="gsap.min.js-js" crossorigin="anonymous"></script>
+<script src="{{asset('dist/casestudy.10e1d21b.js')}}" defer="" crossorigin="anonymous"></script>
+<script src="{{asset('dist/casestudy.05f49ec4.js')}}" defer="" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lottie-interactive@latest/dist/lottie-interactive.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js" crossorigin="anonymous"></script>
+<script src="{{asset('dist/knowledge.18dbc454.js')}}" defer="" crossorigin="anonymous"></script>
+ <script>
+AOS.init();</script>
+<script>$(document).ready(function() {
+    gsap.to(".banner-content", {
+        yPercent: -200,
+        ease: "none",
+        scrollTrigger: {
+            trigger: "#accountingSection",
+            // start: "top bottom", // the default values
+            // end: "bottom top",
+            scrub: true
+        }
+    });
+    gsap.to(".banner-slider", {
+        yPercent: -250,
+        ease: "none",
+        scrollTrigger: {
+            trigger: "#accountingSection",
+            // start: "top bottom", // the default values
+            // end: "bottom top",
+            scrub: true
+        }
+    });
+});
+
+</script>
+
+
+
+<script>$(document).ready(function() {
+    image_1 = new TimelineMax, image_1.set("#carouselSliders", {
+        autoAlpha: 0,
+        y: 90,
+        delay: 0
+    }), image_1.to("#carouselSliders", 1, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 1,
+        ease: Power0.easeNone
+    }).addPause(1, function() {
+        setTimeout(function() {
+            image_1.play();
+        }, 1e3);
+    });
+    // .to(".carousel_items1 .image-1", 2, { autoAlpha: 0, y: -20, ease: Power1.easeout }),
+    image = new TimelineMax, image.set(".carousel_items1 .image-1", {
+        autoAlpha: 0.6,
+        y: 0,
+        zIndex: 1,
+        delay: 0.5
+    }), image.to(".carousel_items1 .image-1", 1, {
+        autoAlpha: 0.6,
+        y: 0,
+        duration: 2,
+        ease: Power0.easeNone
+    }).addPause(2.7, function() {
+        setTimeout(function() {
+            image.play();
+        }, 1e3);
+    }).to(".carousel_items1 .image-1", 2, {
+        autoAlpha: 0,
+        y: 0,
+        ease: Power1.easeout
+    }), text_1 = new TimelineMax, text_1.set("#text_1", {
+        autoAlpha: 0,
+        y: 60,
+        delay: 0.5
+    }), text_1.to("#text_1", 1, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 2.3,
+        ease: Power0.easeNone
+    }).addPause(2.5, function() {
+        setTimeout(function() {
+            text_1.play();
+        }, 1e3);
+    }).to("#text_1", 2, {
+        autoAlpha: 0,
+        y: -40,
+        ease: Power1.easeout
+    }), // second slide
+    image_2 = new TimelineMax, image_2.set(".carousel_items2 .image-1", {
+        autoAlpha: 0,
+        y: 0,
+        zIndex: 1,
+        delay: 5.2
+    }), image_2.to(".carousel_items2 .image-1", 1, {
+        autoAlpha: 0.6,
+        y: 0,
+        duration: 7.7,
+        ease: Power0.easeNone
+    }).addPause(7.2, function() {
+        setTimeout(function() {
+            image_2.play();
+        }, 1e3);
+    }).to(".carousel_items2 .image-1", 2, {
+        autoAlpha: 0,
+        y: 0,
+        ease: Power1.easeout
+    }), text_2 = new TimelineMax, text_2.set("#text_2", {
+        autoAlpha: 0,
+        y: 60,
+        delay: 5.8
+    }), text_2.to("#text_2", 1, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 7.5,
+        ease: Power0.easeNone
+    }).addPause(7.5, function() {
+        setTimeout(function() {
+            text_2.play();
+        }, 1e3);
+    }).to("#text_2", 2, {
+        autoAlpha: 0,
+        y: -40,
+        ease: Power1.easeout
+    }), // third slide
+    image_3 = new TimelineMax, image_3.set(".carousel_items3 .image-1", {
+        autoAlpha: 0,
+        y: 0,
+        delay: 10.5
+    }), image_3.to(".carousel_items3 .image-1", 1, {
+        autoAlpha: 0.6,
+        y: 0,
+        duration: 10.5,
+        ease: Power0.easeNone
+    }).addPause(10.5, function() {
+        setTimeout(function() {
+            image_3.play();
+        }, 1e3);
+    });
+    // .to(".image-1", 2, { autoAlpha: 0, y: -20, ease: Power1.easeout }),
+    text_3 = new TimelineMax, text_3.set("#text_3", {
+        autoAlpha: 0,
+        y: 60,
+        delay: 11
+    }), text_3.to("#text_3", 1, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 9.5,
+        ease: Power0.easeNone
+    }).addPause(9.5, function() {
+        setTimeout(function() {
+            text_3.play();
+        }, 1e3);
+    });
+// .to(".carousel_items2 .text_3", 2, { autoAlpha: 0, y: -20, ease: Power1.easeout })
+});
+
+</script>
 
 @yield('scripts')
 
