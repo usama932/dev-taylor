@@ -2,125 +2,60 @@
 
 @section('content')
 @include('layouts.header')
-{{-- <section class="contact-wrapper">
-    <div class="contact-content">
-
-        <div class="map-wrapper">
-            <button type="button" id="showLeftMap" class="btn-blue btn-h68 btn-w117">{{ $page->contactInfoLocations[0]->location_country ?? '' }}</button>
-            <div class="leftMap map-box">
-                <div class="map-inner">
-                    <div class="map">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.652022807631!2d-0.022386884263091666!3d51.50125287963409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487602b91d217ca9%3A0x7a4a374b03eccf16!2sBeaufort%20Court%2C%20Admirals%20Way%2C%20London%20E14%209XL%2C%20UK!5e0!3m2!1sen!2s!4v1667495567130!5m2!1sen!2s"
-                            style="border:0"
-                            allowfullscreen
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"
-                        ></iframe>
-                    </div>
-                    <div class="address-wrapper">
-                        <div class="address-content">
-                            <label>@if( $page->contactInfoLocations[0]->location_country == 'UK' ) United Kingdom @else '' @endif </label> <a href="tel:09212676757011">{{ $page->contactInfoLocations[0]->location_phone ?? '' }}</a>
-                            <p>
-                                {!! $page->contactInfoLocations[0]->location_address ?? '' !!}
-                            </p>
-                            <a href="mailto:{{$SiteSettings['company']->company_email ?? ''}}" class="btn-blue btn-h51">{{$SiteSettings['company']->company_email ?? ''}}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="content-wrapper">
-            <div class="image-wrapper">
-                <button type="button" id="hideRightMap"><img class="left-arrow" src="{{ asset('dist/icon-arrow-right-white.53b92526.svg') }}" alt="left-arrow" /></button>
-            </div>
-            <div class="text-wrapper"><p>Which office do you want to contact?</p></div>
-            <div class="image-wrapper">
-                <button type="button" id="hideLeftMap"><img src="{{ asset('dist/icon-arrow-right-white.53b92526.svg') }}" alt="left-arrow" /></button>
-            </div>
-        </div>
-        <div class="map-wrapper">
-            <button type="button" id="showRightMap" class="btn-blue btn-h68 btn-w117">{{ $page->contactInfoLocations[1]->location_country ?? '' }}</button>
-            <div class="map-box rightMap">
-                <div class="map-inner">
-                    <div class="map">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.652022807631!2d-0.022386884263091666!3d51.50125287963409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487602b91d217ca9%3A0x7a4a374b03eccf16!2sBeaufort%20Court%2C%20Admirals%20Way%2C%20London%20E14%209XL%2C%20UK!5e0!3m2!1sen!2s!4v1667495567130!5m2!1sen!2s"
-                            style="border:0"
-                            allowfullscreen
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"
-                        ></iframe>
-                    </div>
-                    <div class="address-wrapper">
-                        <div class="address-content">
-                            <label>@if( $page->contactInfoLocations[0]->location_country = 'US' ) United State @else '' @endif</label> <a href="tel:092442038871110">{{ $page->contactInfoLocations[1]->location_phone ?? '' }}</a>
-                            <p>
-                                {!! $page->contactInfoLocations[1]->location_address ?? '' !!}
-                            </p>
-                            <a href="mailto:{{$SiteSettings['company']->company_email ?? ''}}" class="btn-blue btn-h51">{{$SiteSettings['company']->company_email ?? ''}}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> --}}
-<section class="contact-wrapper">
+ <section class="contact-wrapper">
         <div class="contact-content">
             <div class="map-wrapper">
-                <button type="button" id="showLeftMap" class="btn-blue btn-h68 btn-w117">US</button>
-                <div class="map-box leftMap">
+                <button type="button" id="showUSMap" class="btn-blue slide-white btn-h68 btn-w117">{{ $page->contactInfoLocations[0]->location_country ?? '' }}</button>
+                <div class="map-box USMap">
                     <div class="map-inner">
                         <div class="map">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.652022807631!2d-0.022386884263091666!3d51.50125287963409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487602b91d217ca9%3A0x7a4a374b03eccf16!2sBeaufort%20Court%2C%20Admirals%20Way%2C%20London%20E14%209XL%2C%20UK!5e0!3m2!1sen!2s!4v1667495567130!5m2!1sen!2s" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe defer="" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3058.4956971957517!2d-75.1726616715597!3d39.952668713602236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c62916c6280d%3A0xb4bc092149667838!2sOne%20Liberty%20Place!5e0!3m2!1sen!2s!4v1668612866461!5m2!1sen!2s" style="border: 0" allowfullscreen="" loading="eager" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                         <div class="address-wrapper">
-                            <div class="address-content">
-                                <label>United States</label>
-                                <a href="tel:09212676757011">+1 267-675-7011</a>
-                                <p>One Liberty Place<br>
-                                    1650 Market Street<br>
-                                    Suite 3600<br>
-                                    Philadelphia<br>
-                                    Pa 19103, US</p>
-                                <a href="mailto:info@taylorhawkes.com" class="btn-blue btn-h51">info@taylorhawkes.com</a>
+                            <div class="address-content" data-aos="fade-up" data-aos-duration="1500">
+                                <label>@if( $page->contactInfoLocations[0]->location_country == 'UK' ) United Kingdom @else '' @endif </label> <a href="tel:09212676757011">{{ $page->contactInfoLocations[0]->location_phone ?? '' }}</label>
+                                <a href="tel:09212676757011">{{ $page->contactInfoLocations[0]->location_phone ?? '' }}</a>
+                                <p> {!! $page->contactInfoLocations[0]->location_address ?? '' !!}</p>
+                                <a href="mailto:{{$SiteSettings['company']->company_email ?? ''}}" class="btn-blue slide-yellow btn-h51"><span>{{$SiteSettings['company']->company_email ?? ''}}</span></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="content-wrapper">
-                <div class="image-wrapper">
-                    <button type="button" id="hideRightMap">
-                        <img class="left-arrow" src="/icon-arrow-right-white.60c1bb6f.svg" alt="left-arrow">
+                <div class="button-wrapper">
+                    <button type="button" id="hideUKMap" class="map-button">
+                        <div class="arrow-wrapper left-arrow">
+                            <div id="arrow-white-left-before" class="arrow-image"></div>
+                            <div id="arrow-white-left-after" class="arrow-image off"></div>
+                        </div>
                     </button>
                 </div>
                 <div class="text-wrapper">
-                    <p>Which office do you want to contact?</p>
+                    <p id="map-text">Which office do you want to contact?</p>
                 </div>
-                <div class="image-wrapper">
-                    <button type="button" id="hideLeftMap">
-                        <img src="/icon-arrow-right-white.60c1bb6f.svg" alt="left-arrow">
+                <div class="button-wrapper">
+                    <button type="button" id="hideUSMap" class="map-button">
+                        <div class="arrow-wrapper">
+                            <div id="arrow-white-right-before" class="arrow-image"></div>
+                            <div id="arrow-white-right-after" class="arrow-image off"></div>
+                        </div>
                     </button>
                 </div>
             </div>
             <div class="map-wrapper">
-                <button type="button" id="showRightMap" class="btn-blue btn-h68 btn-w117">UK</button>
-                <div class="map-box rightMap">
+                <button type="button" id="showUKMap" class="btn-blue slide-white btn-h68 btn-w117">{{ $page->contactInfoLocations[1]->location_country ?? '' }}
+                <div class="map-box UKMap">
                     <div class="map-inner">
                         <div class="map">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.652022807631!2d-0.022386884263091666!3d51.50125287963409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487602b91d217ca9%3A0x7a4a374b03eccf16!2sBeaufort%20Court%2C%20Admirals%20Way%2C%20London%20E14%209XL%2C%20UK!5e0!3m2!1sen!2s!4v1667495567130!5m2!1sen!2s" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe defer="" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.652022807631!2d-0.022386884263091666!3d51.50125287963409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487602b91d217ca9%3A0x7a4a374b03eccf16!2sBeaufort%20Court%2C%20Admirals%20Way%2C%20London%20E14%209XL%2C%20UK!5e0!3m2!1sen!2s!4v1667495567130!5m2!1sen!2s" style="border: 0" allowfullscreen="" loading="eager" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                         <div class="address-wrapper">
-                            <div class="address-content">
-                                <label>United Kingdom</label>
-                                <a href="tel:092442038871110">+44 203 887 1110</a>
-                                <p>45 Beaufort Court<br>
-                                    Admirals Way<br>
-                                    London<br>
-                                    E14 9XL, UK</p>
-                                <a href="mailto:info@taylorhawkes.com" class="btn-blue btn-h51">info@taylorhawkes.com</a>
+                            <div class="address-content" data-aos="fade-up" data-aos-duration="1500">
+                                <label>@if( $page->contactInfoLocations[0]->location_country = 'US' ) United State @else '' @endif</label>
+                                <a href="tel:092442038871110">{{ $page->contactInfoLocations[1]->location_phone ?? '' }}</a>
+                                <p> {!! $page->contactInfoLocations[1]->location_address ?? '' !!}</p>
+                                <a href="mailto:{{$SiteSettings['company']->company_email ?? ''}}   " class="btn-blue slide-yellow btn-h51"><span>{{$SiteSettings['company']->company_email ?? ''}}</span></a>
                             </div>
                         </div>
                     </div>
