@@ -2,6 +2,7 @@
 
 @section('content')
 @include('layouts.header')
+
 <section class="knowledge-banner-section main-banner-section">
     <div class="container">
         <div class="banner-wrapper">
@@ -34,6 +35,42 @@
         </div>
     </div>
 </section>
+<section class="main-banner-section knowledge-banner-section">
+            <div class="container">
+                <div class="banner-wrapper">
+                    <div class="banner-content">
+                        <div class="text-wrapper">
+                            <h4 class="title-text knowlege-text"><span class="fade1">Accounting Knowledge & Insights</span></h4>
+                            <p data-aos="fade-up">Our knowledge of the accounting and finance sector is what sets us apart from other recruiters. Here are some of the latest insights from the Taylor Hawkes team for companies and candidates alike, as well as some of the latest changes in the accounting and finance industry.</p>
+                        </div>
+                    </div>
+                    <div class="banner-slider">
+                        <div class="slider-inner" data-aos="fade-up" data-aos-duration="1000">
+                            <div id="carouselSlider" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="carousal-content">
+                                            <div class="carousal-image image-3" style="opacity: .6; background-image: url(&quot;banner-image3.fe158393.jpg&quot;)"></div>
+                                            <div class="carousel-caption" data-aos="fade-up" data-aos-duration="1500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-down knowledge-scroll">
+                    <a href="#knowledgeSection">
+                        <div class="scroll-wrapper">
+                            <div id="scroll-white-before" class="scroll-image"></div>
+                            <div id="scroll-white-after" class="scroll-image off"></div>
+                        </div>
+                        <span>Scroll</span>
+                    </a>
+                </div>
+            </div>
+        </section>
 @php
 $knowledge =  $KnowledgeService->knowledge();
 @endphp

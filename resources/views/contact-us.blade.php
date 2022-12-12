@@ -13,7 +13,8 @@
                         </div>
                         <div class="address-wrapper">
                             <div class="address-content" data-aos="fade-up" data-aos-duration="1500">
-                                <label>@if( $page->contactInfoLocations[0]->location_country == 'UK' ) United Kingdom @else '' @endif </label> <a href="tel:09212676757011">{{ $page->contactInfoLocations[0]->location_phone ?? '' }}</label>
+                                <label>@if( $page->contactInfoLocations[0]->location_country == 'UK' ) United Kingdom @else '' @endif </label> 
+                                
                                 <a href="tel:09212676757011">{{ $page->contactInfoLocations[0]->location_phone ?? '' }}</a>
                                 <p> {!! $page->contactInfoLocations[0]->location_address ?? '' !!}</p>
                                 <a href="mailto:{{$SiteSettings['company']->company_email ?? ''}}" class="btn-blue slide-yellow btn-h51"><span>{{$SiteSettings['company']->company_email ?? ''}}</span></a>
@@ -55,7 +56,7 @@
                                 <label>@if( $page->contactInfoLocations[0]->location_country = 'US' ) United State @else '' @endif</label>
                                 <a href="tel:092442038871110">{{ $page->contactInfoLocations[1]->location_phone ?? '' }}</a>
                                 <p> {!! $page->contactInfoLocations[1]->location_address ?? '' !!}</p>
-                                <a href="mailto:{{$SiteSettings['company']->company_email ?? ''}}   " class="btn-blue slide-yellow btn-h51"><span>{{$SiteSettings['company']->company_email ?? ''}}</span></a>
+                                <a href="mailto:{{$SiteSettings['company']->company_email ?? ''}}" class="btn-blue slide-yellow btn-h51"><span>{{$SiteSettings['company']->company_email ?? ''}}</span></a>
                             </div>
                         </div>
                     </div>
