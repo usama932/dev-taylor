@@ -405,11 +405,13 @@
                   </li>
                   @endcan
                   <li class="items-center">
-                    <a class="mr-2 text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500" href="#" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
-                      <i class="fa-fw fas fa-sign-out-alt mr-2"></i>
+                    <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
+                    <i class="fa-fw fas fa-sign-out-alt">
 
-                      {{ trans('global.logout') }}
-                    </a>
+                    </i>
+
+                    <span class="mx-4">{{ trans('global.logout') }}</span>
+                </a>
                   <li>
                  
                 
