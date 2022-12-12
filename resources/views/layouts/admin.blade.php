@@ -7,6 +7,7 @@
       <meta name="csrf-token" content="{{ csrf_token() }}">
       <title>{{ trans('panel.site_title') }}</title>
       <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico')}}" />
+       
       <link
          rel="apple-touch-icon"
          sizes="76x76"
